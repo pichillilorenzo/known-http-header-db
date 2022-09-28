@@ -1,6 +1,6 @@
 {
   "name": "known-http-header-db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Known HTTP Header Database",
   "author": {
     "name": "Lorenzo Pichilli",
@@ -23,6 +23,12 @@
   ],
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
   "scripts": {
     "start": "ts-node src/main.ts",
     "serve": "nodemon -L ./src/main.ts && npm run watch",
