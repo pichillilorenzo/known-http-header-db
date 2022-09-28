@@ -1,7 +1,14 @@
-# known-http-header-db
+<div align="center">
 
-[![NPM Version][npm-version-image]][npm-url]
-[![NPM Downloads][npm-downloads-image]][npm-url]
+# HTTP Header Database
+
+[![NPM](https://nodei.co/npm/known-http-header-db.png?compact=true)](https://nodei.co/npm/known-http-header-db/)
+<br />
+[![](https://img.shields.io/npm/dt/known-http-header-db.svg?style=flat-square)](https://www.npmjs.com/package/known-http-header-db)
+
+</div>
+
+[![NPM Version](https://badgen.net/npm/v/known-http-header-db)](https://npmjs.org/package/known-http-header-db)
 [![license](https://img.shields.io/github/license/pichillilorenzo/known-http-header-db)](/LICENSE)
 [![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.me/LorenzoPichilli)
 
@@ -171,7 +178,3 @@ Check [HTTPHeaderDb](https://pichillilorenzo.github.io/known-http-header-db/inte
 Released under the [ISC](/LICENSE) license.
 
 This project is strongly inspired by the [mime-db](https://github.com/jshttp/mime-db).
-
-[npm-downloads-image]: https://badgen.net/npm/dm/known-http-header-db
-[npm-url]: https://npmjs.org/package/known-http-header-db
-[npm-version-image]: https://badgen.net/npm/v/known-http-header-db

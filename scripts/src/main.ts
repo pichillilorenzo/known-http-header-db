@@ -16,5 +16,5 @@ import {HTTPHeaderDb} from "known-http-header-db";
 
   const dbJsonPath = path.join(__dirname, '..', '..', 'src', 'db.json');
   console.log(`Save db.json to ${dbJsonPath}`);
-  fs.writeFileSync(dbJsonPath, JSON.stringify(httpHeadersDb));
+  fs.writeFileSync(dbJsonPath, JSON.stringify(httpHeadersDb, null, '\t'));
 })();
