@@ -49,8 +49,8 @@ If that is not possible / feasible, they can be added directly here as a "custom
 
 To edit the database, only make PRs against `scripts/src/custom-headers.json`.
 
-The `scripts/src/custom-headers.json` file is a JSON object of type [HTTPHeaderDb](https://pichillilorenzo.github.io/known-http-header-db/stable/interfaces/HTTPHeaderDb.html), where each `key` is the header name in lower case and the `value`
-is an Object of type [HTTPHeader](https://pichillilorenzo.github.io/known-http-header-db/stable/interfaces/HTTPHeader.html).
+The `scripts/src/custom-headers.json` file is a JSON object of type [HTTPHeaderDb](https://pichillilorenzo.github.io/known-http-header-db/interfaces/HTTPHeaderDb.html), where each `key` is the header name in lower case and the `value`
+is an Object of type [HTTPHeader](https://pichillilorenzo.github.io/known-http-header-db/interfaces/HTTPHeader.html).
 
 To update the build, run `npm run build:all`.
 
@@ -163,7 +163,7 @@ To update the build, run `npm run build:all`.
 }
 ```
 
-Check [HTTPHeaderDb](https://pichillilorenzo.github.io/known-http-header-db/stable/interfaces/HTTPHeaderDb.html) for more details.
+Check [HTTPHeaderDb](https://pichillilorenzo.github.io/known-http-header-db/interfaces/HTTPHeaderDb.html) for more details.
 
 ## License
 
