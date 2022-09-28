@@ -22,7 +22,7 @@ export declare enum HTTPHeaderType {
     representation = "representation"
 }
 /**
- * HTTP Headers Database.
+ * HTTP Header Database.
  *
  * @example
  * ```json
@@ -359,19 +359,19 @@ export interface HTTPHeader {
      */
     syntax?: string;
     /**
-     * If set, this HTTP Headers requires a secure context. The string represents the documentation description.
+     * If set, this HTTP Header requires a secure context. The string represents the documentation description.
      */
     secure?: string;
     /**
-     * If set, this HTTP Headers is deprecated. The string represents the documentation description.
+     * If set, this HTTP Header is deprecated. The string represents the documentation description.
      */
     deprecated?: string;
     /**
-     * If set, this HTTP Headers is non-standard. The string represents the documentation description.
+     * If set, this HTTP Header is non-standard. The string represents the documentation description.
      */
     nonstandard?: string;
     /**
-     * If set, this HTTP Headers represents a usage warning message.
+     * If set, it represents a warning message for this HTTP Header.
      */
     warning?: string;
     /**
