@@ -35,7 +35,6 @@
   },
   "typedocOptions": {
     "entryPoints": ["src/main.ts"],
-    "out": "docs",
-    "plugin": ["typedoc-plugin-versions"]
+    "out": "docs"
   }
 }
