@@ -1,6 +1,6 @@
 {
   "name": "known-http-header-db",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Known HTTP Header Database",
   "author": {
     "name": "Lorenzo Pichilli",
