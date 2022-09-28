@@ -11,8 +11,10 @@
     "http",
     "header",
     "http-header",
+    "http-headers",
     "db",
-    "database"
+    "database",
+    "json"
   ],
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
