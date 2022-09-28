@@ -4,9 +4,14 @@
   "description": "Known HTTP Header Database",
   "author": {
     "name": "Lorenzo Pichilli",
-    "email": "pichillilorenzo@gmail.com"
+    "email": "pichillilorenzo@gmail.com",
+    "url": "https://github.com/pichillilorenzo"
   },
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pichillilorenzo/known-http-header-db"
+  },
   "keywords": [
     "http",
     "header",
