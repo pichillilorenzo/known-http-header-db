@@ -359,6 +359,10 @@ export interface HTTPHeader {
      */
     syntax?: string;
     /**
+     * If set, this HTTP Header is experimental. The string represents the documentation description.
+     */
+    experimental?: string;
+    /**
      * If set, this HTTP Header requires a secure context. The string represents the documentation description.
      */
     secure?: string;

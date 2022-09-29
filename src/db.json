@@ -4,14 +4,15 @@
 		"type": [
 			"response"
 		],
-		"description": "The HTTP Strict-Transport-Security response header (often abbreviated as HSTS) informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS. Note: This is more secure than simply configuring a HTTP to HTTPS (301) redirect on your server, where the initial HTTP connection is still vulnerable to a man-in-the-middle attack.",
+		"description": "The HTTP Strict-Transport-Security response header (often abbreviated as HSTS) informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS.",
 		"note": "Note: This is more secure than simply configuring a HTTP to HTTPS (301) redirect on your server, where the initial HTTP connection is still vulnerable to a man-in-the-middle attack.",
 		"syntax": "Strict-Transport-Security: max-age=<expire-time>\nStrict-Transport-Security: max-age=<expire-time>; includeSubDomains\nStrict-Transport-Security: max-age=<expire-time>; preload",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security",
 		"forbiddenHeaderName": false,
 		"examples": [
 			"Strict-Transport-Security: max-age=31536000; includeSubDomains",
-			"Strict-Transport-Security: max-age=63072000; includeSubDomains; preload"
+			"Strict-Transport-Security: max-age=63072000; includeSubDomains; preload",
+			"Strict-Transport-Security: max-age=16070400; includeSubDomains"
 		],
 		"directives": [
 			{
@@ -100,12 +101,14 @@
 		"type": [
 			"response"
 		],
-		"description": "The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should be followed and not be changed. The header allows you to avoid MIME type sniffing by saying that the MIME types are deliberately configured. This header was introduced by Microsoft in IE 8 as a way for webmasters to block content sniffing that was happening and could transform non-executable MIME types into executable MIME types. Since then, other browsers have introduced it, even if their MIME sniffing algorithms were less aggressive. Starting with Firefox 72, top-level documents also avoid MIME sniffing (if Content-type is provided). This can cause HTML web pages to be downloaded instead of being rendered when they are served with a MIME type other than text/html. Make sure to set both headers correctly. Site security testers usually expect this header to be set. Note: X-Content-Type-Options only apply request-blocking due to nosniff for request destinations of \"script\" and \"style\". However, it also enables Cross-Origin Read Blocking (CORB) protection for HTML, TXT, JSON and XML files (excluding SVG image/svg+xml).",
+		"description": "The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should be followed and not be changed. The header allows you to avoid MIME type sniffing by saying that the MIME types are deliberately configured. This header was introduced by Microsoft in IE 8 as a way for webmasters to block content sniffing that was happening and could transform non-executable MIME types into executable MIME types. Since then, other browsers have introduced it, even if their MIME sniffing algorithms were less aggressive. Starting with Firefox 72, top-level documents also avoid MIME sniffing (if Content-type is provided). This can cause HTML web pages to be downloaded instead of being rendered when they are served with a MIME type other than text/html. Make sure to set both headers correctly. Site security testers usually expect this header to be set.",
 		"note": "Note: X-Content-Type-Options only apply request-blocking due to nosniff for request destinations of \"script\" and \"style\". However, it also enables Cross-Origin Read Blocking (CORB) protection for HTML, TXT, JSON and XML files (excluding SVG image/svg+xml).",
 		"syntax": "X-Content-Type-Options: nosniff",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"X-Content-Type-Options: nosniff"
+		],
 		"directives": [
 			{
 				"name": "nosniff",
@@ -186,11 +189,13 @@
 		"type": [
 			"response"
 		],
-		"description": "The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>. Sites can use this to avoid click-jacking attacks, by ensuring that their content is not embedded into other sites. The added security is provided only if the user accessing the document is using a browser that supports X-Frame-Options. Note: The Content-Security-Policy HTTP header has a frame-ancestors directive which obsoletes this header for supporting browsers.",
+		"description": "The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>. Sites can use this to avoid click-jacking attacks, by ensuring that their content is not embedded into other sites. The added security is provided only if the user accessing the document is using a browser that supports X-Frame-Options.",
 		"note": "Note: The Content-Security-Policy HTTP header has a frame-ancestors directive which obsoletes this header for supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"X-Frame-Options: deny"
+		],
 		"directives": [
 			{
 				"name": "DENY",
@@ -390,21 +395,38 @@
 					}
 				]
 			}
-		]
+		],
+		"syntax": {
+			"name": "X-Frame-Options",
+			"type": [
+				"response"
+			],
+			"description": "Clickjacking protection: deny - no rendering within a frame, sameorigin - no rendering if origin mismatch, allow-from - allow from specified location, allowall - non-standard, allow from any location",
+			"syntax": "X-Frame-Options: deny",
+			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Frame-Options",
+			"directives": [],
+			"examples": [
+				"X-Frame-Options: deny"
+			],
+			"specifications": [],
+			"browserCompatibility": []
+		}
 	},
 	"x-xss-protection": {
 		"name": "X-XSS-Protection",
 		"type": [
 			"response"
 		],
-		"description": "Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The HTTP X-XSS-Protection response header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting (XSS) attacks. These protections are largely unnecessary in modern browsers when sites implement a strong Content-Security-Policy that disables the use of inline JavaScript ('unsafe-inline'). Warning: Even though this feature can protect users of older web browsers that don't yet support CSP, in some cases, XSS protection can create XSS vulnerabilities in otherwise safe websites. See the section below for more information. Note: This means that if you do not need to support legacy browsers, it is recommended that you use Content-Security-Policy without allowing unsafe-inline scripts instead.",
+		"description": "The HTTP X-XSS-Protection response header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting (XSS) attacks. These protections are largely unnecessary in modern browsers when sites implement a strong Content-Security-Policy that disables the use of inline JavaScript ('unsafe-inline').",
 		"note": "Note: Chrome has removed their XSS Auditor Firefox has not, and will not implement X-XSS-Protection Edge has retired their XSS filter This means that if you do not need to support legacy browsers, it is recommended that you use Content-Security-Policy without allowing unsafe-inline scripts instead.",
 		"syntax": "X-XSS-Protection: 0\nX-XSS-Protection: 1\nX-XSS-Protection: 1; mode=block\nX-XSS-Protection: 1; report=<reporting-uri>",
 		"nonstandard": "Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future.",
 		"warning": "Warning: Even though this feature can protect users of older web browsers that don't yet support CSP, in some cases, XSS protection can create XSS vulnerabilities in otherwise safe websites. See the section below for more information.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"X-XSS-Protection: 1; mode=block"
+		],
 		"directives": [],
 		"specifications": [],
 		"browserCompatibility": [
@@ -481,7 +503,8 @@
 		"forbiddenHeaderName": false,
 		"corsSafeListedRequestHeader": false,
 		"examples": [
-			"Accept: text/html\n\nAccept: image/*\n\n// General default\nAccept: */*\n\n// Default for navigation requests\nAccept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8"
+			"Accept: text/html\n\nAccept: image/*\n\n// General default\nAccept: */*\n\n// Default for navigation requests\nAccept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8",
+			"Accept: text/html"
 		],
 		"directives": [
 			{
@@ -505,6 +528,14 @@
 			{
 				"name": "HTTP Semantics # field.accept",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -575,7 +606,7 @@
 		"type": [
 			"response"
 		],
-		"description": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Accept-CH header may be set by a server to specify which client hints headers a client should include in subsequent requests. Note: Client hints are accessible only on secure origins (via TLS). Accept-CH (and Accept-CH-Lifetime) headers should be persisted for all secure requests to ensure client hints are sent reliably.",
+		"description": "The Accept-CH header may be set by a server to specify which client hints headers a client should include in subsequent requests.",
 		"note": "Note: Client hints are accessible only on secure origins (via TLS). Accept-CH (and Accept-CH-Lifetime) headers should be persisted for all secure requests to ensure client hints are sent reliably.",
 		"syntax": "Accept-CH: <comma separated list of client hint headers>",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
@@ -583,13 +614,18 @@
 		"forbiddenHeaderName": false,
 		"corsSafeListedResponseHeader": false,
 		"examples": [
-			"Accept-CH: Viewport-Width, Width\nVary: Viewport-Width, Width"
+			"Accept-CH: Viewport-Width, Width\nVary: Viewport-Width, Width",
+			"Accept-CH: UA, Platform"
 		],
 		"directives": [],
 		"specifications": [
 			{
 				"name": "HTTP Client Hints # section-3.1",
 				"link": "https://www.rfc-editor.org/rfc/rfc8942#section-3.1"
+			},
+			{
+				"name": "8942",
+				"link": "https://datatracker.ietf.org/doc/html/rfc8942"
 			}
 		],
 		"browserCompatibility": [
@@ -1379,7 +1415,7 @@
 		"type": [
 			"response"
 		],
-		"description": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. Warning: The header was removed from the specification in draft 8. The Accept-CH-Lifetime header is set by the server to specify the persistence of the client hint headers it specified using Accept-CH, that the client should include in subsequent requests. Note: Client Hints are accessible only on secure origins (via TLS). Accept-CH and Accept-CH-Lifetime headers should be persisted for all secure requests to ensure Client Hints are sent reliably.",
+		"description": "The Accept-CH-Lifetime header is set by the server to specify the persistence of the client hint headers it specified using Accept-CH, that the client should include in subsequent requests.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). Accept-CH and Accept-CH-Lifetime headers should be persisted for all secure requests to ensure Client Hints are sent reliably.",
 		"syntax": "Accept-CH-Lifetime: <age>",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
@@ -1461,27 +1497,55 @@
 		"type": [
 			"request"
 		],
-		"description": "Warning: Do not use this header. Browsers omit this header and servers should ignore it. The Accept-Charset request HTTP header was a header that advertised a client's supported character encodings. It is no longer widely used. UTF-8 is well-supported and the overwhelmingly preferred choice for character encoding. To guarantee better privacy through less configuration-based entropy, all browsers omit the Accept-Charset header. Chrome, Firefox, Internet Explorer, Opera, and Safari abandoned this header. Today, Accept-Charset is most notable for being one of several forbidden header names.",
+		"description": "The Accept-Charset request HTTP header was a header that advertised a client's supported character encodings. It is no longer widely used. UTF-8 is well-supported and the overwhelmingly preferred choice for character encoding. To guarantee better privacy through less configuration-based entropy, all browsers omit the Accept-Charset header. Chrome, Firefox, Internet Explorer, Opera, and Safari abandoned this header. Today, Accept-Charset is most notable for being one of several forbidden header names.",
 		"warning": "Warning: Do not use this header. Browsers omit this header and servers should ignore it.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Charset",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"Accept-Charset: utf-8"
+		],
 		"directives": [],
-		"specifications": [],
-		"browserCompatibility": []
+		"specifications": [
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			}
+		],
+		"browserCompatibility": [],
+		"syntax": {
+			"name": "Accept-Charset",
+			"type": [
+				"request"
+			],
+			"description": "Character sets that are acceptable.",
+			"syntax": "Accept-Charset: utf-8",
+			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+			"directives": [],
+			"examples": [
+				"Accept-Charset: utf-8"
+			],
+			"specifications": [
+				{
+					"name": "2616",
+					"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+				}
+			],
+			"browserCompatibility": []
+		}
 	},
 	"accept-encoding": {
 		"name": "Accept-Encoding",
 		"type": [
 			"request"
 		],
-		"description": "The Accept-Encoding request HTTP header indicates the content encoding (usually a compression algorithm) that the client can understand. The server uses content negotiation to select one of the proposals and informs the client of that choice with the Content-Encoding response header. Even if both the client and the server support the same compression algorithms, the server may choose not to compress the body of a response if the identity value is also acceptable. Two common cases lead to this: As long as the identity;q=0 or *;q=0 directives do not explicitly forbid the identity value that means no encoding, the server must never return a 406 Not Acceptable error. Note:",
+		"description": "The Accept-Encoding request HTTP header indicates the content encoding (usually a compression algorithm) that the client can understand. The server uses content negotiation to select one of the proposals and informs the client of that choice with the Content-Encoding response header. Even if both the client and the server support the same compression algorithms, the server may choose not to compress the body of a response if the identity value is also acceptable. Two common cases lead to this: As long as the identity;q=0 or *;q=0 directives do not explicitly forbid the identity value that means no encoding, the server must never return a 406 Not Acceptable error.",
 		"note": "Note: An IANA registry maintains a complete list of official content encodings. Two other content encodings, namely bzip and bzip2, are sometimes used, These non-standard encodings implement the algorithm that these two UNIX programs use. Note that bzip was discontinued due to patent licensing issues.",
 		"syntax": "Accept-Encoding: gzip\nAccept-Encoding: compress\nAccept-Encoding: deflate\nAccept-Encoding: br\nAccept-Encoding: identity\nAccept-Encoding: *\n\n// Multiple algorithms, weighted with the quality value syntax:\nAccept-Encoding: deflate, gzip;q=1.0, *;q=0.5",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding",
 		"forbiddenHeaderName": true,
 		"examples": [
-			"Accept-Encoding: gzip\n\nAccept-Encoding: gzip, compress, br\n\nAccept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1"
+			"Accept-Encoding: gzip\n\nAccept-Encoding: gzip, compress, br\n\nAccept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1",
+			"Accept-Encoding: gzip, deflate"
 		],
 		"directives": [
 			{
@@ -1517,6 +1581,14 @@
 			{
 				"name": "HTTP Semantics # field.accept-encoding",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept-encoding"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -1595,7 +1667,8 @@
 		"examples": [
 			"Accept-Language: de",
 			"Accept-Language: de-CH",
-			"Accept-Language: en-US,en;q=0.5"
+			"Accept-Language: en-US,en;q=0.5",
+			"Accept-Language: en-US"
 		],
 		"directives": [
 			{
@@ -1615,6 +1688,18 @@
 			{
 				"name": "HTTP Semantics # field.accept-language",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept-language"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "4021",
+				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -1685,19 +1770,24 @@
 		"type": [
 			"response"
 		],
-		"description": "The Accept-Patch response HTTP header advertises which media-type the server is able to understand in a PATCH request. Accept-Patch in response to any method means that PATCH is allowed on the resource identified by the Request-URI. Two common cases lead to this: A server receiving a PATCH request with an unsupported media type could reply with 415 Unsupported Media Type and an Accept-Patch header referencing one or more supported media types. Note:",
+		"description": "The Accept-Patch response HTTP header advertises which media-type the server is able to understand in a PATCH request. Accept-Patch in response to any method means that PATCH is allowed on the resource identified by the Request-URI. Two common cases lead to this: A server receiving a PATCH request with an unsupported media type could reply with 415 Unsupported Media Type and an Accept-Patch header referencing one or more supported media types.",
 		"note": "Note: An IANA registry maintains a complete list of official content encodings. Two others content encoding, bzip and bzip2, are sometimes used, though not standard. They implement the algorithm used by these two UNIX programs. Note that the first one was discontinued due to patent licensing problems.",
 		"syntax": "Accept-Patch: application/example, text/example\nAccept-Patch: text/example;charset=utf-8\nAccept-Patch: application/merge-patch+json",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Patch",
 		"forbiddenHeaderName": true,
 		"examples": [
-			"Accept-Patch: application/example, text/example\n\nAccept-Patch: text/example;charset=utf-8\n\nAccept-Patch: application/merge-patch+json"
+			"Accept-Patch: application/example, text/example\n\nAccept-Patch: text/example;charset=utf-8\n\nAccept-Patch: application/merge-patch+json",
+			"Accept-Patch: text/example;charset=utf-8"
 		],
 		"directives": [],
 		"specifications": [
 			{
 				"name": "RFC 5789 # section-3.1",
 				"link": "https://www.rfc-editor.org/rfc/rfc5789#section-3.1"
+			},
+			{
+				"name": "5789",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5789"
 			}
 		],
 		"browserCompatibility": []
@@ -1707,7 +1797,7 @@
 		"type": [
 			"response"
 		],
-		"description": "The Accept-Post response HTTP header advertises which media types are accepted by the server for HTTP post requests. Accept-Post in response to any method means that POST is allowed on the requested resource (any document/media format in the header further indicates that the document format is allowed). For example, a server receiving a POST request with an unsupported media type could reply with 415 Unsupported Media Type and an Accept-Post header referencing one or more supported media types. Note: An IANA registry maintains a complete list of official content encodings.",
+		"description": "The Accept-Post response HTTP header advertises which media types are accepted by the server for HTTP post requests. Accept-Post in response to any method means that POST is allowed on the requested resource (any document/media format in the header further indicates that the document format is allowed). For example, a server receiving a POST request with an unsupported media type could reply with 415 Unsupported Media Type and an Accept-Post header referencing one or more supported media types.",
 		"note": "Note: An IANA registry maintains a complete list of official content encodings.",
 		"syntax": "Accept-Post: <MIME_type>/<MIME_subtype>\nAccept-Post: <MIME_type>/*\nAccept-Post: */*",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Post",
@@ -1750,6 +1840,14 @@
 			{
 				"name": "HTTP Semantics # field.accept-ranges",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept-ranges"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7233",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7233"
 			}
 		],
 		"browserCompatibility": [
@@ -1837,6 +1935,10 @@
 			{
 				"name": "Fetch Standard # http-access-control-allow-credentials",
 				"link": "https://fetch.spec.whatwg.org/#http-access-control-allow-credentials"
+			},
+			{
+				"name": "7480",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7480"
 			}
 		],
 		"browserCompatibility": [
@@ -1907,7 +2009,7 @@
 		"type": [
 			"response"
 		],
-		"description": "The Access-Control-Allow-Headers response header is used in response to a preflight request which includes the Access-Control-Request-Headers to indicate which HTTP headers can be used during the actual request. This header is required if the request has an Access-Control-Request-Headers header. Note: CORS-safelisted request headers are always allowed and usually aren't listed in Access-Control-Allow-Headers (unless there is a need to circumvent the safelist additional restrictions).",
+		"description": "The Access-Control-Allow-Headers response header is used in response to a preflight request which includes the Access-Control-Request-Headers to indicate which HTTP headers can be used during the actual request. This header is required if the request has an Access-Control-Request-Headers header.",
 		"note": "Note: CORS-safelisted request headers are always allowed and usually aren't listed in Access-Control-Allow-Headers (unless there is a need to circumvent the safelist additional restrictions).",
 		"syntax": "Access-Control-Allow-Headers: [<header-name>[, <header-name>]*]\nAccess-Control-Allow-Headers: *",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers",
@@ -1927,6 +2029,10 @@
 			{
 				"name": "Fetch Standard # http-access-control-allow-headers",
 				"link": "https://fetch.spec.whatwg.org/#http-access-control-allow-headers"
+			},
+			{
+				"name": "7480",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7480"
 			}
 		],
 		"browserCompatibility": [
@@ -2078,6 +2184,10 @@
 			{
 				"name": "Fetch Standard # http-access-control-allow-methods",
 				"link": "https://fetch.spec.whatwg.org/#http-access-control-allow-methods"
+			},
+			{
+				"name": "7480",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7480"
 			}
 		],
 		"browserCompatibility": [
@@ -2234,6 +2344,10 @@
 			{
 				"name": "Fetch Standard # http-access-control-allow-origin",
 				"link": "https://fetch.spec.whatwg.org/#http-access-control-allow-origin"
+			},
+			{
+				"name": "7480",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7480"
 			}
 		],
 		"browserCompatibility": [
@@ -2328,6 +2442,10 @@
 			{
 				"name": "Fetch Standard # http-access-control-expose-headers",
 				"link": "https://fetch.spec.whatwg.org/#http-access-control-expose-headers"
+			},
+			{
+				"name": "7480",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7480"
 			}
 		],
 		"browserCompatibility": [
@@ -2475,6 +2593,10 @@
 			{
 				"name": "Fetch Standard # http-access-control-max-age",
 				"link": "https://fetch.spec.whatwg.org/#http-access-control-max-age"
+			},
+			{
+				"name": "7480",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7480"
 			}
 		],
 		"browserCompatibility": [
@@ -2637,7 +2759,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Method",
 		"forbiddenHeaderName": true,
 		"examples": [
-			"Access-Control-Request-Method: POST"
+			"Access-Control-Request-Method: POST",
+			"Access-Control-Request-Method: GET"
 		],
 		"directives": [
 			{
@@ -2724,7 +2847,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Age",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Age: 24"
+			"Age: 24",
+			"Age: 12"
 		],
 		"directives": [
 			{
@@ -2736,6 +2860,14 @@
 			{
 				"name": "HTTP Caching # field.age",
 				"link": "https://httpwg.org/specs/rfc9111.html#field.age"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7234",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7234"
 			}
 		],
 		"browserCompatibility": [
@@ -2811,7 +2943,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Allow",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Allow: GET, POST, HEAD"
+			"Allow: GET, POST, HEAD",
+			"Allow: GET, HEAD"
 		],
 		"directives": [
 			{
@@ -2823,6 +2956,14 @@
 			{
 				"name": "HTTP Semantics # field.allow",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.allow"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": []
@@ -2832,7 +2973,9 @@
 		"description": "The Alt-Svc HTTP header allows a server to indicate that another network location (the \"alternative service\") can be treated as authoritative for that origin when making future requests. Doing so allows new protocol versions to be advertised without affecting in-flight requests, and can also help servers manage traffic. Using an alternative service is not visible to the end user; it does not change the URL or the origin of the request, and does not introduce extra round trips.",
 		"syntax": "Alt-Svc: clear\nAlt-Svc: <protocol-id>=<alt-authority>; ma=<max-age>\nAlt-Svc: <protocol-id>=<alt-authority>; ma=<max-age>; persist=1",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Alt-Svc",
-		"examples": [],
+		"examples": [
+			"Alt-Svc: http/1.1=\"http2.example.com:8001\"; ma=7200"
+		],
 		"directives": [],
 		"specifications": [
 			{
@@ -2899,19 +3042,36 @@
 					}
 				]
 			}
-		]
+		],
+		"type": {
+			"name": "Alt-Svc",
+			"type": [
+				"response"
+			],
+			"description": "A server uses \"Alt-Svc\" header (meaning Alternative Services) to indicate that its resources can also be accessed at a different network location (host or port) or using a different protocol When using HTTP/2, servers should instead send an ALTSVC frame.",
+			"syntax": "Alt-Svc: http/1.1=\"http2.example.com:8001\"; ma=7200",
+			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+			"directives": [],
+			"examples": [
+				"Alt-Svc: http/1.1=\"http2.example.com:8001\"; ma=7200"
+			],
+			"specifications": [],
+			"browserCompatibility": []
+		}
 	},
 	"authorization": {
 		"name": "Authorization",
 		"type": [
 			"request"
 		],
-		"description": "The HTTP Authorization request header can be used to provide credentials that authenticate a user agent with a server, allowing access to a protected resource. The Authorization header is usually, but not always, sent after the user agent first attempts to request a protected resource without credentials. The server responds with a 401 Unauthorized message that includes at least one WWW-Authenticate header. This header indicates what authentication schemes can be used to access the resource (and any additional information needed by the client to use them). The user-agent should select the most secure authentication scheme that it supports from those offered, prompt the user for their credentials, and then re-request the resource (including the encoded credentials in the Authorization header). Note: This header is part of the General HTTP authentication framework. It can be used with a number of authentication schemes.",
+		"description": "The HTTP Authorization request header can be used to provide credentials that authenticate a user agent with a server, allowing access to a protected resource. The Authorization header is usually, but not always, sent after the user agent first attempts to request a protected resource without credentials. The server responds with a 401 Unauthorized message that includes at least one WWW-Authenticate header. This header indicates what authentication schemes can be used to access the resource (and any additional information needed by the client to use them). The user-agent should select the most secure authentication scheme that it supports from those offered, prompt the user for their credentials, and then re-request the resource (including the encoded credentials in the Authorization header).",
 		"note": "Note: This header is part of the General HTTP authentication framework. It can be used with a number of authentication schemes.",
 		"syntax": "Authorization: <auth-scheme> <authorization-parameters>",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+		],
 		"directives": [
 			{
 				"name": "<auth-scheme>",
@@ -2922,6 +3082,18 @@
 			{
 				"name": "HTTP Semantics # field.authorization",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.authorization"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7123",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7123"
+			},
+			{
+				"name": "7235",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7235"
 			}
 		],
 		"browserCompatibility": [
@@ -3405,7 +3577,9 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control",
 		"forbiddenHeaderName": false,
 		"corsSafeListedResponseHeader": true,
-		"examples": [],
+		"examples": [
+			"Cache-Control: no-cache"
+		],
 		"directives": [],
 		"specifications": [
 			{
@@ -3415,6 +3589,18 @@
 			{
 				"name": "HTTP Immutable Responses # the-immutable-cache-control-extension",
 				"link": "https://httpwg.org/specs/rfc8246.html#the-immutable-cache-control-extension"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
+			},
+			{
+				"name": "7234",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7234"
 			}
 		],
 		"browserCompatibility": [
@@ -3658,14 +3844,43 @@
 					}
 				]
 			}
-		]
+		],
+		"syntax": {
+			"name": "Cache-Control",
+			"type": [
+				"request",
+				"response"
+			],
+			"description": "Used to specify directives that must be obeyed by all caching mechanisms along the request-response chain.",
+			"syntax": "Cache-Control: no-cache",
+			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+			"directives": [],
+			"examples": [
+				"Cache-Control: no-cache"
+			],
+			"specifications": [
+				{
+					"name": "2616",
+					"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+				},
+				{
+					"name": "7231",
+					"link": "https://datatracker.ietf.org/doc/html/rfc7231"
+				},
+				{
+					"name": "7234",
+					"link": "https://datatracker.ietf.org/doc/html/rfc7234"
+				}
+			],
+			"browserCompatibility": []
+		}
 	},
 	"clear-site-data": {
 		"name": "Clear-Site-Data",
 		"type": [
 			"response"
 		],
-		"description": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Clear-Site-Data header clears browsing data (cookies, storage, cache) associated with the requesting website. It allows web developers to have more control over the data stored by a client browser for their origins.",
+		"description": "The Clear-Site-Data header clears browsing data (cookies, storage, cache) associated with the requesting website. It allows web developers to have more control over the data stored by a client browser for their origins.",
 		"syntax": "// Single directive\nClear-Site-Data: \"cache\"\n\n// Multiple directives (comma separated)\nClear-Site-Data: \"cache\", \"cookies\"\n\n// Wild card\nClear-Site-Data: \"*\"",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data",
@@ -4068,12 +4283,15 @@
 			"request",
 			"response"
 		],
-		"description": "The Connection general header controls whether the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done. Warning: Connection-specific header fields such as Connection and Keep-Alive are prohibited in HTTP/2 and HTTP/3. Chrome and Firefox ignore them in HTTP/2 responses, but Safari conforms to the HTTP/2 spec requirements and does not load any response that contains them. Except for the standard hop-by-hop headers (Keep-Alive, Transfer-Encoding, TE, Connection, Trailer, Upgrade, Proxy-Authorization and Proxy-Authenticate), any hop-by-hop headers used by the message must be listed in the Connection header, so that the first proxy knows it has to consume them and not forward them further. Standard hop-by-hop headers are also required to be listed.",
+		"description": "The Connection general header controls whether the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done. Except for the standard hop-by-hop headers (Keep-Alive, Transfer-Encoding, TE, Connection, Trailer, Upgrade, Proxy-Authorization and Proxy-Authenticate), any hop-by-hop headers used by the message must be listed in the Connection header, so that the first proxy knows it has to consume them and not forward them further. Standard hop-by-hop headers are also required to be listed.",
 		"syntax": "Connection: keep-alive\nConnection: close",
 		"warning": "Warning: Connection-specific header fields such as Connection and Keep-Alive are prohibited in HTTP/2 and HTTP/3. Chrome and Firefox ignore them in HTTP/2 responses, but Safari conforms to the HTTP/2 spec requirements and does not load any response that contains them.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Connection",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"Connection: keep-alive",
+			"Connection: Upgrade"
+		],
 		"directives": [
 			{
 				"name": "close",
@@ -4088,6 +4306,14 @@
 			{
 				"name": "HTTP Semantics # field.connection",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.connection"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7230",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7230"
 			}
 		],
 		"browserCompatibility": [
@@ -4164,7 +4390,8 @@
 		"forbiddenHeaderName": false,
 		"examples": [
 			"200 OK\nContent-Type: text/html; charset=utf-8\nContent-Disposition: attachment; filename=\"cool.html\"\nContent-Length: 21\n\n<HTML>Save me!</HTML>",
-			"POST /test.html HTTP/1.1\nHost: example.org\nContent-Type: multipart/form-data;boundary=\"boundary\"\n\n--boundary\nContent-Disposition: form-data; name=\"field1\"\n\nvalue1\n--boundary\nContent-Disposition: form-data; name=\"field2\"; filename=\"example.txt\"\n\nvalue2\n--boundary--"
+			"POST /test.html HTTP/1.1\nHost: example.org\nContent-Type: multipart/form-data;boundary=\"boundary\"\n\n--boundary\nContent-Disposition: form-data; name=\"field1\"\n\nvalue1\n--boundary\nContent-Disposition: form-data; name=\"field2\"; filename=\"example.txt\"\n\nvalue2\n--boundary--",
+			"Content-Disposition: attachment; filename=\"fname.ext\""
 		],
 		"directives": [
 			{
@@ -4188,6 +4415,18 @@
 			{
 				"name": "Returning Values from Forms: multipart/form-data # section-4.2",
 				"link": "https://www.rfc-editor.org/rfc/rfc7578#section-4.2"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "4021",
+				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+			},
+			{
+				"name": "6266",
+				"link": "https://datatracker.ietf.org/doc/html/rfc6266"
 			}
 		],
 		"browserCompatibility": [
@@ -4251,14 +4490,42 @@
 					}
 				]
 			}
-		]
+		],
+		"syntax": {
+			"name": "Content-Disposition",
+			"type": [
+				"response"
+			],
+			"description": "An opportunity to raise a \"File Download\" dialogue box for a known MIME type with binary format or suggest a filename for dynamic content. Quotes are necessary with special characters.",
+			"syntax": "Content-Disposition: attachment; filename=\"fname.ext\"",
+			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+			"directives": [],
+			"examples": [
+				"Content-Disposition: attachment; filename=\"fname.ext\""
+			],
+			"specifications": [
+				{
+					"name": "2616",
+					"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+				},
+				{
+					"name": "4021",
+					"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+				},
+				{
+					"name": "6266",
+					"link": "https://datatracker.ietf.org/doc/html/rfc6266"
+				}
+			],
+			"browserCompatibility": []
+		}
 	},
 	"content-dpr": {
 		"name": "Content-DPR",
 		"type": [
 			"response"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The Content-DPR response header is used to confirm the image device to pixel ratio in requests where the screen DPR client hint was used to select an image resource. If the DPR client hint is used to select an image the server must specify Content-DPR in the response. If the value in Content-DPR is different from the DPR value in the request (i.e. image DPR is not the same as screen DPR) then the client must use the Content-DPR for determining intrinsic image size and scaling the image. If the Content-DPR header appears more than once in a message the last occurrence is used. Note:",
+		"description": "The Content-DPR response header is used to confirm the image device to pixel ratio in requests where the screen DPR client hint was used to select an image resource. If the DPR client hint is used to select an image the server must specify Content-DPR in the response. If the value in Content-DPR is different from the DPR value in the request (i.e. image DPR is not the same as screen DPR) then the client must use the Content-DPR for determining intrinsic image size and scaling the image. If the Content-DPR header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Content-DPR was removed from the client hints specification in draft-ietf-httpbis-client-hints-07. The Responsive Image Client Hints spec proposes to replace this header by specifying intrinsic resolution/dimensions in EXIF metadata.",
 		"syntax": "Content-DPR: <number>",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
@@ -4341,13 +4608,17 @@
 	"content-encoding": {
 		"name": "Content-Encoding",
 		"type": [
-			"representation"
+			"representation",
+			"request",
+			"response"
 		],
 		"description": "The Content-Encoding representation header lists any encodings that have been applied to the representation (message payload), and in what order. This lets the recipient know how to decode the representation in order to obtain the original payload format. Content encoding is mainly used to compress the message data without losing information about the origin media type. Note that the original media/content type is specified in the Content-Type header, and that the Content-Encoding applies to the representation, or \"coded form\", of the data. If the original media is encoded in some way (e.g. a zip file) then this information would not be included in the Content-Encoding header. Servers are encouraged to compress data as much as possible, and should use content encoding where appropriate. Compressing a compressed media type such as a zip or jpeg may not be appropriate, as this can make the payload larger.",
 		"syntax": "Content-Encoding: gzip\nContent-Encoding: compress\nContent-Encoding: deflate\nContent-Encoding: br\n\n// Multiple, in the order in which they were applied\nContent-Encoding: deflate, gzip",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"Content-Encoding: gzip"
+		],
 		"directives": [
 			{
 				"name": "gzip",
@@ -4370,6 +4641,14 @@
 			{
 				"name": "HTTP Semantics # field.content-encoding",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-encoding"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -4498,7 +4777,8 @@
 	"content-language": {
 		"name": "Content-Language",
 		"type": [
-			"representation"
+			"representation",
+			"response"
 		],
 		"description": "The Content-Language representation header is used to describe the language(s) intended for the audience, so users can differentiate it according to their own preferred language. For example, if \"Content-Language: de-DE\" is set, it says that the document is intended for German language speakers (however, it doesn't indicate the document is written in German. For example, it might be written in English as part of a language course for German speakers. If you want to indicate which language the document is written in, use the lang attribute instead). If no Content-Language is specified, the default is that the content is intended for all language audiences. Multiple language tags are also possible, as well as applying the Content-Language header to various media types and not only to textual documents.",
 		"syntax": "Content-Language: de-DE\nContent-Language: en-US\nContent-Language: de-DE, en-CA",
@@ -4506,7 +4786,9 @@
 		"forbiddenHeaderName": false,
 		"corsSafeListedRequestHeader": false,
 		"corsSafeListedResponseHeader": true,
-		"examples": [],
+		"examples": [
+			"Content-Language: da"
+		],
 		"directives": [
 			{
 				"name": "language-tag",
@@ -4517,6 +4799,18 @@
 			{
 				"name": "HTTP Semantics # field.content-language",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-language"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "4021",
+				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -4593,7 +4887,9 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length",
 		"forbiddenHeaderName": true,
 		"corsSafeListedResponseHeader": true,
-		"examples": [],
+		"examples": [
+			"Content-Length: 348"
+		],
 		"directives": [
 			{
 				"name": "length",
@@ -4604,6 +4900,18 @@
 			{
 				"name": "HTTP Semantics # field.content-length",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-length"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7230",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7230"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -4732,13 +5040,16 @@
 	"content-location": {
 		"name": "Content-Location",
 		"type": [
-			"representation"
+			"representation",
+			"response"
 		],
 		"description": "The Content-Location header indicates an alternate location for the returned data. The principal use is to indicate the URL of a resource transmitted as the result of content negotiation. Location and Content-Location are different. Location indicates the URL of a redirect, while Content-Location indicates the direct URL to use to access the resource, without further content negotiation in the future. Location is a header associated with the response, while Content-Location is associated with the data returned. This distinction may seem abstract without examples.",
 		"syntax": "Content-Location: <url>",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Location",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"Content-Location: /index.htm"
+		],
 		"directives": [
 			{
 				"name": "url",
@@ -4749,6 +5060,18 @@
 			{
 				"name": "HTTP Semantics # field.content-location",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-location"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "4021",
+				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -4824,7 +5147,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Range",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Content-Range: bytes 200-1000/67589"
+			"Content-Range: bytes 200-1000/67589",
+			"Content-Range: bytes 21010-47021/47022"
 		],
 		"directives": [
 			{
@@ -4848,6 +5172,14 @@
 			{
 				"name": "HTTP Semantics # field.content-range",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-range"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7233",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7233"
 			}
 		],
 		"browserCompatibility": [
@@ -5032,7 +5364,7 @@
 			{
 				"name": "navigate-to",
 				"description": "Restricts the URLs to which a document can initiate navigation by any means, including <form> (if form-action is not specified), <a>, window.location, window.open, etc.",
-				"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/navigate-to"
+				"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy"
 			},
 			{
 				"name": "report-uri",
@@ -7407,7 +7739,9 @@
 	"content-type": {
 		"name": "Content-Type",
 		"type": [
-			"representation"
+			"representation",
+			"request",
+			"response"
 		],
 		"description": "The Content-Type representation header is used to indicate the original media type of the resource (prior to any content encoding applied for sending). In responses, a Content-Type header provides the client with the actual content type of the returned content. This header's value may be ignored, for example when browsers perform MIME sniffing; set the X-Content-Type-Options header value to nosniff to prevent this behavior. In requests, (such as POST or PUT), the client tells the server what type of data is actually sent.",
 		"syntax": "Content-Type: text/html; charset=UTF-8\nContent-Type: multipart/form-data; boundary=something",
@@ -7415,7 +7749,9 @@
 		"forbiddenHeaderName": false,
 		"corsSafeListedRequestHeader": false,
 		"corsSafeListedResponseHeader": true,
-		"examples": [],
+		"examples": [
+			"Content-Type: application/x-www-form-urlencoded"
+		],
 		"directives": [
 			{
 				"name": "media-type",
@@ -7438,6 +7774,18 @@
 			{
 				"name": "HTTP Semantics # field.content-type",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-type"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "4021",
+				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -7513,7 +7861,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie",
 		"forbiddenHeaderName": true,
 		"examples": [
-			"Cookie: PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1"
+			"Cookie: PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1",
+			"Cookie: $Version=1; Skin=new;"
 		],
 		"directives": [
 			{
@@ -7525,6 +7874,14 @@
 			{
 				"name": "HTTP State Management Mechanism # cookie",
 				"link": "https://httpwg.org/specs/rfc6265.html#cookie"
+			},
+			{
+				"name": "2965",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2965"
+			},
+			{
+				"name": "6265",
+				"link": "https://datatracker.ietf.org/doc/html/rfc6265"
 			}
 		],
 		"browserCompatibility": [
@@ -7920,13 +8277,14 @@
 			"request",
 			"response"
 		],
-		"description": "The Date general HTTP header contains the date and time at which the message originated. Warning: Date is listed in the forbidden header names in the fetch spec, so this code will not send the Date header:",
+		"description": "The Date general HTTP header contains the date and time at which the message originated.",
 		"syntax": "Date: <day-name>, <day> <month> <year> <hour>:<minute>:<second> GMT",
 		"warning": "Warning: Date is listed in the forbidden header names in the fetch spec, so this code will not send the Date header: fetch('https://httpbin.org/get', { 'headers': { 'Date': (new Date()).toUTCString() } }) Copy to Clipboard",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Date",
 		"forbiddenHeaderName": true,
 		"examples": [
-			"Date: Wed, 21 Oct 2015 07:28:00 GMT"
+			"Date: Wed, 21 Oct 2015 07:28:00 GMT",
+			"Date: Tue, 15 Nov 1994 08:12:31 GMT"
 		],
 		"directives": [
 			{
@@ -7966,6 +8324,22 @@
 			{
 				"name": "HTTP Semantics # field.date",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.date"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "5322",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5322"
+			},
+			{
+				"name": "5536",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5536"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -8036,9 +8410,10 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Device-Memory device client hint request header field indicates the approximate amount of available RAM on the client device. The header is part of the Device Memory API. Note:",
+		"description": "The Device-Memory device client hint request header field indicates the approximate amount of available RAM on the client device. The header is part of the Device Memory API.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the Device-Memory header from the client, by sending the Accept-CH response header. Servers that opt in to the Device-Memory client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request.",
 		"syntax": "Device-Memory: <number>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Device-Memory",
 		"forbiddenHeaderName": false,
@@ -8125,7 +8500,7 @@
 		"type": [
 			"response"
 		],
-		"description": "The Digest response HTTP header provides a digest of the selected representation of the requested resource. Representations are different forms of a particular resource that might be returned from a request: for example, the same resource might be formatted in a particular media type such as XML or JSON, localized to a particular written language or geographical region, and/or compressed or otherwise encoded for transmission. The selected representation is the actual format of a resource that is returned following content negotiation, and can be determined from the response's Representation headers. The digest applies to the whole representation of a resource, not to a particular message. It can be used to verify that the representation data has not been modified during transmission. Note: While a representation may be fully contained in the message body of a single response, it can also be sent using multiple messages in response to a range request, or omitted altogether in response to a HEAD request.",
+		"description": "The Digest response HTTP header provides a digest of the selected representation of the requested resource. Representations are different forms of a particular resource that might be returned from a request: for example, the same resource might be formatted in a particular media type such as XML or JSON, localized to a particular written language or geographical region, and/or compressed or otherwise encoded for transmission. The selected representation is the actual format of a resource that is returned following content negotiation, and can be determined from the response's Representation headers. The digest applies to the whole representation of a resource, not to a particular message. It can be used to verify that the representation data has not been modified during transmission.",
 		"note": "Note: While a representation may be fully contained in the message body of a single response, it can also be sent using multiple messages in response to a range request, or omitted altogether in response to a HEAD request.",
 		"syntax": "Digest: <digest-algorithm>=<digest-value>\nDigest: <digest-algorithm>=<digest-value>,<digest-algorithm>=<digest-value>",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Digest",
@@ -8206,12 +8581,15 @@
 		"type": [
 			"request"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. The DNT (Do Not Track) request header indicates the user's tracking preference. It lets users indicate whether they would prefer privacy rather than personalized content.",
+		"description": "The DNT (Do Not Track) request header indicates the user's tracking preference. It lets users indicate whether they would prefer privacy rather than personalized content.",
 		"syntax": "DNT: 0\nDNT: 1\nDNT: null",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"DNT: 1",
+			"DNT: 0"
+		],
 		"directives": [
 			{
 				"name": "0",
@@ -8300,9 +8678,10 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. The Downlink Client hint request header field provides the approximate bandwidth of the client's connection to the server, in Mbps. The Downlink value is given in Mbps and rounded to the nearest 25 kilobits per second to prevent fingerprinting; There are many other mechanisms an attacker might use to obtain similar information. The hint allows a server to choose what information is sent based on the network bandwidth. For example, a server might choose to send smaller versions of images and other resources on low bandwidth networks. Note: The Vary header is used in responses to indicate that a different resource is sent for every different value of the header (see HTTP Caching > Varying responses). Even if Downlink is used to configure what resources are sent, consider omitting it in the Vary header — it is likely to change often, which effectively makes the resource uncacheable.",
+		"description": "The Downlink Client hint request header field provides the approximate bandwidth of the client's connection to the server, in Mbps. The Downlink value is given in Mbps and rounded to the nearest 25 kilobits per second to prevent fingerprinting; There are many other mechanisms an attacker might use to obtain similar information. The hint allows a server to choose what information is sent based on the network bandwidth. For example, a server might choose to send smaller versions of images and other resources on low bandwidth networks.",
 		"note": "Note: The Vary header is used in responses to indicate that a different resource is sent for every different value of the header (see HTTP Caching > Varying responses). Even if Downlink is used to configure what resources are sent, consider omitting it in the Vary header — it is likely to change often, which effectively makes the resource uncacheable.",
 		"syntax": "Downlink: <number>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Downlink",
 		"forbiddenHeaderName": false,
 		"examples": [
@@ -8385,7 +8764,7 @@
 		"type": [
 			"request"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The DPR device client hint request header provides the client device pixel ratio. This ratio is the number of physical device pixels corresponding to every CSS pixel. The hint is useful when selecting image sources that best correspond to a screen's pixel density. This is similar to the role played by x descriptors in the <img> srcset attribute to allow user agents to select a preferred image. If a server uses the DPR hint to choose which resource is sent in a response, the response must include the Content-DPR header. The client must use the value in Content-DPR for layout if it differs from the value in the request's DPR header. If the DPR header appears more than once in a message the last occurrence is used. Note:",
+		"description": "The DPR device client hint request header provides the client device pixel ratio. This ratio is the number of physical device pixels corresponding to every CSS pixel. The hint is useful when selecting image sources that best correspond to a screen's pixel density. This is similar to the role played by x descriptors in the <img> srcset attribute to allow user agents to select a preferred image. If a server uses the DPR hint to choose which resource is sent in a response, the response must include the Content-DPR header. The client must use the value in Content-DPR for layout if it differs from the value in the request's DPR header. If the DPR header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the DPR header from the client, by sending the Accept-CH response header. Servers that opt in to the DPR client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request. DPR was removed from the client hints specification in draft-ietf-httpbis-client-hints-07. The proposed replacement is Sec-CH-DPR (Responsive Image Client Hints).",
 		"syntax": "DPR: <number>",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
@@ -8473,8 +8852,9 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. The Early-Data header is set by an intermediary to indicate that the request has been conveyed in TLS early data, and also indicates that the intermediary understands the 425 (Too Early) status code. The Early-Data header is not set by the originator of the request (i.e., a browser).",
+		"description": "The Early-Data header is set by an intermediary to indicate that the request has been conveyed in TLS early data, and also indicates that the intermediary understands the 425 (Too Early) status code. The Early-Data header is not set by the originator of the request (i.e., a browser).",
 		"syntax": "Early-Data: 1",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Early-Data",
 		"forbiddenHeaderName": false,
 		"examples": [
@@ -8546,9 +8926,10 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. The ECT Client hint request header field indicates the effective connection type: slow-2g, 2g, 3g, 4g. The value represents the \"network profile\" that best matches the connection's latency and bandwidth, rather than the actual mechanisms used for transferring the data. For example, 2g might be used to represent a slow Wi-Fi connection with high latency and low bandwidth, while 4g might be used to represent a fast fibre-based broadband network. The hint allows a server to choose what information is sent based on the broad characteristics of the network. For example, a server might choose to send smaller versions of images and other resources on less capable connections. The value might also be used as a starting point for determining what information is sent, which is further refined using information in RTT and Downlink hints. Note: A server that specifies ECT in Accept-CH may also specify it in Vary to indicate that responses should be cached for different ECT values.",
+		"description": "The ECT Client hint request header field indicates the effective connection type: slow-2g, 2g, 3g, 4g. The value represents the \"network profile\" that best matches the connection's latency and bandwidth, rather than the actual mechanisms used for transferring the data. For example, 2g might be used to represent a slow Wi-Fi connection with high latency and low bandwidth, while 4g might be used to represent a fast fibre-based broadband network. The hint allows a server to choose what information is sent based on the broad characteristics of the network. For example, a server might choose to send smaller versions of images and other resources on less capable connections. The value might also be used as a starting point for determining what information is sent, which is further refined using information in RTT and Downlink hints.",
 		"note": "Note: A server that specifies ECT in Accept-CH may also specify it in Vary to indicate that responses should be cached for different ECT values.",
 		"syntax": "ECT: <value>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ECT",
 		"forbiddenHeaderName": false,
 		"examples": [
@@ -8636,7 +9017,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"ETag: \"33a64df551425fcc55e4d42a148795d9f25f89d4\"\nETag: W/\"0815\""
+			"ETag: \"33a64df551425fcc55e4d42a148795d9f25f89d4\"\nETag: W/\"0815\"",
+			"ETag: \"737060cd8c284d8af7ad3082f209582d\""
 		],
 		"directives": [
 			{
@@ -8652,6 +9034,14 @@
 			{
 				"name": "HTTP Semantics # field.etag",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.etag"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7232",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7232"
 			}
 		],
 		"browserCompatibility": [
@@ -8726,7 +9116,9 @@
 		"syntax": "Expect: 100-continue",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"Expect: 100-continue"
+		],
 		"directives": [
 			{
 				"name": "100-continue",
@@ -8737,6 +9129,14 @@
 			{
 				"name": "HTTP Semantics # field.expect",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.expect"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -8796,13 +9196,15 @@
 		"type": [
 			"response"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. The Expect-CT header lets sites opt in to reporting and/or enforcement of Certificate Transparency requirements. Certificate Transparency (CT) aims to prevent the use of misissued certificates for that site from going unnoticed. Only Google Chrome and other Chromium-based browsers implemented Expect-CT, and Chromium has deprecated the header from version 107, because Chromium now enforces CT by default. See the Chrome Platform Status update. CT requirements can be satisfied via any one of the following mechanisms: Note: When a site enables the Expect-CT header, they are requesting that the browser check that any certificate for that site appears in public CT logs. Note: Browsers ignore the Expect-CT header over HTTP; the header only has effect on HTTPS connections. Note: The Expect-CT is mostly obsolete since June 2021. Since May 2018, all new TLS certificates are expected to support SCTs by default. Certificates issued before March 2018 were allowed to have a lifetime of 39 months, so they had expired in June 2021. Chromium plans to deprecate Expect-CT header and to eventually remove it.",
+		"description": "The Expect-CT header lets sites opt in to reporting and/or enforcement of Certificate Transparency requirements. Certificate Transparency (CT) aims to prevent the use of misissued certificates for that site from going unnoticed. Only Google Chrome and other Chromium-based browsers implemented Expect-CT, and Chromium has deprecated the header from version 107, because Chromium now enforces CT by default. See the Chrome Platform Status update. CT requirements can be satisfied via any one of the following mechanisms:",
 		"note": "Note: When a site enables the Expect-CT header, they are requesting that the browser check that any certificate for that site appears in public CT logs.",
 		"syntax": "Expect-CT: report-uri=\"<uri>\",\n           enforce,\n           max-age=<age>",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"Expect-CT: max-age=604800, enforce, report-uri=\"https://example.example/report\""
+		],
 		"directives": [
 			{
 				"name": "max-age",
@@ -8891,14 +9293,15 @@
 		"type": [
 			"response"
 		],
-		"description": "The Expires HTTP header contains the date/time after which the response is considered expired. Invalid expiration dates with value 0 represent a date in the past and mean that the resource is already expired. Note: If there is a Cache-Control header with the max-age or s-maxage directive in the response, the Expires header is ignored.",
+		"description": "The Expires HTTP header contains the date/time after which the response is considered expired. Invalid expiration dates with value 0 represent a date in the past and mean that the resource is already expired.",
 		"note": "Note: If there is a Cache-Control header with the max-age or s-maxage directive in the response, the Expires header is ignored.",
 		"syntax": "Expires: <http-date>",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires",
 		"forbiddenHeaderName": false,
 		"corsSafeListedResponseHeader": true,
 		"examples": [
-			"Expires: Wed, 21 Oct 2015 07:28:00 GMT"
+			"Expires: Wed, 21 Oct 2015 07:28:00 GMT",
+			"Expires: Thu, 01 Dec 1994 16:00:00 GMT"
 		],
 		"directives": [
 			{
@@ -8910,6 +9313,22 @@
 			{
 				"name": "HTTP Caching # field.expires",
 				"link": "https://httpwg.org/specs/rfc9111.html#field.expires"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "4021",
+				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+			},
+			{
+				"name": "5536",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5536"
+			},
+			{
+				"name": "7234",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7234"
 			}
 		],
 		"browserCompatibility": [
@@ -8980,7 +9399,7 @@
 		"type": [
 			"response"
 		],
-		"description": "Warning: The header has now been renamed to Permissions-Policy in the spec, and this article will eventually be updated to reflect that change. The HTTP Feature-Policy header provides a mechanism to allow and deny the use of browser features in its own frame, and in content within any <iframe> elements in the document. For more information, see the main Feature Policy article.",
+		"description": "The HTTP Feature-Policy header provides a mechanism to allow and deny the use of browser features in its own frame, and in content within any <iframe> elements in the document. For more information, see the main Feature Policy article.",
 		"syntax": "Feature-Policy: <directive> <allowlist>",
 		"warning": "Warning: The header has now been renamed to Permissions-Policy in the spec, and this article will eventually be updated to reflect that change.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy",
@@ -10947,7 +11366,10 @@
 		"syntax": "Forwarded: by=<identifier>;for=<identifier>;host=<host>;proto=<http|https>",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"Forwarded: for=192.0.2.60;proto=http;by=203.0.113.43",
+			"Forwarded: for=192.0.2.43, for=198.51.100.17"
+		],
 		"directives": [
 			{
 				"name": "by",
@@ -10970,6 +11392,10 @@
 			{
 				"name": "Forwarded HTTP Extension # section-4",
 				"link": "https://www.rfc-editor.org/rfc/rfc7239#section-4"
+			},
+			{
+				"name": "7239",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7239"
 			}
 		],
 		"browserCompatibility": []
@@ -10979,13 +11405,14 @@
 		"type": [
 			"request"
 		],
-		"description": "The From request header contains an Internet email address for a human user who controls the requesting user agent. If you are running a robotic user agent (e.g. a crawler), the From header must be sent, so you can be contacted if problems occur on servers, such as if the robot is sending excessive, unwanted, or invalid requests. Warning: You must not use the From header for access control or authentication.",
+		"description": "The From request header contains an Internet email address for a human user who controls the requesting user agent. If you are running a robotic user agent (e.g. a crawler), the From header must be sent, so you can be contacted if problems occur on servers, such as if the robot is sending excessive, unwanted, or invalid requests.",
 		"syntax": "From: <email>",
 		"warning": "Warning: You must not use the From header for access control or authentication.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/From",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"From: webmaster@example.org"
+			"From: webmaster@example.org",
+			"From: user@example.com"
 		],
 		"directives": [
 			{
@@ -10997,6 +11424,26 @@
 			{
 				"name": "HTTP Semantics # field.from",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.from"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "5322",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5322"
+			},
+			{
+				"name": "5536",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5536"
+			},
+			{
+				"name": "6854",
+				"link": "https://datatracker.ietf.org/doc/html/rfc6854"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -11072,7 +11519,9 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host",
 		"forbiddenHeaderName": true,
 		"examples": [
-			"Host: developer.mozilla.org"
+			"Host: developer.mozilla.org",
+			"Host: en.wikipedia.org:8080",
+			"Host: en.wikipedia.org"
 		],
 		"directives": [
 			{
@@ -11163,7 +11612,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"If-Match: \"bfc13a64729c4290ef5b2c2730249c88ca92d82d\"\n\nIf-Match: \"67ab43\", \"54ed21\", \"7892dd\"\n\nIf-Match: *"
+			"If-Match: \"bfc13a64729c4290ef5b2c2730249c88ca92d82d\"\n\nIf-Match: \"67ab43\", \"54ed21\", \"7892dd\"\n\nIf-Match: *",
+			"If-Match: \"737060cd8c284d8af7ad3082f209582d\""
 		],
 		"directives": [
 			{
@@ -11179,6 +11629,14 @@
 			{
 				"name": "HTTP Semantics # field.if-match",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-match"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7323",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7323"
 			}
 		],
 		"browserCompatibility": [
@@ -11254,7 +11712,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT"
+			"If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT",
+			"If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT"
 		],
 		"directives": [
 			{
@@ -11294,6 +11753,14 @@
 			{
 				"name": "HTTP Semantics # field.if-modified-since",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-modified-since"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7323",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7323"
 			}
 		],
 		"browserCompatibility": [
@@ -11369,7 +11836,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"If-None-Match: \"bfc13a64729c4290ef5b2c2730249c88ca92d82d\"\n\nIf-None-Match: W/\"67ab43\", \"54ed21\", \"7892dd\"\n\nIf-None-Match: *"
+			"If-None-Match: \"bfc13a64729c4290ef5b2c2730249c88ca92d82d\"\n\nIf-None-Match: W/\"67ab43\", \"54ed21\", \"7892dd\"\n\nIf-None-Match: *",
+			"If-None-Match: \"737060cd8c284d8af7ad3082f209582d\""
 		],
 		"directives": [
 			{
@@ -11385,6 +11853,14 @@
 			{
 				"name": "HTTP Semantics # field.if-none-match",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-none-match"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7232",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7232"
 			}
 		],
 		"browserCompatibility": [
@@ -11460,7 +11936,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Range",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"If-Range: Wed, 21 Oct 2015 07:28:00 GMT"
+			"If-Range: Wed, 21 Oct 2015 07:28:00 GMT",
+			"If-Range: \"737060cd8c284d8af7ad3082f209582d\""
 		],
 		"directives": [
 			{
@@ -11504,6 +11981,18 @@
 			{
 				"name": "HTTP Semantics # field.if-range",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-range"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7232",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7232"
+			},
+			{
+				"name": "7233",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7233"
 			}
 		],
 		"browserCompatibility": [
@@ -11579,7 +12068,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Unmodified-Since",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"If-Unmodified-Since: Wed, 21 Oct 2015 07:28:00 GMT"
+			"If-Unmodified-Since: Wed, 21 Oct 2015 07:28:00 GMT",
+			"If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT"
 		],
 		"directives": [
 			{
@@ -11619,6 +12109,14 @@
 			{
 				"name": "HTTP Semantics # field.if-unmodified-since",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-unmodified-since"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7232",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7232"
 			}
 		],
 		"browserCompatibility": [
@@ -11690,7 +12188,7 @@
 			"request",
 			"response"
 		],
-		"description": "The Keep-Alive general header allows the sender to hint about how the connection may be used to set a timeout and a maximum amount of requests. Note: Set the Connection header to \"keep-alive\" for this header to have any effect. Warning: Connection-specific header fields such as Connection and Keep-Alive are prohibited in HTTP/2 and HTTP/3. Chrome and Firefox ignore them in HTTP/2 responses, but Safari conforms to the HTTP/2 specification requirements and does not load any response that contains them.",
+		"description": "The Keep-Alive general header allows the sender to hint about how the connection may be used to set a timeout and a maximum amount of requests.",
 		"note": "Note: Set the Connection header to \"keep-alive\" for this header to have any effect.",
 		"syntax": "Keep-Alive: parameters",
 		"warning": "Warning: Connection-specific header fields such as Connection and Keep-Alive are prohibited in HTTP/2 and HTTP/3. Chrome and Firefox ignore them in HTTP/2 responses, but Safari conforms to the HTTP/2 specification requirements and does not load any response that contains them.",
@@ -11779,7 +12277,7 @@
 		"type": [
 			"response"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The non-standard Large-Allocation response header tells the browser that the page being loaded is going to want to perform a large allocation. It's not implemented in current versions of any browser, but is harmless to send to any browser. WebAssembly or asm.js applications can use large contiguous blocks of allocated memory. For complex games, for example, these allocations can be quite large, sometimes as large as 1GB. The Large-Allocation tells the browser that the web content in the to-be-loaded page is going to want to perform a large contiguous memory allocation and the browser can react to this header by starting a dedicated process for the to-be-loaded document, for example.",
+		"description": "The non-standard Large-Allocation response header tells the browser that the page being loaded is going to want to perform a large allocation. It's not implemented in current versions of any browser, but is harmless to send to any browser. WebAssembly or asm.js applications can use large contiguous blocks of allocated memory. For complex games, for example, these allocations can be quite large, sometimes as large as 1GB. The Large-Allocation tells the browser that the web content in the to-be-loaded page is going to want to perform a large contiguous memory allocation and the browser can react to this header by starting a dedicated process for the to-be-loaded document, for example.",
 		"syntax": "Large-Allocation: 0\nLarge-Allocation: <megabytes>",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
 		"nonstandard": "Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future.",
@@ -11865,7 +12363,8 @@
 	"last-modified": {
 		"name": "Last-Modified",
 		"type": [
-			"representation"
+			"representation",
+			"response"
 		],
 		"description": "The Last-Modified response HTTP header contains a date and time when the origin server believes the resource was last modified. It is used as a validator to determine if the resource is the same as the previously stored one. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field.",
 		"syntax": "Last-Modified: <day-name>, <day> <month> <year> <hour>:<minute>:<second> GMT",
@@ -11873,7 +12372,8 @@
 		"forbiddenHeaderName": false,
 		"corsSafeListedResponseHeader": true,
 		"examples": [
-			"Last-Modified: Wed, 21 Oct 2015 07:28:00 GMT"
+			"Last-Modified: Wed, 21 Oct 2015 07:28:00 GMT",
+			"Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT"
 		],
 		"directives": [
 			{
@@ -11913,6 +12413,14 @@
 			{
 				"name": "HTTP Semantics # field.last-modified",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.last-modified"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7232",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7232"
 			}
 		],
 		"browserCompatibility": [
@@ -11985,11 +12493,37 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link",
 		"examples": [
 			"Link: <https://example.com>; rel=\"preconnect\"",
-			"Link: https://bad.example; rel=\"preconnect\""
+			"Link: https://bad.example; rel=\"preconnect\"",
+			"Link: </feed>; rel=\"alternate\""
 		],
 		"directives": [],
-		"specifications": [],
-		"browserCompatibility": []
+		"specifications": [
+			{
+				"name": "5988",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5988"
+			}
+		],
+		"browserCompatibility": [],
+		"type": {
+			"name": "Link",
+			"type": [
+				"response"
+			],
+			"description": "Used to express a typed relationship with another resource, where the relation type is defined by RFC 5988",
+			"syntax": "Link: </feed>; rel=\"alternate\"",
+			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+			"directives": [],
+			"examples": [
+				"Link: </feed>; rel=\"alternate\""
+			],
+			"specifications": [
+				{
+					"name": "5988",
+					"link": "https://datatracker.ietf.org/doc/html/rfc5988"
+				}
+			],
+			"browserCompatibility": []
+		}
 	},
 	"location": {
 		"name": "Location",
@@ -12001,7 +12535,9 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Location",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Location: /index.html"
+			"Location: /index.html",
+			"Location: http://www.w3.org/pub/WWW/People.html",
+			"Location: /pub/WWW/People.html"
 		],
 		"directives": [
 			{
@@ -12013,6 +12549,18 @@
 			{
 				"name": "HTTP Semantics # field.location",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.location"
+			},
+			{
+				"name": "2068",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2068"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -12088,13 +12636,22 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Max-Forwards",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Max-Forwards: 0\nMax-Forwards: 10"
+			"Max-Forwards: 0\nMax-Forwards: 10",
+			"Max-Forwards: 10"
 		],
 		"directives": [],
 		"specifications": [
 			{
 				"name": "HTTP Semantics # field.max-forwards",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.max-forwards"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": []
@@ -12104,10 +12661,13 @@
 		"type": [
 			"response"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. The HTTP NEL response header is used to configure network request logging.",
+		"description": "The HTTP NEL response header is used to configure network request logging.",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/NEL",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"NEL: { \"report_to\": \"name_of_reporting_group\", \"max_age\": 12345, \"include_subdomains\": false, \"success_fraction\": 0.0, \"failure_fraction\": 1.0 }"
+		],
 		"directives": [],
 		"specifications": [],
 		"browserCompatibility": [
@@ -12171,7 +12731,22 @@
 					}
 				]
 			}
-		]
+		],
+		"syntax": {
+			"name": "NEL",
+			"type": [
+				"response"
+			],
+			"description": "Used to configure network request logging.",
+			"syntax": "NEL: { \"report_to\": \"name_of_reporting_group\", \"max_age\": 12345, \"include_subdomains\": false, \"success_fraction\": 0.0, \"failure_fraction\": 1.0 }",
+			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+			"directives": [],
+			"examples": [
+				"NEL: { \"report_to\": \"name_of_reporting_group\", \"max_age\": 12345, \"include_subdomains\": false, \"success_fraction\": 0.0, \"failure_fraction\": 1.0 }"
+			],
+			"specifications": [],
+			"browserCompatibility": []
+		}
 	},
 	"origin": {
 		"name": "Origin",
@@ -12184,7 +12759,8 @@
 		"forbiddenHeaderName": true,
 		"examples": [
 			"Origin: https://developer.mozilla.org",
-			"Origin: http://developer.mozilla.org:80"
+			"Origin: http://developer.mozilla.org:80",
+			"Origin: http://www.example-social-network.com"
 		],
 		"directives": [
 			{
@@ -12212,6 +12788,10 @@
 			{
 				"name": "Fetch Standard # origin-header",
 				"link": "https://fetch.spec.whatwg.org/#origin-header"
+			},
+			{
+				"name": "6454",
+				"link": "https://datatracker.ietf.org/doc/html/rfc6454"
 			}
 		],
 		"browserCompatibility": [
@@ -12283,7 +12863,7 @@
 			"request",
 			"response"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. This header serves for backwards compatibility with the HTTP/1.0 caches that do not have a Cache-Control HTTP/1.1 header. Note: Pragma is not specified for HTTP responses and is therefore not a reliable replacement for the general HTTP/1.1 Cache-Control header, although its behavior is the same as Cache-Control: no-cache if the Cache-Control header field is omitted in a request. Use Pragma only for backwards compatibility with HTTP/1.0 clients.",
+		"description": "The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. This header serves for backwards compatibility with the HTTP/1.0 caches that do not have a Cache-Control HTTP/1.1 header.",
 		"note": "Note: Pragma is not specified for HTTP responses and is therefore not a reliable replacement for the general HTTP/1.1 Cache-Control header, although its behavior is the same as Cache-Control: no-cache if the Cache-Control header field is omitted in a request. Use Pragma only for backwards compatibility with HTTP/1.0 clients.",
 		"syntax": "Pragma: no-cache",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
@@ -12303,6 +12883,14 @@
 			{
 				"name": "HTTP Caching # field.pragma",
 				"link": "https://httpwg.org/specs/rfc9111.html#field.pragma"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7234",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7234"
 			}
 		],
 		"browserCompatibility": [
@@ -12378,7 +12966,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Proxy-Authenticate",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Proxy-Authenticate: Basic\n\nProxy-Authenticate: Basic realm=\"Access to the internal site\""
+			"Proxy-Authenticate: Basic\n\nProxy-Authenticate: Basic realm=\"Access to the internal site\"",
+			"Proxy-Authenticate: Basic"
 		],
 		"directives": [
 			{
@@ -12394,6 +12983,18 @@
 			{
 				"name": "HTTP Semantics # field.proxy-authenticate",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.proxy-authenticate"
+			},
+			{
+				"name": "2068",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2068"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7235",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7235"
 			}
 		],
 		"browserCompatibility": [
@@ -12467,7 +13068,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Proxy-Authorization",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Proxy-Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l"
+			"Proxy-Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l",
+			"Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
 		],
 		"directives": [
 			{
@@ -12483,6 +13085,14 @@
 			{
 				"name": "HTTP Semantics # field.proxy-authorization",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.proxy-authorization"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7235",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7235"
 			}
 		],
 		"browserCompatibility": []
@@ -12498,7 +13108,8 @@
 		"forbiddenHeaderName": false,
 		"examples": [
 			"Range: bytes=200-1000, 2000-6576, 19000-",
-			"Range: bytes=0-499, -500"
+			"Range: bytes=0-499, -500",
+			"Range: bytes=500-999"
 		],
 		"directives": [
 			{
@@ -12522,6 +13133,14 @@
 			{
 				"name": "HTTP Semantics # field.range",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.range"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7233",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7233"
 			}
 		],
 		"browserCompatibility": [
@@ -12592,7 +13211,7 @@
 		"type": [
 			"request"
 		],
-		"description": "The Referer HTTP request header contains an absolute or partial address of the page that makes the request. The Referer header allows a server to identify a page where people are visiting it from. This data can be used for analytics, logging, optimized caching, and more. When you follow a link, the Referer contains the address of the page that owns the link. When you make resource requests to another domain, the Referer contains the address of the page that uses the requested resource. The Referer header can contain an origin, path, and querystring, and may not contain URL fragments (i.e. \"#section\") or \"username:password\" information. The request's referrer policy defines the data that can be included. See Referrer-Policy for more information and examples. Note: The header name \"referer\" is actually a misspelling of the word \"referrer\". See HTTP referer on Wikipedia for more details. Warning: This header may have undesirable consequences for user security and privacy. See Referer header: privacy and security concerns for more information and mitigations.",
+		"description": "The Referer HTTP request header contains an absolute or partial address of the page that makes the request. The Referer header allows a server to identify a page where people are visiting it from. This data can be used for analytics, logging, optimized caching, and more. When you follow a link, the Referer contains the address of the page that owns the link. When you make resource requests to another domain, the Referer contains the address of the page that uses the requested resource. The Referer header can contain an origin, path, and querystring, and may not contain URL fragments (i.e. \"#section\") or \"username:password\" information. The request's referrer policy defines the data that can be included. See Referrer-Policy for more information and examples.",
 		"note": "Note: The header name \"referer\" is actually a misspelling of the word \"referrer\". See HTTP referer on Wikipedia for more details.",
 		"syntax": "Referer: <url>",
 		"warning": "Warning: This header may have undesirable consequences for user security and privacy. See Referer header: privacy and security concerns for more information and mitigations.",
@@ -13098,7 +13717,10 @@
 		"syntax": "Retry-After: <http-date>\nRetry-After: <delay-seconds>",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"Retry-After: 120",
+			"Retry-After: Fri, 07 Nov 2014 23:59:59 GMT"
+		],
 		"directives": [
 			{
 				"name": "http-date",
@@ -13113,6 +13735,14 @@
 			{
 				"name": "HTTP Semantics # field.retry-after",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.retry-after"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -13175,9 +13805,10 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. The RTT Client hint request header field provides the approximate round trip time on the application layer, in milliseconds. The RTT hint, unlike transport layer RTT, includes server processing time. The RTT value is rounded to the nearest 25 milliseconds to prevent fingerprinting; There are many other mechanisms an attacker might use to obtain similar round-trip information. The hint allows a server to choose what information is sent based on the network responsiveness/latency. For example, it might choose to send fewer resources. Note: The Vary header is used in responses to indicate that a different resource is sent for every different value of the header (see HTTP Caching > Varying responses). Even if RTT is used to configure what resources are sent consider omitting it in the Vary header — it is likely to change often, which effectively makes the resource uncacheable.",
+		"description": "The RTT Client hint request header field provides the approximate round trip time on the application layer, in milliseconds. The RTT hint, unlike transport layer RTT, includes server processing time. The RTT value is rounded to the nearest 25 milliseconds to prevent fingerprinting; There are many other mechanisms an attacker might use to obtain similar round-trip information. The hint allows a server to choose what information is sent based on the network responsiveness/latency. For example, it might choose to send fewer resources.",
 		"note": "Note: The Vary header is used in responses to indicate that a different resource is sent for every different value of the header (see HTTP Caching > Varying responses). Even if RTT is used to configure what resources are sent consider omitting it in the Vary header — it is likely to change often, which effectively makes the resource uncacheable.",
 		"syntax": "RTT: <number>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/RTT",
 		"forbiddenHeaderName": false,
 		"examples": [
@@ -13260,13 +13891,16 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. The Save-Data network client hint request header field is a boolean which indicates the client's preference for reduced data usage. This could be for reasons such as high transfer costs, slow connection speeds, etc. Save-Data is a low entropy hint, and hence may be sent by the client even if not requested by the server using an Accept-CH response header. Further, it should be used to reduce data sent to the client irrespective of the values of other client hints that indicate network capability, like Downlink and RTT. A value of On indicates explicit user opt-in into a reduced data usage mode on the client, and when communicated to origins allows them to deliver alternative content to reduce the data downloaded such as smaller image and video resources, different markup and styling, disabled polling and automatic updates, and so on. Note: Disabling HTTP/2 Server Push (RFC 7540, section 8.2: Server Push) might be desirable too for reducing data downloads.",
+		"description": "The Save-Data network client hint request header field is a boolean which indicates the client's preference for reduced data usage. This could be for reasons such as high transfer costs, slow connection speeds, etc. Save-Data is a low entropy hint, and hence may be sent by the client even if not requested by the server using an Accept-CH response header. Further, it should be used to reduce data sent to the client irrespective of the values of other client hints that indicate network capability, like Downlink and RTT. A value of On indicates explicit user opt-in into a reduced data usage mode on the client, and when communicated to origins allows them to deliver alternative content to reduce the data downloaded such as smaller image and video resources, different markup and styling, disabled polling and automatic updates, and so on.",
 		"note": "Note: Disabling HTTP/2 Server Push (RFC 7540, section 8.2: Server Push) might be desirable too for reducing data downloads.",
 		"syntax": "Save-Data: <sd-token>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Save-Data",
 		"forbiddenHeaderName": false,
 		"corsSafeListedResponseHeader": false,
-		"examples": [],
+		"examples": [
+			"Save-Data: on"
+		],
 		"directives": [
 			{
 				"name": "<sd-token>",
@@ -13345,9 +13979,10 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA user agent client hint request header provides the user-agent's branding and significant version information. The Sec-CH-UA header provides the brand and significant version for each brand associated with the browser in a comma-separated list. A brand is a commercial name for the user agent like: Chromium, Opera, Google Chrome, Microsoft Edge, Firefox, and Safari. A user agent might have several associated brands. For example, Opera, Chrome, and Edge are all based on Chromium, and will provide both brands in the Sec-CH-UA header. The significant version is the \"marketing\" version identifier that is used to distinguish between major releases of the brand. For example a Chromium build with full version number \"96.0.4664.45\" has a significant version number of \"96\". The header therefore allows the server to customize its response based on both shared brands and on particular customizations in their respective versions. Sec-CH-UA is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default, without the server opting in by sending Accept-CH. The header may include \"fake\" brands in any position and with any name. This is a feature designed to prevent servers from rejecting unknown user agents outright, forcing user agents to lie about their brand identity. Note: Sec-CH-UA-Full-Version-List is the same as Sec-CH-UA, but includes the full version number rather than the significant version number for each brand.",
+		"description": "The Sec-CH-UA user agent client hint request header provides the user-agent's branding and significant version information. The Sec-CH-UA header provides the brand and significant version for each brand associated with the browser in a comma-separated list. A brand is a commercial name for the user agent like: Chromium, Opera, Google Chrome, Microsoft Edge, Firefox, and Safari. A user agent might have several associated brands. For example, Opera, Chrome, and Edge are all based on Chromium, and will provide both brands in the Sec-CH-UA header. The significant version is the \"marketing\" version identifier that is used to distinguish between major releases of the brand. For example a Chromium build with full version number \"96.0.4664.45\" has a significant version number of \"96\". The header therefore allows the server to customize its response based on both shared brands and on particular customizations in their respective versions. Sec-CH-UA is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default, without the server opting in by sending Accept-CH. The header may include \"fake\" brands in any position and with any name. This is a feature designed to prevent servers from rejecting unknown user agents outright, forcing user agents to lie about their brand identity.",
 		"note": "Note: Sec-CH-UA-Full-Version-List is the same as Sec-CH-UA, but includes the full version number rather than the significant version number for each brand.",
 		"syntax": "Sec-CH-UA: \"<brand>\";v=\"<significant version>\", ...",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA",
 		"forbiddenHeaderName": true,
@@ -13441,8 +14076,9 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA-Arch user agent client hint request header provides the user-agent's underlying CPU architecture, such as ARM or x86. This might be used by a server, for example, to select and offer the correct binary format of an executable for a user to download.",
+		"description": "The Sec-CH-UA-Arch user agent client hint request header provides the user-agent's underlying CPU architecture, such as ARM or x86. This might be used by a server, for example, to select and offer the correct binary format of an executable for a user to download.",
 		"syntax": "Sec-CH-UA-Arch: <arch>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Arch",
 		"forbiddenHeaderName": true,
@@ -13530,8 +14166,9 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA-Bitness user agent client hint request header provides the \"bitness\" of the user-agent's underlying CPU architecture. This is the size in bits of an integer or memory address—typically 64 or 32 bits. This might be used by a server, for example, to select and offer the correct binary format of an executable for a user to download.",
+		"description": "The Sec-CH-UA-Bitness user agent client hint request header provides the \"bitness\" of the user-agent's underlying CPU architecture. This is the size in bits of an integer or memory address—typically 64 or 32 bits. This might be used by a server, for example, to select and offer the correct binary format of an executable for a user to download.",
 		"syntax": "Sec-CH-UA-Bitness: <bitness>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Bitness",
 		"forbiddenHeaderName": true,
@@ -13619,7 +14256,7 @@
 		"type": [
 			"request"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. Note: This is being replaced by the Sec-CH-UA-Full-Version-List. The Sec-CH-UA-Full-Version user agent client hint request header provides the user-agent's full version string.",
+		"description": "The Sec-CH-UA-Full-Version user agent client hint request header provides the user-agent's full version string.",
 		"note": "Note: This is being replaced by the Sec-CH-UA-Full-Version-List.",
 		"syntax": "Sec-CH-UA-Full-Version: <version>",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
@@ -13710,9 +14347,10 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA-Full-Version-List user agent client hint request header provides the user-agent's branding and full version information. The Sec-CH-UA-Full-Version-List header provides the brand and full version information for each brand associated with the browser, in a comma-separated list. A brand is a commercial name for the user agent like: Chromium, Opera, Google Chrome, Microsoft Edge, Firefox, and Safari. A user agent might have several associated brands. For example, Opera, Chrome, and Edge are all based on Chromium, and will provide both brands in the Sec-CH-UA-Full-Version-List header. The header therefore allows the server to customize its response based on both shared brands and on particular customizations in their specific respective builds. The header may include \"fake\" brands in any position and with any name. This is a feature designed to prevent servers from rejecting unknown user agents outright, forcing user agents to lie about their brand identity. Note: This is similar to Sec-CH-UA, but includes the full version number instead of the significant version number for each brand.",
+		"description": "The Sec-CH-UA-Full-Version-List user agent client hint request header provides the user-agent's branding and full version information. The Sec-CH-UA-Full-Version-List header provides the brand and full version information for each brand associated with the browser, in a comma-separated list. A brand is a commercial name for the user agent like: Chromium, Opera, Google Chrome, Microsoft Edge, Firefox, and Safari. A user agent might have several associated brands. For example, Opera, Chrome, and Edge are all based on Chromium, and will provide both brands in the Sec-CH-UA-Full-Version-List header. The header therefore allows the server to customize its response based on both shared brands and on particular customizations in their specific respective builds. The header may include \"fake\" brands in any position and with any name. This is a feature designed to prevent servers from rejecting unknown user agents outright, forcing user agents to lie about their brand identity.",
 		"note": "Note: This is similar to Sec-CH-UA, but includes the full version number instead of the significant version number for each brand.",
 		"syntax": "Sec-CH-UA-Full-Version-List: \"<brand>\";v=\"<full version>\", ...",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Full-Version-List",
 		"forbiddenHeaderName": true,
@@ -13804,8 +14442,9 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA-Mobile user agent client hint request header indicates whether the browser is on a mobile device. It can also be used by a desktop browser to indicate a preference for a \"mobile\" user experience. Sec-CH-UA-Mobile is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default, without the server opting in by sending Accept-CH.",
+		"description": "The Sec-CH-UA-Mobile user agent client hint request header indicates whether the browser is on a mobile device. It can also be used by a desktop browser to indicate a preference for a \"mobile\" user experience. Sec-CH-UA-Mobile is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default, without the server opting in by sending Accept-CH.",
 		"syntax": "Sec-CH-UA-Mobile: <boolean>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Mobile",
 		"forbiddenHeaderName": true,
@@ -13893,8 +14532,9 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA-Model user agent client hint request header indicates the device model on which the browser is running.",
+		"description": "The Sec-CH-UA-Model user agent client hint request header indicates the device model on which the browser is running.",
 		"syntax": "Sec-CH-UA-Model: <device-version>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Model",
 		"forbiddenHeaderName": true,
@@ -13982,8 +14622,9 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA-Platform user agent client hint request header provides the platform or operating system on which the user agent is running. For example: \"Windows\" or \"Android\". Sec-CH-UA-Platform is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default (without the server opting in by sending Accept-CH).",
+		"description": "The Sec-CH-UA-Platform user agent client hint request header provides the platform or operating system on which the user agent is running. For example: \"Windows\" or \"Android\". Sec-CH-UA-Platform is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default (without the server opting in by sending Accept-CH).",
 		"syntax": "Sec-CH-UA-Platform: <platform>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Platform",
 		"forbiddenHeaderName": true,
@@ -14070,8 +14711,9 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. The Sec-CH-UA-Platform-Version user agent client hint request header provides the version of the operating system on which the user agent is running.",
+		"description": "The Sec-CH-UA-Platform-Version user agent client hint request header provides the version of the operating system on which the user agent is running.",
 		"syntax": "Sec-CH-UA-Platform-Version: <version>",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Platform-Version",
 		"forbiddenHeaderName": true,
@@ -14616,7 +15258,8 @@
 		"type": [
 			"request"
 		],
-		"description": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production. Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The Sec-GPC (Global Privacy Control) request header indicates whether the user consents to a website or service selling or sharing their personal information with third parties.",
+		"description": "The Sec-GPC (Global Privacy Control) request header indicates whether the user consents to a website or service selling or sharing their personal information with third parties.",
+		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"nonstandard": "Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-GPC",
 		"forbiddenHeaderName": true,
@@ -14712,7 +15355,7 @@
 		"type": [
 			"response"
 		],
-		"description": "The Server header describes the software used by the origin server that handled the request — that is, the server that generated the response. Warning: Avoid overly-detailed Server values, as they can reveal information that may make it (slightly) easier for attackers to exploit known security holes.",
+		"description": "The Server header describes the software used by the origin server that handled the request — that is, the server that generated the response.",
 		"syntax": "Server: <product>",
 		"warning": "Warning: Avoid overly-detailed Server values, as they can reveal information that may make it (slightly) easier for attackers to exploit known security holes.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server",
@@ -14730,6 +15373,18 @@
 			{
 				"name": "HTTP Semantics # field.server",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.server"
+			},
+			{
+				"name": "2068",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2068"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -14965,17 +15620,23 @@
 		"type": [
 			"response"
 		],
-		"description": "The Set-Cookie HTTP response header is used to send a cookie from the server to the user agent, so that the user agent can send it back to the server later. To send multiple cookies, multiple Set-Cookie headers should be sent in the same response. Warning: Browsers block frontend JavaScript code from accessing the Set-Cookie header, as required by the Fetch spec, which defines Set-Cookie as a forbidden response-header name that must be filtered out from any response exposed to frontend code. For more information, see the guide on Using HTTP cookies.",
+		"description": "The Set-Cookie HTTP response header is used to send a cookie from the server to the user agent, so that the user agent can send it back to the server later. To send multiple cookies, multiple Set-Cookie headers should be sent in the same response. For more information, see the guide on Using HTTP cookies.",
 		"syntax": "Set-Cookie: <cookie-name>=<cookie-value>\nSet-Cookie: <cookie-name>=<cookie-value>; Expires=<date>\nSet-Cookie: <cookie-name>=<cookie-value>; Max-Age=<number>\nSet-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>\nSet-Cookie: <cookie-name>=<cookie-value>; Path=<path-value>\nSet-Cookie: <cookie-name>=<cookie-value>; Secure\nSet-Cookie: <cookie-name>=<cookie-value>; HttpOnly\n\nSet-Cookie: <cookie-name>=<cookie-value>; SameSite=Strict\nSet-Cookie: <cookie-name>=<cookie-value>; SameSite=Lax\nSet-Cookie: <cookie-name>=<cookie-value>; SameSite=None; Secure\n\n// Multiple attributes are also possible, for example:\nSet-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>; Secure; HttpOnly",
 		"warning": "Warning: Browsers block frontend JavaScript code from accessing the Set-Cookie header, as required by the Fetch spec, which defines Set-Cookie as a forbidden response-header name that must be filtered out from any response exposed to frontend code.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1"
+		],
 		"directives": [],
 		"specifications": [
 			{
 				"name": "HTTP State Management Mechanism # sane-set-cookie",
 				"link": "https://httpwg.org/specs/rfc6265.html#sane-set-cookie"
+			},
+			{
+				"name": "6265",
+				"link": "https://datatracker.ietf.org/doc/html/rfc6265"
 			}
 		],
 		"browserCompatibility": [
@@ -15733,12 +16394,14 @@
 		"type": [
 			"request"
 		],
-		"description": "The TE request header specifies the transfer encodings the user agent is willing to accept. (you could informally call it Accept-Transfer-Encoding, which would be more intuitive). Note: In HTTP/2 and HTTP/3, the TE header field is only accepted if the trailers value is set. See also the Transfer-Encoding response header for more details on transfer encodings. Note that chunked is always acceptable for HTTP/1.1 recipients and you don't have to specify \"chunked\" using the TE header. However, it is useful for setting if the client is accepting trailer fields in a chunked transfer coding using the \"trailers\" value.",
+		"description": "The TE request header specifies the transfer encodings the user agent is willing to accept. (you could informally call it Accept-Transfer-Encoding, which would be more intuitive). See also the Transfer-Encoding response header for more details on transfer encodings. Note that chunked is always acceptable for HTTP/1.1 recipients and you don't have to specify \"chunked\" using the TE header. However, it is useful for setting if the client is accepting trailer fields in a chunked transfer coding using the \"trailers\" value.",
 		"note": "Note: In HTTP/2 and HTTP/3, the TE header field is only accepted if the trailers value is set.",
 		"syntax": "TE: compress\nTE: deflate\nTE: gzip\nTE: trailers\n\n// Multiple directives, weighted with the quality value syntax:\nTE: trailers, deflate;q=0.5",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/TE",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"TE: trailers, deflate"
+		],
 		"directives": [
 			{
 				"name": "compress",
@@ -15765,6 +16428,14 @@
 			{
 				"name": "HTTP Semantics # field.te",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.te"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7230",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7230"
 			}
 		],
 		"browserCompatibility": [
@@ -15841,7 +16512,8 @@
 		"forbiddenHeaderName": false,
 		"examples": [
 			"Timing-Allow-Origin: *",
-			"Timing-Allow-Origin: https://developer.mozilla.org"
+			"Timing-Allow-Origin: https://developer.mozilla.org",
+			"Timing-Allow-Origin: <origin>[, <origin>]*"
 		],
 		"directives": [
 			{
@@ -15927,13 +16599,14 @@
 		"type": [
 			"response"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. The Tk response header indicates the tracking status that applied to the corresponding request.",
+		"description": "The Tk response header indicates the tracking status that applied to the corresponding request.",
 		"syntax": "Tk: !  (under construction)\nTk: ?  (dynamic)\nTk: G  (gateway or multiple parties)\nTk: N  (not tracking)\nTk: T  (tracking)\nTk: C  (tracking with consent)\nTk: P  (potential consent)\nTk: D  (disregarding DNT)\nTk: U  (updated)",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Tk",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Tk: N"
+			"Tk: N",
+			"Tk: ?"
 		],
 		"directives": [
 			{
@@ -16037,12 +16710,14 @@
 			"request",
 			"response"
 		],
-		"description": "The Trailer response header allows the sender to include additional fields at the end of chunked messages in order to supply metadata that might be dynamically generated while the message body is sent, such as a message integrity check, digital signature, or post-processing status. Note: The TE request header needs to be set to \"trailers\" to allow trailer fields.",
+		"description": "The Trailer response header allows the sender to include additional fields at the end of chunked messages in order to supply metadata that might be dynamically generated while the message body is sent, such as a message integrity check, digital signature, or post-processing status.",
 		"note": "Note: The TE request header needs to be set to \"trailers\" to allow trailer fields.",
 		"syntax": "Trailer: header-names",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Trailer",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"Trailer: Max-Forwards"
+		],
 		"directives": [
 			{
 				"name": "header-names",
@@ -16057,6 +16732,14 @@
 			{
 				"name": "HTTP/1.1 # chunked.trailer.section",
 				"link": "https://httpwg.org/specs/rfc9112.html#chunked.trailer.section"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7230",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7230"
 			}
 		],
 		"browserCompatibility": [
@@ -16128,12 +16811,14 @@
 			"request",
 			"response"
 		],
-		"description": "The Transfer-Encoding header specifies the form of encoding used to safely transfer the payload body to the user. Note: HTTP/2 doesn't support HTTP 1.1's chunked transfer encoding mechanism, as it provides its own, more efficient, mechanisms for data streaming. Transfer-Encoding is a hop-by-hop header, that is applied to a message between two nodes, not to a resource itself. Each segment of a multi-node connection can use different Transfer-Encoding values. If you want to compress data over the whole connection, use the end-to-end Content-Encoding header instead. When present on a response to a HEAD request that has no body, it indicates the value that would have applied to the corresponding GET message.",
+		"description": "The Transfer-Encoding header specifies the form of encoding used to safely transfer the payload body to the user. Transfer-Encoding is a hop-by-hop header, that is applied to a message between two nodes, not to a resource itself. Each segment of a multi-node connection can use different Transfer-Encoding values. If you want to compress data over the whole connection, use the end-to-end Content-Encoding header instead. When present on a response to a HEAD request that has no body, it indicates the value that would have applied to the corresponding GET message.",
 		"note": "Note: HTTP/2 doesn't support HTTP 1.1's chunked transfer encoding mechanism, as it provides its own, more efficient, mechanisms for data streaming.",
 		"syntax": "Transfer-Encoding: chunked\nTransfer-Encoding: compress\nTransfer-Encoding: deflate\nTransfer-Encoding: gzip\n\n// Several values can be listed, separated by a comma\nTransfer-Encoding: gzip, chunked",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding",
 		"forbiddenHeaderName": true,
-		"examples": [],
+		"examples": [
+			"Transfer-Encoding: chunked"
+		],
 		"directives": [
 			{
 				"name": "chunked",
@@ -16156,6 +16841,14 @@
 			{
 				"name": "HTTP/1.1 # field.transfer-encoding",
 				"link": "https://httpwg.org/specs/rfc9112.html#field.transfer-encoding"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7230",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7230"
 			}
 		],
 		"browserCompatibility": [
@@ -16227,14 +16920,15 @@
 			"request",
 			"response"
 		],
-		"description": "The HTTP 1.1 (only) Upgrade header can be used to upgrade an already established client/server connection to a different protocol (over the same transport protocol). For example, it can be used by a client to upgrade a connection from HTTP 1.1 to HTTP 2.0, or an HTTP or HTTPS connection into a WebSocket. Warning: HTTP/2 explicitly disallows the use of this mechanism/header; it is specific to HTTP/1.1.",
+		"description": "The HTTP 1.1 (only) Upgrade header can be used to upgrade an already established client/server connection to a different protocol (over the same transport protocol). For example, it can be used by a client to upgrade a connection from HTTP 1.1 to HTTP 2.0, or an HTTP or HTTPS connection into a WebSocket.",
 		"syntax": "Connection: upgrade\nUpgrade: protocol_name[/protocol_version]",
 		"warning": "Warning: HTTP/2 explicitly disallows the use of this mechanism/header; it is specific to HTTP/1.1.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade",
 		"forbiddenHeaderName": true,
 		"examples": [
 			"Connection: upgrade\nUpgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11",
-			"Connection: Upgrade\nUpgrade: websocket"
+			"Connection: Upgrade\nUpgrade: websocket",
+			"Upgrade: h2c, HTTPS/1.3, IRC/6.9, RTA/x11, websocket"
 		],
 		"directives": [
 			{
@@ -16254,6 +16948,14 @@
 			{
 				"name": "HTTP/2 # informational-responses",
 				"link": "https://httpwg.org/specs/rfc9113.html#informational-responses"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7230",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7230"
 			}
 		],
 		"browserCompatibility": [
@@ -16328,7 +17030,8 @@
 		"forbiddenHeaderName": false,
 		"examples": [
 			"GET / HTTP/1.1\nHost: example.com\nUpgrade-Insecure-Requests: 1",
-			"Location: https://example.com/\nVary: Upgrade-Insecure-Requests"
+			"Location: https://example.com/\nVary: Upgrade-Insecure-Requests",
+			"Upgrade-Insecure-Requests: 1"
 		],
 		"directives": [],
 		"specifications": [
@@ -16405,12 +17108,14 @@
 		"type": [
 			"request"
 		],
-		"description": "The User-Agent request header is a characteristic string that lets servers and network peers identify the application, operating system, vendor, and/or version of the requesting user agent. Warning: Please read Browser detection using the user agent for why serving different Web pages or services to different browsers is usually a bad idea.",
+		"description": "The User-Agent request header is a characteristic string that lets servers and network peers identify the application, operating system, vendor, and/or version of the requesting user agent.",
 		"syntax": "User-Agent: <product> / <product-version> <comment>",
 		"warning": "Warning: Please read Browser detection using the user agent for why serving different Web pages or services to different browsers is usually a bad idea.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0"
+		],
 		"directives": [
 			{
 				"name": "product",
@@ -16429,6 +17134,18 @@
 			{
 				"name": "HTTP Semantics # field.user-agent",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.user-agent"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "5536",
+				"link": "https://datatracker.ietf.org/doc/html/rfc5536"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -16503,7 +17220,10 @@
 		"syntax": "Vary: *\nVary: <header-name>, <header-name>, ...",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"Vary: *",
+			"Vary: Accept-Language"
+		],
 		"directives": [
 			{
 				"name": "sect1",
@@ -16518,6 +17238,18 @@
 			{
 				"name": "HTTP Semantics # field.vary",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.vary"
+			},
+			{
+				"name": "2068",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2068"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
 		"browserCompatibility": [
@@ -16594,7 +17326,8 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Via",
 		"forbiddenHeaderName": true,
 		"examples": [
-			"Via: 1.1 vegur\nVia: HTTP/1.1 GWA\nVia: 1.0 fred, 1.1 p.example.net"
+			"Via: 1.1 vegur\nVia: HTTP/1.1 GWA\nVia: 1.0 fred, 1.1 p.example.net",
+			"Via: 1.0 fred, 1.1 example.com (Apache/1.1)"
 		],
 		"directives": [
 			{
@@ -16618,6 +17351,14 @@
 			{
 				"name": "HTTP Semantics # field.via",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.via"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7230",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7230"
 			}
 		],
 		"browserCompatibility": [
@@ -16688,7 +17429,7 @@
 		"type": [
 			"request"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The Viewport-Width device client hint request header provides the client's layout viewport width in CSS pixels. The value is rounded up to the smallest following integer (i.e. ceiling value). The hint can be used with other screen-specific hints to deliver images optimized for a specific screen size, or to omit resources that are not needed for a particular screen width. If the Viewport-Width header appears more than once in a message the last occurrence is used. Note:",
+		"description": "The Viewport-Width device client hint request header provides the client's layout viewport width in CSS pixels. The value is rounded up to the smallest following integer (i.e. ceiling value). The hint can be used with other screen-specific hints to deliver images optimized for a specific screen size, or to omit resources that are not needed for a particular screen width. If the Viewport-Width header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the Viewport-Width header from the client, by sending the Accept-CH response header. Servers that opt in to the Viewport-Width client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request. Viewport-Width was removed from the original client hints specification in draft-ietf-httpbis-client-hints-07. The proposed replacement is Sec-CH-Viewport-Width (Responsive Image Client Hints).",
 		"syntax": "Viewport-Width: <number>",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
@@ -16857,13 +17598,14 @@
 			"request",
 			"response"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. The Warning HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response. Warning header fields can, in general, be applied to any message. However, some warn-codes are specific to caches and can only be applied to response messages.",
+		"description": "The Warning HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response. Warning header fields can, in general, be applied to any message. However, some warn-codes are specific to caches and can only be applied to response messages.",
 		"syntax": "Warning: <warn-code> <warn-agent> <warn-text> [<warn-date>]",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Warning",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"Warning: 110 anderson/1.3.37 \"Response is stale\"\n\nDate: Wed, 21 Oct 2015 07:28:00 GMT\nWarning: 112 - \"cache down\" \"Wed, 21 Oct 2015 07:28:00 GMT\""
+			"Warning: 110 anderson/1.3.37 \"Response is stale\"\n\nDate: Wed, 21 Oct 2015 07:28:00 GMT\nWarning: 112 - \"cache down\" \"Wed, 21 Oct 2015 07:28:00 GMT\"",
+			"Warning: 199 Miscellaneous warning"
 		],
 		"directives": [
 			{
@@ -16887,6 +17629,14 @@
 			{
 				"name": "HTTP Caching # field.warning",
 				"link": "https://httpwg.org/specs/rfc9111.html#field.warning"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7234",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7234"
 			}
 		],
 		"browserCompatibility": [
@@ -16957,7 +17707,7 @@
 		"type": [
 			"request"
 		],
-		"description": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time. Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers. Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The Width device client hint request header field indicates the desired resource width in physical pixels — the intrinsic size of an image. The provided pixel value is a number rounded to the smallest following integer (i.e. ceiling value). The hint is particularly useful because it allows the client to request a resource that is optimal for both the screen and the layout: taking into account both the density-corrected width of the screen and the image's extrinsic size within the layout. If the desired resource width is not known at the time of the request or the resource does not have a display width, the Width header field can be omitted. If the Width header appears more than once in a message the last occurrence is used. Note:",
+		"description": "The Width device client hint request header field indicates the desired resource width in physical pixels — the intrinsic size of an image. The provided pixel value is a number rounded to the smallest following integer (i.e. ceiling value). The hint is particularly useful because it allows the client to request a resource that is optimal for both the screen and the layout: taking into account both the density-corrected width of the screen and the image's extrinsic size within the layout. If the desired resource width is not known at the time of the request or the resource does not have a display width, the Width header field can be omitted. If the Width header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the Width header from the client, by sending the Accept-CH response header. Servers that opt in to the Width client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request. Width was removed from the client hints specification in draft-ietf-httpbis-client-hints-07. The proposed replacement is Sec-CH-Width (Responsive Image Client Hints).",
 		"syntax": "Width: <number>",
 		"secure": "Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.",
@@ -17044,12 +17794,14 @@
 		"type": [
 			"response"
 		],
-		"description": "The HTTP WWW-Authenticate response header defines the HTTP authentication methods (\"challenges\") that might be used to gain access to a specific resource. Note: This header is part of the General HTTP authentication framework, which can be used with a number of authentication schemes. Each \"challenge\" lists a scheme supported by the server and additional parameters that are defined for that scheme type. A server using HTTP authentication will respond with a 401 Unauthorized response to a request for a protected resource. This response must include at least one WWW-Authenticate header and at least one challenge, to indicate what authentication schemes can be used to access the resource (and any additional data that each particular scheme needs). Multiple challenges are allowed in one WWW-Authenticate header, and multiple WWW-Authenticate headers are allowed in one response. A server may also include the WWW-Authenticate header in other response messages to indicate that supplying credentials might affect the response. After receiving the WWW-Authenticate header, a client will typically prompt the user for credentials, and then re-request the resource. This new request uses the Authorization header to supply the credentials to the server, encoded appropriately for the selected \"challenge\" authentication method. The client is expected to select the most secure of the challenges it understands (note that in some cases the \"most secure\" method is debatable).",
+		"description": "The HTTP WWW-Authenticate response header defines the HTTP authentication methods (\"challenges\") that might be used to gain access to a specific resource. A server using HTTP authentication will respond with a 401 Unauthorized response to a request for a protected resource. This response must include at least one WWW-Authenticate header and at least one challenge, to indicate what authentication schemes can be used to access the resource (and any additional data that each particular scheme needs). Multiple challenges are allowed in one WWW-Authenticate header, and multiple WWW-Authenticate headers are allowed in one response. A server may also include the WWW-Authenticate header in other response messages to indicate that supplying credentials might affect the response. After receiving the WWW-Authenticate header, a client will typically prompt the user for credentials, and then re-request the resource. This new request uses the Authorization header to supply the credentials to the server, encoded appropriately for the selected \"challenge\" authentication method. The client is expected to select the most secure of the challenges it understands (note that in some cases the \"most secure\" method is debatable).",
 		"note": "Note: This header is part of the General HTTP authentication framework, which can be used with a number of authentication schemes. Each \"challenge\" lists a scheme supported by the server and additional parameters that are defined for that scheme type.",
 		"syntax": "// Challenges specified in single header\nWWW-Authenticate: challenge1, ..., challengeN\n\n// Challenges specified in multiple headers\nWWW-Authenticate: challenge1\n...\nWWW-Authenticate: challengeN",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate",
 		"forbiddenHeaderName": false,
-		"examples": [],
+		"examples": [
+			"WWW-Authenticate: Basic"
+		],
 		"directives": [
 			{
 				"name": "<auth-scheme>",
@@ -17068,6 +17820,18 @@
 			{
 				"name": "HTTP Semantics # field.www-authenticate",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.www-authenticate"
+			},
+			{
+				"name": "2068",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2068"
+			},
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7235",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7235"
 			}
 		],
 		"browserCompatibility": [
@@ -17546,7 +18310,7 @@
 		"type": [
 			"response"
 		],
-		"description": "Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future. The X-DNS-Prefetch-Control HTTP response header controls DNS prefetching, a feature by which browsers proactively perform domain name resolution on both links that the user may choose to follow as well as URLs for items referenced by the document, including images, CSS, JavaScript, and so forth. This prefetching is performed in the background, so that the DNS is likely to have been resolved by the time the referenced items are needed. This reduces latency when the user clicks a link.",
+		"description": "The X-DNS-Prefetch-Control HTTP response header controls DNS prefetching, a feature by which browsers proactively perform domain name resolution on both links that the user may choose to follow as well as URLs for items referenced by the document, including images, CSS, JavaScript, and so forth. This prefetching is performed in the background, so that the DNS is likely to have been resolved by the time the referenced items are needed. This reduces latency when the user clicks a link.",
 		"syntax": "X-DNS-Prefetch-Control: on\nX-DNS-Prefetch-Control: off",
 		"nonstandard": "Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control",
@@ -17629,13 +18393,15 @@
 		"type": [
 			"request"
 		],
-		"description": "The X-Forwarded-For (XFF) request header is a de-facto standard header for identifying the originating IP address of a client connecting to a web server through a proxy server. Warning: Improper use of this header can be a security risk. For details, see the Security and privacy concerns section. When a client connects directly to a server, the client's IP address is sent to the server (and is often written to server access logs). But if a client connection passes through any forward or reverse proxies, the server only sees the final proxy's IP address, which is often of little use. That's especially true if the final proxy is a load balancer which is part of the same installation as the server. So, to provide a more-useful client IP address to the server, the X-Forwarded-For request header is used. For detailed guidance on using this header, see the Parsing and Selecting an IP address sections. A standardized version of this header is the HTTP Forwarded header.",
+		"description": "The X-Forwarded-For (XFF) request header is a de-facto standard header for identifying the originating IP address of a client connecting to a web server through a proxy server. When a client connects directly to a server, the client's IP address is sent to the server (and is often written to server access logs). But if a client connection passes through any forward or reverse proxies, the server only sees the final proxy's IP address, which is often of little use. That's especially true if the final proxy is a load balancer which is part of the same installation as the server. So, to provide a more-useful client IP address to the server, the X-Forwarded-For request header is used. For detailed guidance on using this header, see the Parsing and Selecting an IP address sections. A standardized version of this header is the HTTP Forwarded header.",
 		"syntax": "X-Forwarded-For: <client>, <proxy1>, <proxy2>",
 		"warning": "Warning: Improper use of this header can be a security risk. For details, see the Security and privacy concerns section.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"X-Forwarded-For: 2001:db8:85a3:8d3:1319:8a2e:370:7348\n\nX-Forwarded-For: 203.0.113.195\n\nX-Forwarded-For: 203.0.113.195, 2001:db8:85a3:8d3:1319:8a2e:370:7348\n\nX-Forwarded-For: 203.0.113.195,2001:db8:85a3:8d3:1319:8a2e:370:7348,150.172.238.178"
+			"X-Forwarded-For: 2001:db8:85a3:8d3:1319:8a2e:370:7348\n\nX-Forwarded-For: 203.0.113.195\n\nX-Forwarded-For: 203.0.113.195, 2001:db8:85a3:8d3:1319:8a2e:370:7348\n\nX-Forwarded-For: 203.0.113.195,2001:db8:85a3:8d3:1319:8a2e:370:7348,150.172.238.178",
+			"X-Forwarded-For: client1, proxy1, proxy2",
+			"X-Forwarded-For: 129.78.138.66, 129.78.64.103"
 		],
 		"directives": [
 			{
@@ -17660,7 +18426,9 @@
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
 		"forbiddenHeaderName": false,
 		"examples": [
-			"X-Forwarded-Host: id42.example-cdn.com"
+			"X-Forwarded-Host: id42.example-cdn.com",
+			"X-Forwarded-Host: en.wikipedia.org:8080",
+			"X-Forwarded-Host: en.wikipedia.org"
 		],
 		"directives": [
 			{
@@ -17689,6 +18457,518 @@
 				"name": "protocol",
 				"description": "The forwarded protocol (http or https)."
 			}
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"a-im": {
+		"name": "A-IM",
+		"type": [
+			"request"
+		],
+		"description": "Acceptable instance-manipulations for the request.",
+		"syntax": "A-IM: feed",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"A-IM: feed"
+		],
+		"specifications": [
+			{
+				"name": "3229",
+				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"accept-datetime": {
+		"name": "Accept-Datetime",
+		"type": [
+			"request"
+		],
+		"description": "Acceptable version in time.",
+		"syntax": "Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Accept-Datetime",
+		"directives": [],
+		"examples": [
+			"Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT"
+		],
+		"specifications": [
+			{
+				"name": "7089",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7089"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"content-md5": {
+		"name": "Content-MD5",
+		"type": [
+			"request",
+			"response"
+		],
+		"description": "A Base64-encoded binary MD5 sum of the content of the request body.",
+		"syntax": "Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ=="
+		],
+		"specifications": [
+			{
+				"name": "1544",
+				"link": "https://datatracker.ietf.org/doc/html/rfc1544"
+			},
+			{
+				"name": "1864",
+				"link": "https://datatracker.ietf.org/doc/html/rfc1864"
+			},
+			{
+				"name": "4021",
+				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"http2-settings": {
+		"name": "HTTP2-Settings",
+		"type": [
+			"request"
+		],
+		"description": "A request that upgrades from HTTP/1.1 to HTTP/2 MUST include exactly one HTTP2-Setting header field. The HTTP2-Settings header field is a connection-specific header field that includes parameters that govern the HTTP/2 connection, provided in anticipation of the server accepting the request to upgrade.",
+		"syntax": "HTTP2-Settings: token64",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"HTTP2-Settings: token64"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"prefer": {
+		"name": "Prefer",
+		"type": [
+			"request"
+		],
+		"description": "Allows client to request that certain behaviors be employed by a server while processing a request.",
+		"syntax": "Prefer: return=representation",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Prefer: return=representation"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"referer [sic]": {
+		"name": "Referer [sic]",
+		"type": [
+			"request"
+		],
+		"description": "This is the address of the previous web page from which a link to the currently requested page was followed. (The word \"referrer\" has been misspelled in the RFC as well as in most implementations to the point that it has become standard usage and is considered correct terminology)",
+		"syntax": "Referer [sic]",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [],
+		"specifications": [
+			{
+				"name": "2616",
+				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
+			},
+			{
+				"name": "7231",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"x-requested-with": {
+		"name": "X-Requested-With",
+		"type": [
+			"request"
+		],
+		"description": "Mainly used to identify Ajax requests (most JavaScript frameworks send this field with value of XMLHttpRequest); also identifies Android apps using WebView",
+		"syntax": "X-Requested-With: XMLHttpRequest",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Requested-With",
+		"directives": [],
+		"examples": [
+			"X-Requested-With: XMLHttpRequest"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"front-end-https": {
+		"name": "Front-End-Https",
+		"type": [
+			"request"
+		],
+		"description": "Non-standard header field used by Microsoft applications and load-balancers",
+		"syntax": "Front-End-Https: on",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Front-End-Https: on"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-http-method-override": {
+		"name": "X-Http-Method-Override",
+		"type": [
+			"request"
+		],
+		"description": "Requests a web application to override the method specified in the request (typically POST) with the method given in the header field (typically PUT or DELETE). This can be used when a user agent or firewall prevents PUT or DELETE methods from being sent directly (note that this is either a bug in the software component, which ought to be fixed, or an intentional configuration, in which case bypassing it may be the wrong thing to do).",
+		"syntax": "X-HTTP-Method-Override: DELETE",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-HTTP-Method-Override: DELETE"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-att-deviceid": {
+		"name": "X-ATT-DeviceId",
+		"type": [
+			"request"
+		],
+		"description": "Allows easier parsing of the MakeModel/Firmware that is usually found in the User-Agent String of AT&T Devices",
+		"syntax": "X-Att-Deviceid: GT-P7320/P7320XXLPG",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-Att-Deviceid: GT-P7320/P7320XXLPG"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-wap-profile": {
+		"name": "X-Wap-Profile",
+		"type": [
+			"request"
+		],
+		"description": "Links to an XML file on the Internet with a full description and details about the device currently connecting. In the example to the right is an XML file for an AT&T Samsung Galaxy S2.",
+		"syntax": "x-wap-profile: http://wap.samsungmobile.com/uaprof/SGH-I777.xml",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"x-wap-profile: http://wap.samsungmobile.com/uaprof/SGH-I777.xml"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"proxy-connection": {
+		"name": "Proxy-Connection",
+		"type": [
+			"request"
+		],
+		"description": "Implemented as a misunderstanding of the HTTP specifications. Common because of mistakes in implementations of early HTTP versions. Has exactly the same functionality as standard Connection field. Must not be used with HTTP/2.",
+		"syntax": "Proxy-Connection: keep-alive",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Proxy-Connection: keep-alive"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-uidh": {
+		"name": "X-UIDH",
+		"type": [
+			"request"
+		],
+		"description": "Server-side deep packet insertion of a unique ID identifying customers of Verizon Wireless; also known as \"perma-cookie\" or \"supercookie\"",
+		"syntax": "X-UIDH: ...",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-UIDH: ..."
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-csrf-token": {
+		"name": "X-Csrf-Token",
+		"type": [
+			"request"
+		],
+		"description": "Used to prevent cross-site request forgery. Alternative header names are: X-CSRFToken and X-XSRF-TOKEN",
+		"syntax": "X-Csrf-Token: i8XNjC4b8KVok4uw5RftR38Wgp2BFwql",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-Csrf-Token: i8XNjC4b8KVok4uw5RftR38Wgp2BFwql"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-request-id": {
+		"name": "X-Request-ID",
+		"type": [
+			"request",
+			"response"
+		],
+		"description": "Correlates HTTP requests between a client and server.",
+		"syntax": "X-Request-ID: f058ebd6-02f7-4d3f-942e-904344e8cde5",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-Request-ID: f058ebd6-02f7-4d3f-942e-904344e8cde5"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-correlation-id": {
+		"name": "X-Correlation-ID",
+		"type": [
+			"request",
+			"response"
+		],
+		"description": "Correlates HTTP requests between a client and server.",
+		"syntax": "X-Correlation-ID",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"delta-base": {
+		"name": "Delta-Base",
+		"type": [
+			"response"
+		],
+		"description": "Specifies the delta-encoding entity tag of the response.",
+		"syntax": "Delta-Base: \"abc\"",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Delta-Base: \"abc\""
+		],
+		"specifications": [
+			{
+				"name": "3229",
+				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"im": {
+		"name": "IM",
+		"type": [
+			"response"
+		],
+		"description": "Instance-manipulations applied to the response.",
+		"syntax": "IM: feed",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"IM: feed"
+		],
+		"specifications": [
+			{
+				"name": "3229",
+				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"p3p": {
+		"name": "P3P",
+		"type": [
+			"response"
+		],
+		"description": "This field is supposed to set P3P policy, in the form of P3P:CP=\"your_compact_policy\". However, P3P did not take off, most browsers have never fully implemented it, a lot of websites set this field with fake policy text, that was enough to fool browsers the existence of P3P policy and grant permissions for third party cookies.",
+		"syntax": "P3P: CP=\"This is not a P3P policy! See https://en.wikipedia.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"P3P: CP=\"This is not a P3P policy! See https://en.wikipedia.org/wiki/Special:CentralAutoLogin/P3P for more info.\""
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"preference-applied": {
+		"name": "Preference-Applied",
+		"type": [
+			"response"
+		],
+		"description": "Indicates which Prefer tokens were honored by the server and applied to the processing of the request.",
+		"syntax": "Preference-Applied: return=representation",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Preference-Applied: return=representation"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"public-key-pins": {
+		"name": "Public-Key-Pins",
+		"type": [
+			"response"
+		],
+		"description": "HTTP Public Key Pinning, announces hash of website's authentic TLS certificate",
+		"syntax": "Public-Key-Pins: max-age=2592000; pin-sha256=\"E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=\";",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#PKP",
+		"directives": [],
+		"examples": [
+			"Public-Key-Pins: max-age=2592000; pin-sha256=\"E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=\";"
+		],
+		"specifications": [
+			{
+				"name": "7469",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7469"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"x-content-security-policy": {
+		"name": "X-Content-Security-Policy",
+		"type": [
+			"response"
+		],
+		"description": "Content Security Policy definition.",
+		"syntax": "X-Content-Security-Policy",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-webkit-csp": {
+		"name": "X-WebKit-CSP",
+		"type": [
+			"response"
+		],
+		"description": "Content Security Policy definition.",
+		"syntax": "X-WebKit-CSP: default-src 'self'",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-WebKit-CSP: default-src 'self'"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"permissions-policy": {
+		"name": "Permissions-Policy",
+		"type": [
+			"response"
+		],
+		"description": "To allow or disable different features or APIs of the browser.",
+		"syntax": "Permissions-Policy: fullscreen=(), camera=(), microphone=(), geolocation=(), interest-cohort=()",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Permissions-Policy: fullscreen=(), camera=(), microphone=(), geolocation=(), interest-cohort=()"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"refresh": {
+		"name": "Refresh",
+		"type": [
+			"response"
+		],
+		"description": "Used in redirection, or when a new resource has been created. This refresh redirects after 5 seconds. Header extension introduced by Netscape and supported by most web browsers. Defined by HTML Standard",
+		"syntax": "Refresh: 5; url=http://www.w3.org/pub/WWW/People.html",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Refresh",
+		"directives": [],
+		"examples": [
+			"Refresh: 5; url=http://www.w3.org/pub/WWW/People.html"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"report-to": {
+		"name": "Report-To",
+		"type": [
+			"response"
+		],
+		"description": "Instructs the user agent to store reporting endpoints for an origin.",
+		"syntax": "Report-To: { \"group\": \"csp-endpoint\", \"max_age\": 10886400, \"endpoints\": [ { \"url\": \"https-url-of-site-which-collects-reports\" } ] }",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Report-To: { \"group\": \"csp-endpoint\", \"max_age\": 10886400, \"endpoints\": [ { \"url\": \"https-url-of-site-which-collects-reports\" } ] }"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"status": {
+		"name": "Status",
+		"type": [
+			"response"
+		],
+		"description": "CGI header field specifying the status of the HTTP response. Normal HTTP responses use a separate \"Status-Line\" instead, defined by RFC 7230.",
+		"syntax": "Status: 200 OK",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"Status: 200 OK"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-content-duration": {
+		"name": "X-Content-Duration",
+		"type": [
+			"response"
+		],
+		"description": "Provide the duration of the audio or video in seconds; only supported by Gecko browsers",
+		"syntax": "X-Content-Duration: 42.666",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-Content-Duration: 42.666"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-powered-by": {
+		"name": "X-Powered-By",
+		"type": [
+			"response"
+		],
+		"description": "Specifies the technology (e.g. ASP.NET, PHP, JBoss) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)",
+		"syntax": "X-Powered-By: PHP/5.4.0",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Powered-By",
+		"directives": [],
+		"examples": [
+			"X-Powered-By: PHP/5.4.0"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-redirect-by": {
+		"name": "X-Redirect-By",
+		"type": [
+			"response"
+		],
+		"description": "Specifies the component that is responsible for a particular redirect.",
+		"syntax": "X-Redirect-By: WordPress",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-Redirect-By: WordPress",
+			"X-Redirect-By: Polylang"
+		],
+		"specifications": [],
+		"browserCompatibility": []
+	},
+	"x-ua-compatible": {
+		"name": "X-UA-Compatible",
+		"type": [
+			"response"
+		],
+		"description": "Recommends the preferred rendering engine (often a backward-compatibility mode) to use to display the content. Also used to activate Chrome Frame in Internet Explorer. In HTML Standard, only the IE=edge value is defined.",
+		"syntax": "X-UA-Compatible: IE=edge",
+		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"directives": [],
+		"examples": [
+			"X-UA-Compatible: IE=edge",
+			"X-UA-Compatible: IE=EmulateIE7",
+			"X-UA-Compatible: Chrome=1"
 		],
 		"specifications": [],
 		"browserCompatibility": []

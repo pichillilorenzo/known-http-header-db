@@ -30,10 +30,11 @@ export const run = async () => {
       const name = document.querySelector('.main-page-content h1')!.textContent!.trim();
 
       // @ts-ignore
-      const description = [...document.querySelector('.main-page-content .section-content').querySelectorAll('p')]
+      const description = [...document.querySelector('.main-page-content .section-content').querySelectorAll(':scope > p')]
         .map((p: HTMLParagraphElement) => p.textContent?.trim() ?? '').join('\n');
       const note = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.note')?.textContent?.trim();
 
+      const experimental = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.experimental')?.textContent?.trim();
       const secure = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.secure')?.textContent?.trim();
       const deprecated = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.deprecated')?.textContent?.trim();
       const nonstandard = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.nonstandard')?.textContent?.trim();
@@ -159,6 +160,7 @@ export const run = async () => {
         description: description ? removeExtraSpace(description) : undefined,
         note: note ? removeExtraSpace(note) : undefined,
         syntax,
+        experimental: experimental ? removeExtraSpace(experimental) : undefined,
         secure: secure ? removeExtraSpace(secure) : undefined,
         deprecated: deprecated ? removeExtraSpace(deprecated) : undefined,
         nonstandard: nonstandard ? removeExtraSpace(nonstandard) : undefined,

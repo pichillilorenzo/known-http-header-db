@@ -1,6 +1,6 @@
 {
   "name": "known-http-header-db",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Known HTTP Header Database",
   "author": {
     "name": "Lorenzo Pichilli",
@@ -15,6 +15,10 @@
   "homepage": "https://github.com/pichillilorenzo/known-http-header-db#readme",
   "bugs": {
     "url": "https://github.com/pichillilorenzo/known-http-header-db/issues"
+  },
+  "funding": {
+    "type" : "individual",
+    "url" : "https://www.paypal.me/LorenzoPichilli"
   },
   "keywords": [
     "http",
