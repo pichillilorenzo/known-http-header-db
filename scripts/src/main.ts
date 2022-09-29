@@ -1,12 +1,14 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as MdnScraper from "./mdn-scraper";
+import * as IanaScraper from "./iana-scraper";
 import * as WikipediaScraper from "./wikipedia-scraper";
 import {HTTPHeaderDb} from "known-http-header-db";
 
 (async () => {
   const httpHeadersDb = mergeDatabases([
     await MdnScraper.run(),
+    await IanaScraper.run(),
     await WikipediaScraper.run(),
     // load custom headers
     require('./custom-headers.json') as HTTPHeaderDb
@@ -27,7 +29,7 @@ function mergeDatabases(databases: HTTPHeaderDb[]): HTTPHeaderDb {
       } else {
         for (const property of Object.keys(target[key])) {
           if (mergedDb[key][property] == null) {
-            mergedDb[key][property] = target[key];
+            mergedDb[key][property] = target[key][property];
           } else {
             switch (property) {
               case 'type':

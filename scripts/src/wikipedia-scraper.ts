@@ -1,5 +1,11 @@
 import * as puppeteer from "puppeteer";
-import {HTTPHeader, HTTPHeaderDb, HTTPHeaderSpecification, HTTPHeaderType} from "known-http-header-db";
+import {
+  HTTPHeader,
+  HTTPHeaderDb,
+  HTTPHeaderSpecification,
+  HTTPHeaderStatus,
+  HTTPHeaderType
+} from "known-http-header-db";
 
 export const run = async () => {
   const browser = await puppeteer.launch();
@@ -45,6 +51,21 @@ export const run = async () => {
             .filter(e => e.toLowerCase().includes(name.toLowerCase()));
           const syntax = examples.length > 0 ? examples[0] : `${name}`;
 
+          let status: HTTPHeaderStatus | undefined;
+          if (columns[3]) {
+            const statusColumn = columns[3].textContent?.trim().toLowerCase().split(" ")[0].replace(/[^a-zA-Z]/g, '');
+            switch (statusColumn) {
+              case 'permanent':
+              case 'provisional':
+              case 'experimental':
+                status = data.HTTPHeaderStatus[statusColumn];
+                break;
+              case 'obsolete':
+                status = data.HTTPHeaderStatus.obsoleted;
+                break;
+            }
+          }
+
           const specifications: HTTPHeaderSpecification[] = [];
           if (columns[4]) {
             // @ts-ignore
@@ -60,6 +81,7 @@ export const run = async () => {
           const httpHeaderInfo: HTTPHeader = {
             name,
             type,
+            status,
             description: description ? removeExtraSpace(description) : undefined,
             syntax,
             link: row.id ? `${data.link}#${row.id}` : data.link,
@@ -87,7 +109,8 @@ export const run = async () => {
     return httpHeaderDb;
   }, {
     link,
-    HTTPHeaderType
+    HTTPHeaderType,
+    HTTPHeaderStatus
   });
 
   await browser.close();

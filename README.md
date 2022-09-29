@@ -15,6 +15,7 @@
 This is a large database of known HTTP Headers and information about them. It consists of a single, public JSON file and does not include any logic, allowing it to remain as un-opinionated as possible with an API. It aggregates data from the following sources:
 
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+- https://www.iana.org/assignments/http-fields/http-fields.xhtml
 - https://en.wikipedia.org/wiki/List_of_HTTP_header_fields
 
 ## Installation

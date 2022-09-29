@@ -1,9 +1,14 @@
 import * as puppeteer from "puppeteer";
-import {HTTPHeader, HTTPHeaderBrowserInfo, HTTPHeaderDb, HTTPHeaderSpecification, HTTPHeaderType, HTTPHeaderBrowserCompatibility, HTTPHeaderDirective} from "known-http-header-db";
+import {HTTPHeader, HTTPHeaderBrowserInfo, HTTPHeaderStatus, HTTPHeaderDb, HTTPHeaderSpecification, HTTPHeaderType, HTTPHeaderBrowserCompatibility, HTTPHeaderDirective} from "known-http-header-db";
 
 export const run = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  page.on('console', consoleObj => {
+    if (consoleObj.type() === 'log') {
+      console.log(consoleObj.text());
+    }
+  });
   await page.goto('https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers');
 
   const headerLinkElements = await page.$$('#sidebar-quicklinks .toggle > details ol > li > a[href^="/en-US/docs/Web/HTTP/Headers"]:not([href^="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/"]):not([href^="/en-US/docs/Web/HTTP/Headers/Feature-Policy/"])');
@@ -20,7 +25,6 @@ export const run = async () => {
     await page.goto(headerLink, {
       waitUntil: 'networkidle2',
     });
-    console.log(headerLink);
 
     const httpHeader: HTTPHeader = await page.evaluate((data) => {
       const removeExtraSpace = (str: string) => {
@@ -28,6 +32,8 @@ export const run = async () => {
       }
 
       const name = document.querySelector('.main-page-content h1')!.textContent!.trim();
+
+      console.log(data.link, name);
 
       // @ts-ignore
       const description = [...document.querySelector('.main-page-content .section-content').querySelectorAll(':scope > p')]
@@ -39,6 +45,13 @@ export const run = async () => {
       const deprecated = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.deprecated')?.textContent?.trim();
       const nonstandard = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.nonstandard')?.textContent?.trim();
       const warning = document.querySelector('.main-page-content .section-content')?.querySelector('.notecard.warning')?.textContent?.trim();
+
+      let status: HTTPHeaderStatus | undefined;
+      if (experimental != null) {
+        status = data.HTTPHeaderStatus.experimental;
+      } else if (deprecated != null) {
+        status = data.HTTPHeaderStatus.deprecated;
+      }
 
       let type: HTTPHeaderType[] | undefined;
       let forbiddenHeaderName: boolean | undefined;
@@ -157,6 +170,7 @@ export const run = async () => {
       const headerInfo: HTTPHeader = {
         name,
         type,
+        status,
         description: description ? removeExtraSpace(description) : undefined,
         note: note ? removeExtraSpace(note) : undefined,
         syntax,
@@ -165,7 +179,7 @@ export const run = async () => {
         deprecated: deprecated ? removeExtraSpace(deprecated) : undefined,
         nonstandard: nonstandard ? removeExtraSpace(nonstandard) : undefined,
         warning: warning ? removeExtraSpace(warning) : undefined,
-        link: data.headerLink,
+        link: data.link,
         forbiddenHeaderName,
         corsSafeListedRequestHeader,
         corsSafeListedResponseHeader,
@@ -174,10 +188,12 @@ export const run = async () => {
         specifications,
         browserCompatibility
       };
+
       return headerInfo;
     }, {
-      headerLink,
-      HTTPHeaderType
+      link: headerLink,
+      HTTPHeaderType,
+      HTTPHeaderStatus
     });
 
     httpHeadersDb[httpHeader.name.toLowerCase()] = httpHeader;

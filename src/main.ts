@@ -25,6 +25,17 @@ export enum HTTPHeaderType {
 }
 
 /**
+ * HTTP Header Status.
+ */
+export enum HTTPHeaderStatus {
+  permanent = 'permanent',
+  obsoleted = 'obsoleted',
+  provisional = 'provisional',
+  deprecated = 'deprecated',
+  experimental = 'experimental'
+}
+
+/**
  * HTTP Header Database.
  *
  * @example
@@ -359,6 +370,11 @@ export interface HTTPHeader {
   type?: HTTPHeaderType[];
 
   /**
+   * HTTP Header status.
+   */
+  status?: HTTPHeaderStatus;
+
+  /**
    * HTTP Header description.
    */
   description?: string;
@@ -379,22 +395,22 @@ export interface HTTPHeader {
   syntax?: string;
 
   /**
-   * If set, this HTTP Header is experimental. The string represents the documentation description.
+   * If this HTTP Header is experimental, the string represents the documentation description.
    */
   experimental?: string;
 
   /**
-   * If set, this HTTP Header requires a secure context. The string represents the documentation description.
+   * If this HTTP Header requires a secure context, the string represents the documentation description.
    */
   secure?: string;
 
   /**
-   * If set, this HTTP Header is deprecated. The string represents the documentation description.
+   * If this HTTP Header is deprecated, the string represents the documentation description.
    */
   deprecated?: string;
 
   /**
-   * If set, this HTTP Header is non-standard. The string represents the documentation description.
+   * If this HTTP Header is non-standard, the string represents the documentation description.
    */
   nonstandard?: string;
 

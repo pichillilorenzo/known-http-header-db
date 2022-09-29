@@ -32,6 +32,10 @@
 			{
 				"name": "HTTP Strict Transport Security (HSTS) # section-6.1",
 				"link": "https://www.rfc-editor.org/rfc/rfc6797#section-6.1"
+			},
+			{
+				"name": "RFC 6797: HTTP Strict Transport Security (HSTS)",
+				"link": "https://www.iana.org/go/rfc6797"
 			}
 		],
 		"browserCompatibility": [
@@ -94,7 +98,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"x-content-type-options": {
 		"name": "X-Content-Type-Options",
@@ -182,7 +187,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"x-frame-options": {
 		"name": "X-Frame-Options",
@@ -214,6 +220,10 @@
 			{
 				"name": "HTML Standard # the-x-frame-options-header",
 				"link": "https://html.spec.whatwg.org/multipage/browsing-the-web.html#the-x-frame-options-header"
+			},
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/browsing-the-web.html#x-frame-options"
 			}
 		],
 		"browserCompatibility": [
@@ -396,21 +406,8 @@
 				]
 			}
 		],
-		"syntax": {
-			"name": "X-Frame-Options",
-			"type": [
-				"response"
-			],
-			"description": "Clickjacking protection: deny - no rendering within a frame, sameorigin - no rendering if origin mismatch, allow-from - allow from specified location, allowall - non-standard, allow from any location",
-			"syntax": "X-Frame-Options: deny",
-			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Frame-Options",
-			"directives": [],
-			"examples": [
-				"X-Frame-Options: deny"
-			],
-			"specifications": [],
-			"browserCompatibility": []
-		}
+		"status": "permanent",
+		"syntax": "X-Frame-Options: deny"
 	},
 	"x-xss-protection": {
 		"name": "X-XSS-Protection",
@@ -530,6 +527,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept"
 			},
 			{
+				"name": "RFC9110, Section 12.5.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -599,7 +600,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"accept-ch": {
 		"name": "Accept-CH",
@@ -622,6 +624,10 @@
 			{
 				"name": "HTTP Client Hints # section-3.1",
 				"link": "https://www.rfc-editor.org/rfc/rfc8942#section-3.1"
+			},
+			{
+				"name": "RFC 8942, Section 3.1: HTTP Client Hints",
+				"link": "https://www.iana.org/go/rfc8942"
 			},
 			{
 				"name": "8942",
@@ -1408,13 +1414,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"accept-ch-lifetime": {
 		"name": "Accept-CH-Lifetime",
 		"type": [
 			"response"
 		],
+		"status": "deprecated",
 		"description": "The Accept-CH-Lifetime header is set by the server to specify the persistence of the client hint headers it specified using Accept-CH, that the client should include in subsequent requests.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). Accept-CH and Accept-CH-Lifetime headers should be persisted for all secure requests to ensure Client Hints are sent reliably.",
 		"syntax": "Accept-CH-Lifetime: <age>",
@@ -1507,31 +1515,17 @@
 		"directives": [],
 		"specifications": [
 			{
+				"name": "RFC9110, Section 12.5.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			}
 		],
 		"browserCompatibility": [],
-		"syntax": {
-			"name": "Accept-Charset",
-			"type": [
-				"request"
-			],
-			"description": "Character sets that are acceptable.",
-			"syntax": "Accept-Charset: utf-8",
-			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-			"directives": [],
-			"examples": [
-				"Accept-Charset: utf-8"
-			],
-			"specifications": [
-				{
-					"name": "2616",
-					"link": "https://datatracker.ietf.org/doc/html/rfc2616"
-				}
-			],
-			"browserCompatibility": []
-		}
+		"status": "deprecated",
+		"syntax": "Accept-Charset: utf-8"
 	},
 	"accept-encoding": {
 		"name": "Accept-Encoding",
@@ -1581,6 +1575,10 @@
 			{
 				"name": "HTTP Semantics # field.accept-encoding",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept-encoding"
+			},
+			{
+				"name": "RFC9110, Section 12.5.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -1652,7 +1650,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"accept-language": {
 		"name": "Accept-Language",
@@ -1688,6 +1687,10 @@
 			{
 				"name": "HTTP Semantics # field.accept-language",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept-language"
+			},
+			{
+				"name": "RFC9110, Section 12.5.4: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -1763,7 +1766,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"accept-patch": {
 		"name": "Accept-Patch",
@@ -1786,11 +1790,16 @@
 				"link": "https://www.rfc-editor.org/rfc/rfc5789#section-3.1"
 			},
 			{
+				"name": "RFC 5789: PATCH Method for HTTP",
+				"link": "https://www.iana.org/go/rfc5789"
+			},
+			{
 				"name": "5789",
 				"link": "https://datatracker.ietf.org/doc/html/rfc5789"
 			}
 		],
-		"browserCompatibility": []
+		"browserCompatibility": [],
+		"status": "permanent"
 	},
 	"accept-post": {
 		"name": "Accept-Post",
@@ -1810,9 +1819,14 @@
 			{
 				"name": "Linked Data Platform # header-accept-post",
 				"link": "https://www.w3.org/TR/ldp/#header-accept-post"
+			},
+			{
+				"name": "Linked Data Platform 1.0",
+				"link": "https://www.w3.org/TR/ldp"
 			}
 		],
-		"browserCompatibility": []
+		"browserCompatibility": [],
+		"status": "permanent"
 	},
 	"accept-ranges": {
 		"name": "Accept-Ranges",
@@ -1840,6 +1854,10 @@
 			{
 				"name": "HTTP Semantics # field.accept-ranges",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.accept-ranges"
+			},
+			{
+				"name": "RFC9110, Section 14.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -1911,7 +1929,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-allow-credentials": {
 		"name": "Access-Control-Allow-Credentials",
@@ -2002,7 +2021,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-allow-headers": {
 		"name": "Access-Control-Allow-Headers",
@@ -2156,7 +2176,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-allow-methods": {
 		"name": "Access-Control-Allow-Methods",
@@ -2311,7 +2332,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-allow-origin": {
 		"name": "Access-Control-Allow-Origin",
@@ -2411,7 +2433,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-expose-headers": {
 		"name": "Access-Control-Expose-Headers",
@@ -2569,7 +2592,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-max-age": {
 		"name": "Access-Control-Max-Age",
@@ -2660,7 +2684,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-request-headers": {
 		"name": "Access-Control-Request-Headers",
@@ -2747,7 +2772,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"access-control-request-method": {
 		"name": "Access-Control-Request-Method",
@@ -2835,7 +2861,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"age": {
 		"name": "Age",
@@ -2860,6 +2887,10 @@
 			{
 				"name": "HTTP Caching # field.age",
 				"link": "https://httpwg.org/specs/rfc9111.html#field.age"
+			},
+			{
+				"name": "RFC9111, Section 5.1: HTTP Caching",
+				"link": "https://www.iana.org/go/rfc9111"
 			},
 			{
 				"name": "2616",
@@ -2931,7 +2962,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"allow": {
 		"name": "Allow",
@@ -2958,6 +2990,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.allow"
 			},
 			{
+				"name": "RFC9110, Section 10.2.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -2966,7 +3002,8 @@
 				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
-		"browserCompatibility": []
+		"browserCompatibility": [],
+		"status": "permanent"
 	},
 	"alt-svc": {
 		"name": "Alt-Svc",
@@ -2981,6 +3018,10 @@
 			{
 				"name": "HTTP Alternative Services # alt-svc",
 				"link": "https://httpwg.org/specs/rfc7838.html#alt-svc"
+			},
+			{
+				"name": "RFC 7838: HTTP Alternative Services",
+				"link": "https://www.iana.org/go/rfc7838"
 			}
 		],
 		"browserCompatibility": [
@@ -3043,21 +3084,10 @@
 				]
 			}
 		],
-		"type": {
-			"name": "Alt-Svc",
-			"type": [
-				"response"
-			],
-			"description": "A server uses \"Alt-Svc\" header (meaning Alternative Services) to indicate that its resources can also be accessed at a different network location (host or port) or using a different protocol When using HTTP/2, servers should instead send an ALTSVC frame.",
-			"syntax": "Alt-Svc: http/1.1=\"http2.example.com:8001\"; ma=7200",
-			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-			"directives": [],
-			"examples": [
-				"Alt-Svc: http/1.1=\"http2.example.com:8001\"; ma=7200"
-			],
-			"specifications": [],
-			"browserCompatibility": []
-		}
+		"status": "permanent",
+		"type": [
+			"response"
+		]
 	},
 	"authorization": {
 		"name": "Authorization",
@@ -3082,6 +3112,10 @@
 			{
 				"name": "HTTP Semantics # field.authorization",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.authorization"
+			},
+			{
+				"name": "RFC9110, Section 11.6.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -3565,7 +3599,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"cache-control": {
 		"name": "Cache-Control",
@@ -3589,6 +3624,10 @@
 			{
 				"name": "HTTP Immutable Responses # the-immutable-cache-control-extension",
 				"link": "https://httpwg.org/specs/rfc8246.html#the-immutable-cache-control-extension"
+			},
+			{
+				"name": "RFC9111, Section 5.2",
+				"link": "https://www.iana.org/go/rfc9111"
 			},
 			{
 				"name": "2616",
@@ -3845,35 +3884,8 @@
 				]
 			}
 		],
-		"syntax": {
-			"name": "Cache-Control",
-			"type": [
-				"request",
-				"response"
-			],
-			"description": "Used to specify directives that must be obeyed by all caching mechanisms along the request-response chain.",
-			"syntax": "Cache-Control: no-cache",
-			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-			"directives": [],
-			"examples": [
-				"Cache-Control: no-cache"
-			],
-			"specifications": [
-				{
-					"name": "2616",
-					"link": "https://datatracker.ietf.org/doc/html/rfc2616"
-				},
-				{
-					"name": "7231",
-					"link": "https://datatracker.ietf.org/doc/html/rfc7231"
-				},
-				{
-					"name": "7234",
-					"link": "https://datatracker.ietf.org/doc/html/rfc7234"
-				}
-			],
-			"browserCompatibility": []
-		}
+		"status": "permanent",
+		"syntax": "Cache-Control: no-cache"
 	},
 	"clear-site-data": {
 		"name": "Clear-Site-Data",
@@ -3912,6 +3924,10 @@
 			{
 				"name": "Clear Site Data # header",
 				"link": "https://w3c.github.io/webappsec-clear-site-data/#header"
+			},
+			{
+				"name": "Clear Site Data",
+				"link": "https://w3.org/TR/clear-site-data/#header"
 			}
 		],
 		"browserCompatibility": [
@@ -4275,7 +4291,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"connection": {
 		"name": "Connection",
@@ -4306,6 +4323,10 @@
 			{
 				"name": "HTTP Semantics # field.connection",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.connection"
+			},
+			{
+				"name": "RFC9110, Section 7.6.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -4377,7 +4398,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-disposition": {
 		"name": "Content-Disposition",
@@ -4415,6 +4437,10 @@
 			{
 				"name": "Returning Values from Forms: multipart/form-data # section-4.2",
 				"link": "https://www.rfc-editor.org/rfc/rfc7578#section-4.2"
+			},
+			{
+				"name": "RFC 6266: Use of the Content-Disposition Header Field in the Hypertext Transfer Protocol (HTTP)",
+				"link": "https://www.iana.org/go/rfc6266"
 			},
 			{
 				"name": "2616",
@@ -4491,40 +4517,15 @@
 				]
 			}
 		],
-		"syntax": {
-			"name": "Content-Disposition",
-			"type": [
-				"response"
-			],
-			"description": "An opportunity to raise a \"File Download\" dialogue box for a known MIME type with binary format or suggest a filename for dynamic content. Quotes are necessary with special characters.",
-			"syntax": "Content-Disposition: attachment; filename=\"fname.ext\"",
-			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-			"directives": [],
-			"examples": [
-				"Content-Disposition: attachment; filename=\"fname.ext\""
-			],
-			"specifications": [
-				{
-					"name": "2616",
-					"link": "https://datatracker.ietf.org/doc/html/rfc2616"
-				},
-				{
-					"name": "4021",
-					"link": "https://datatracker.ietf.org/doc/html/rfc4021"
-				},
-				{
-					"name": "6266",
-					"link": "https://datatracker.ietf.org/doc/html/rfc6266"
-				}
-			],
-			"browserCompatibility": []
-		}
+		"status": "permanent",
+		"syntax": "Content-Disposition: attachment; filename=\"fname.ext\""
 	},
 	"content-dpr": {
 		"name": "Content-DPR",
 		"type": [
 			"response"
 		],
+		"status": "deprecated",
 		"description": "The Content-DPR response header is used to confirm the image device to pixel ratio in requests where the screen DPR client hint was used to select an image resource. If the DPR client hint is used to select an image the server must specify Content-DPR in the response. If the value in Content-DPR is different from the DPR value in the request (i.e. image DPR is not the same as screen DPR) then the client must use the Content-DPR for determining intrinsic image size and scaling the image. If the Content-DPR header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Content-DPR was removed from the client hints specification in draft-ietf-httpbis-client-hints-07. The Responsive Image Client Hints spec proposes to replace this header by specifying intrinsic resolution/dimensions in EXIF metadata.",
 		"syntax": "Content-DPR: <number>",
@@ -4641,6 +4642,10 @@
 			{
 				"name": "HTTP Semantics # field.content-encoding",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-encoding"
+			},
+			{
+				"name": "RFC9110, Section 8.4: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -4772,7 +4777,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-language": {
 		"name": "Content-Language",
@@ -4799,6 +4805,10 @@
 			{
 				"name": "HTTP Semantics # field.content-language",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-language"
+			},
+			{
+				"name": "RFC9110, Section 8.5: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -4874,7 +4884,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-length": {
 		"name": "Content-Length",
@@ -4900,6 +4911,10 @@
 			{
 				"name": "HTTP Semantics # field.content-length",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-length"
+			},
+			{
+				"name": "RFC9110, Section 8.6: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -5035,7 +5050,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-location": {
 		"name": "Content-Location",
@@ -5060,6 +5076,10 @@
 			{
 				"name": "HTTP Semantics # field.content-location",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-location"
+			},
+			{
+				"name": "RFC9110, Section 8.7: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -5135,7 +5155,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-range": {
 		"name": "Content-Range",
@@ -5172,6 +5193,10 @@
 			{
 				"name": "HTTP Semantics # field.content-range",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-range"
+			},
+			{
+				"name": "RFC9110, Section 14.4: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -5243,7 +5268,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-security-policy": {
 		"name": "Content-Security-Policy",
@@ -5416,6 +5442,10 @@
 			{
 				"name": "Content Security Policy Level 3 # csp-header",
 				"link": "https://w3c.github.io/webappsec-csp/#csp-header"
+			},
+			{
+				"name": "Content Security Policy Level 3",
+				"link": "https://www.w3.org/TR/CSP/#csp-header"
 			}
 		],
 		"browserCompatibility": [
@@ -7652,7 +7682,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-security-policy-report-only": {
 		"name": "Content-Security-Policy-Report-Only",
@@ -7672,6 +7703,10 @@
 			{
 				"name": "Content Security Policy Level 3 # cspro-header",
 				"link": "https://w3c.github.io/webappsec-csp/#cspro-header"
+			},
+			{
+				"name": "Content Security Policy Level 3",
+				"link": "https://www.w3.org/TR/CSP/#cspro-header"
 			}
 		],
 		"browserCompatibility": [
@@ -7734,7 +7769,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"content-type": {
 		"name": "Content-Type",
@@ -7774,6 +7810,10 @@
 			{
 				"name": "HTTP Semantics # field.content-type",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.content-type"
+			},
+			{
+				"name": "RFC9110, Section 8.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -7849,7 +7889,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"cookie": {
 		"name": "Cookie",
@@ -7874,6 +7915,10 @@
 			{
 				"name": "HTTP State Management Mechanism # cookie",
 				"link": "https://httpwg.org/specs/rfc6265.html#cookie"
+			},
+			{
+				"name": "RFC 6265: HTTP State Management Mechanism",
+				"link": "https://www.iana.org/go/rfc6265"
 			},
 			{
 				"name": "2965",
@@ -7945,7 +7990,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"cross-origin-embedder-policy": {
 		"name": "Cross-Origin-Embedder-Policy",
@@ -7971,6 +8017,10 @@
 			{
 				"name": "HTML Standard # coep",
 				"link": "https://html.spec.whatwg.org/multipage/origin.html#coep"
+			},
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/origin.html#cross-origin-embedder-policy"
 			}
 		],
 		"browserCompatibility": [
@@ -8094,7 +8144,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"cross-origin-opener-policy": {
 		"name": "Cross-Origin-Opener-Policy",
@@ -8124,6 +8175,10 @@
 			{
 				"name": "HTML Standard # the-coop-headers",
 				"link": "https://html.spec.whatwg.org/multipage/origin.html#the-coop-headers"
+			},
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/origin.html#cross-origin-opener-policy-2"
 			}
 		],
 		"browserCompatibility": [
@@ -8187,7 +8242,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"cross-origin-resource-policy": {
 		"name": "Cross-Origin-Resource-Policy",
@@ -8269,7 +8325,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"date": {
 		"name": "Date",
@@ -8324,6 +8381,10 @@
 			{
 				"name": "HTTP Semantics # field.date",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.date"
+			},
+			{
+				"name": "RFC9110, Section 6.6.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -8403,13 +8464,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"device-memory": {
 		"name": "Device-Memory",
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Device-Memory device client hint request header field indicates the approximate amount of available RAM on the client device. The header is part of the Device Memory API.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the Device-Memory header from the client, by sending the Accept-CH response header. Servers that opt in to the Device-Memory client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request.",
 		"syntax": "Device-Memory: <number>",
@@ -8522,6 +8585,10 @@
 			{
 				"name": "Digest Headers # section-3",
 				"link": "https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-digest-headers-05#section-3"
+			},
+			{
+				"name": "RFC 3230: Instance Digests in HTTP",
+				"link": "https://www.iana.org/go/rfc3230"
 			}
 		],
 		"browserCompatibility": [
@@ -8574,13 +8641,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"dnt": {
 		"name": "DNT",
 		"type": [
 			"request"
 		],
+		"status": "deprecated",
 		"description": "The DNT (Do Not Track) request header indicates the user's tracking preference. It lets users indicate whether they would prefer privacy rather than personalized content.",
 		"syntax": "DNT: 0\nDNT: 1\nDNT: null",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
@@ -8678,6 +8747,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Downlink Client hint request header field provides the approximate bandwidth of the client's connection to the server, in Mbps. The Downlink value is given in Mbps and rounded to the nearest 25 kilobits per second to prevent fingerprinting; There are many other mechanisms an attacker might use to obtain similar information. The hint allows a server to choose what information is sent based on the network bandwidth. For example, a server might choose to send smaller versions of images and other resources on low bandwidth networks.",
 		"note": "Note: The Vary header is used in responses to indicate that a different resource is sent for every different value of the header (see HTTP Caching > Varying responses). Even if Downlink is used to configure what resources are sent, consider omitting it in the Vary header — it is likely to change often, which effectively makes the resource uncacheable.",
 		"syntax": "Downlink: <number>",
@@ -8764,6 +8834,7 @@
 		"type": [
 			"request"
 		],
+		"status": "deprecated",
 		"description": "The DPR device client hint request header provides the client device pixel ratio. This ratio is the number of physical device pixels corresponding to every CSS pixel. The hint is useful when selecting image sources that best correspond to a screen's pixel density. This is similar to the role played by x descriptors in the <img> srcset attribute to allow user agents to select a preferred image. If a server uses the DPR hint to choose which resource is sent in a response, the response must include the Content-DPR header. The client must use the value in Content-DPR for layout if it differs from the value in the request's DPR header. If the DPR header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the DPR header from the client, by sending the Accept-CH response header. Servers that opt in to the DPR client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request. DPR was removed from the client hints specification in draft-ietf-httpbis-client-hints-07. The proposed replacement is Sec-CH-DPR (Responsive Image Client Hints).",
 		"syntax": "DPR: <number>",
@@ -8852,6 +8923,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Early-Data header is set by an intermediary to indicate that the request has been conveyed in TLS early data, and also indicates that the intermediary understands the 425 (Too Early) status code. The Early-Data header is not set by the originator of the request (i.e., a browser).",
 		"syntax": "Early-Data: 1",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
@@ -8865,6 +8937,10 @@
 			{
 				"name": "Using Early Data in HTTP # header",
 				"link": "https://httpwg.org/specs/rfc8470.html#header"
+			},
+			{
+				"name": "RFC 8470: Using Early Data in HTTP",
+				"link": "https://www.iana.org/go/rfc8470"
 			}
 		],
 		"browserCompatibility": [
@@ -8926,6 +9002,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The ECT Client hint request header field indicates the effective connection type: slow-2g, 2g, 3g, 4g. The value represents the \"network profile\" that best matches the connection's latency and bandwidth, rather than the actual mechanisms used for transferring the data. For example, 2g might be used to represent a slow Wi-Fi connection with high latency and low bandwidth, while 4g might be used to represent a fast fibre-based broadband network. The hint allows a server to choose what information is sent based on the broad characteristics of the network. For example, a server might choose to send smaller versions of images and other resources on less capable connections. The value might also be used as a starting point for determining what information is sent, which is further refined using information in RTT and Downlink hints.",
 		"note": "Note: A server that specifies ECT in Accept-CH may also specify it in Vary to indicate that responses should be cached for different ECT values.",
 		"syntax": "ECT: <value>",
@@ -9036,6 +9113,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.etag"
 			},
 			{
+				"name": "RFC9110, Section 8.8.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -9105,7 +9186,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"expect": {
 		"name": "Expect",
@@ -9129,6 +9211,10 @@
 			{
 				"name": "HTTP Semantics # field.expect",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.expect"
+			},
+			{
+				"name": "RFC9110, Section 10.1.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -9189,13 +9275,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"expect-ct": {
 		"name": "Expect-CT",
 		"type": [
 			"response"
 		],
+		"status": "deprecated",
 		"description": "The Expect-CT header lets sites opt in to reporting and/or enforcement of Certificate Transparency requirements. Certificate Transparency (CT) aims to prevent the use of misissued certificates for that site from going unnoticed. Only Google Chrome and other Chromium-based browsers implemented Expect-CT, and Chromium has deprecated the header from version 107, because Chromium now enforces CT by default. See the Chrome Platform Status update. CT requirements can be satisfied via any one of the following mechanisms:",
 		"note": "Note: When a site enables the Expect-CT header, they are requesting that the browser check that any certificate for that site appears in public CT logs.",
 		"syntax": "Expect-CT: report-uri=\"<uri>\",\n           enforce,\n           max-age=<age>",
@@ -9223,6 +9311,10 @@
 			{
 				"name": "Expect-CT # section-2.1",
 				"link": "https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-expect-ct-08#section-2.1"
+			},
+			{
+				"name": "RFC9163: Expect-CT Extension for HTTP",
+				"link": "https://www.iana.org/go/rfc9163"
 			}
 		],
 		"browserCompatibility": [
@@ -9315,6 +9407,10 @@
 				"link": "https://httpwg.org/specs/rfc9111.html#field.expires"
 			},
 			{
+				"name": "RFC9111, Section 5.3: HTTP Caching",
+				"link": "https://www.iana.org/go/rfc9111"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -9392,7 +9488,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"feature-policy": {
 		"name": "Feature-Policy",
@@ -11394,11 +11491,16 @@
 				"link": "https://www.rfc-editor.org/rfc/rfc7239#section-4"
 			},
 			{
+				"name": "RFC 7239: Forwarded HTTP Extension",
+				"link": "https://www.iana.org/go/rfc7239"
+			},
+			{
 				"name": "7239",
 				"link": "https://datatracker.ietf.org/doc/html/rfc7239"
 			}
 		],
-		"browserCompatibility": []
+		"browserCompatibility": [],
+		"status": "permanent"
 	},
 	"from": {
 		"name": "From",
@@ -11424,6 +11526,10 @@
 			{
 				"name": "HTTP Semantics # field.from",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.from"
+			},
+			{
+				"name": "RFC9110, Section 10.1.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -11507,7 +11613,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"host": {
 		"name": "Host",
@@ -11537,6 +11644,10 @@
 			{
 				"name": "HTTP Semantics # field.host",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.host"
+			},
+			{
+				"name": "RFC9110, Section 7.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			}
 		],
 		"browserCompatibility": [
@@ -11600,7 +11711,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"if-match": {
 		"name": "If-Match",
@@ -11629,6 +11741,10 @@
 			{
 				"name": "HTTP Semantics # field.if-match",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-match"
+			},
+			{
+				"name": "RFC9110, Section 13.1.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -11700,7 +11816,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"if-modified-since": {
 		"name": "If-Modified-Since",
@@ -11753,6 +11870,10 @@
 			{
 				"name": "HTTP Semantics # field.if-modified-since",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-modified-since"
+			},
+			{
+				"name": "RFC9110, Section 13.1.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -11824,7 +11945,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"if-none-match": {
 		"name": "If-None-Match",
@@ -11853,6 +11975,10 @@
 			{
 				"name": "HTTP Semantics # field.if-none-match",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-none-match"
+			},
+			{
+				"name": "RFC9110, Section 13.1.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -11924,7 +12050,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"if-range": {
 		"name": "If-Range",
@@ -11981,6 +12108,10 @@
 			{
 				"name": "HTTP Semantics # field.if-range",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-range"
+			},
+			{
+				"name": "RFC9110, Section 13.1.5: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -12056,7 +12187,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"if-unmodified-since": {
 		"name": "If-Unmodified-Since",
@@ -12109,6 +12241,10 @@
 			{
 				"name": "HTTP Semantics # field.if-unmodified-since",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.if-unmodified-since"
+			},
+			{
+				"name": "RFC9110, Section 13.1.4: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -12180,7 +12316,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"keep-alive": {
 		"name": "Keep-Alive",
@@ -12207,6 +12344,10 @@
 			{
 				"name": "HTTP/1.1 # compatibility.with.http.1.0.persistent.connections",
 				"link": "https://httpwg.org/specs/rfc9112.html#compatibility.with.http.1.0.persistent.connections"
+			},
+			{
+				"name": "RFC 2068: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2068"
 			}
 		],
 		"browserCompatibility": [
@@ -12270,13 +12411,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"large-allocation": {
 		"name": "Large-Allocation",
 		"type": [
 			"response"
 		],
+		"status": "deprecated",
 		"description": "The non-standard Large-Allocation response header tells the browser that the page being loaded is going to want to perform a large allocation. It's not implemented in current versions of any browser, but is harmless to send to any browser. WebAssembly or asm.js applications can use large contiguous blocks of allocated memory. For complex games, for example, these allocations can be quite large, sometimes as large as 1GB. The Large-Allocation tells the browser that the web content in the to-be-loaded page is going to want to perform a large contiguous memory allocation and the browser can react to this header by starting a dedicated process for the to-be-loaded document, for example.",
 		"syntax": "Large-Allocation: 0\nLarge-Allocation: <megabytes>",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
@@ -12415,6 +12558,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.last-modified"
 			},
 			{
+				"name": "RFC9110, Section 8.8.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -12484,7 +12631,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"link": {
 		"name": "Link",
@@ -12499,31 +12647,19 @@
 		"directives": [],
 		"specifications": [
 			{
+				"name": "RFC 8288: Web Linking",
+				"link": "https://www.iana.org/go/rfc8288"
+			},
+			{
 				"name": "5988",
 				"link": "https://datatracker.ietf.org/doc/html/rfc5988"
 			}
 		],
 		"browserCompatibility": [],
-		"type": {
-			"name": "Link",
-			"type": [
-				"response"
-			],
-			"description": "Used to express a typed relationship with another resource, where the relation type is defined by RFC 5988",
-			"syntax": "Link: </feed>; rel=\"alternate\"",
-			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-			"directives": [],
-			"examples": [
-				"Link: </feed>; rel=\"alternate\""
-			],
-			"specifications": [
-				{
-					"name": "5988",
-					"link": "https://datatracker.ietf.org/doc/html/rfc5988"
-				}
-			],
-			"browserCompatibility": []
-		}
+		"status": "permanent",
+		"type": [
+			"response"
+		]
 	},
 	"location": {
 		"name": "Location",
@@ -12549,6 +12685,10 @@
 			{
 				"name": "HTTP Semantics # field.location",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.location"
+			},
+			{
+				"name": "RFC9110, Section 10.2.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2068",
@@ -12624,7 +12764,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"max-forwards": {
 		"name": "Max-Forwards",
@@ -12646,6 +12787,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.max-forwards"
 			},
 			{
+				"name": "RFC9110, Section 7.6.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -12654,13 +12799,15 @@
 				"link": "https://datatracker.ietf.org/doc/html/rfc7231"
 			}
 		],
-		"browserCompatibility": []
+		"browserCompatibility": [],
+		"status": "permanent"
 	},
 	"nel": {
 		"name": "NEL",
 		"type": [
 			"response"
 		],
+		"status": "experimental",
 		"description": "The HTTP NEL response header is used to configure network request logging.",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/NEL",
@@ -12732,21 +12879,7 @@
 				]
 			}
 		],
-		"syntax": {
-			"name": "NEL",
-			"type": [
-				"response"
-			],
-			"description": "Used to configure network request logging.",
-			"syntax": "NEL: { \"report_to\": \"name_of_reporting_group\", \"max_age\": 12345, \"include_subdomains\": false, \"success_fraction\": 0.0, \"failure_fraction\": 1.0 }",
-			"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-			"directives": [],
-			"examples": [
-				"NEL: { \"report_to\": \"name_of_reporting_group\", \"max_age\": 12345, \"include_subdomains\": false, \"success_fraction\": 0.0, \"failure_fraction\": 1.0 }"
-			],
-			"specifications": [],
-			"browserCompatibility": []
-		}
+		"syntax": "NEL: { \"report_to\": \"name_of_reporting_group\", \"max_age\": 12345, \"include_subdomains\": false, \"success_fraction\": 0.0, \"failure_fraction\": 1.0 }"
 	},
 	"origin": {
 		"name": "Origin",
@@ -12788,6 +12921,10 @@
 			{
 				"name": "Fetch Standard # origin-header",
 				"link": "https://fetch.spec.whatwg.org/#origin-header"
+			},
+			{
+				"name": "RFC 6454: The Web Origin Concept",
+				"link": "https://www.iana.org/go/rfc6454"
 			},
 			{
 				"name": "6454",
@@ -12855,7 +12992,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"pragma": {
 		"name": "Pragma",
@@ -12863,6 +13001,7 @@
 			"request",
 			"response"
 		],
+		"status": "deprecated",
 		"description": "The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. This header serves for backwards compatibility with the HTTP/1.0 caches that do not have a Cache-Control HTTP/1.1 header.",
 		"note": "Note: Pragma is not specified for HTTP responses and is therefore not a reliable replacement for the general HTTP/1.1 Cache-Control header, although its behavior is the same as Cache-Control: no-cache if the Cache-Control header field is omitted in a request. Use Pragma only for backwards compatibility with HTTP/1.0 clients.",
 		"syntax": "Pragma: no-cache",
@@ -12883,6 +13022,10 @@
 			{
 				"name": "HTTP Caching # field.pragma",
 				"link": "https://httpwg.org/specs/rfc9111.html#field.pragma"
+			},
+			{
+				"name": "RFC9111, Section 5.4: HTTP Caching",
+				"link": "https://www.iana.org/go/rfc9111"
 			},
 			{
 				"name": "2616",
@@ -12985,6 +13128,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.proxy-authenticate"
 			},
 			{
+				"name": "RFC9110, Section 11.7.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2068",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2068"
 			},
@@ -13056,7 +13203,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"proxy-authorization": {
 		"name": "Proxy-Authorization",
@@ -13087,6 +13235,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.proxy-authorization"
 			},
 			{
+				"name": "RFC9110, Section 11.7.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -13095,7 +13247,8 @@
 				"link": "https://datatracker.ietf.org/doc/html/rfc7235"
 			}
 		],
-		"browserCompatibility": []
+		"browserCompatibility": [],
+		"status": "permanent"
 	},
 	"range": {
 		"name": "Range",
@@ -13133,6 +13286,10 @@
 			{
 				"name": "HTTP Semantics # field.range",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.range"
+			},
+			{
+				"name": "RFC9110, Section 14.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -13204,7 +13361,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"referer": {
 		"name": "Referer",
@@ -13230,6 +13388,10 @@
 			{
 				"name": "HTTP Semantics # field.referer",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.referer"
+			},
+			{
+				"name": "RFC9110, Section 10.1.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			}
 		],
 		"browserCompatibility": [
@@ -13353,7 +13515,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"referrer-policy": {
 		"name": "Referrer-Policy",
@@ -13737,6 +13900,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.retry-after"
 			},
 			{
+				"name": "RFC9110, Section 10.2.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -13798,13 +13965,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"rtt": {
 		"name": "RTT",
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The RTT Client hint request header field provides the approximate round trip time on the application layer, in milliseconds. The RTT hint, unlike transport layer RTT, includes server processing time. The RTT value is rounded to the nearest 25 milliseconds to prevent fingerprinting; There are many other mechanisms an attacker might use to obtain similar round-trip information. The hint allows a server to choose what information is sent based on the network responsiveness/latency. For example, it might choose to send fewer resources.",
 		"note": "Note: The Vary header is used in responses to indicate that a different resource is sent for every different value of the header (see HTTP Caching > Varying responses). Even if RTT is used to configure what resources are sent consider omitting it in the Vary header — it is likely to change often, which effectively makes the resource uncacheable.",
 		"syntax": "RTT: <number>",
@@ -13891,6 +14060,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Save-Data network client hint request header field is a boolean which indicates the client's preference for reduced data usage. This could be for reasons such as high transfer costs, slow connection speeds, etc. Save-Data is a low entropy hint, and hence may be sent by the client even if not requested by the server using an Accept-CH response header. Further, it should be used to reduce data sent to the client irrespective of the values of other client hints that indicate network capability, like Downlink and RTT. A value of On indicates explicit user opt-in into a reduced data usage mode on the client, and when communicated to origins allows them to deliver alternative content to reduce the data downloaded such as smaller image and video resources, different markup and styling, disabled polling and automatic updates, and so on.",
 		"note": "Note: Disabling HTTP/2 Server Push (RFC 7540, section 8.2: Server Push) might be desirable too for reducing data downloads.",
 		"syntax": "Save-Data: <sd-token>",
@@ -13979,6 +14149,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA user agent client hint request header provides the user-agent's branding and significant version information. The Sec-CH-UA header provides the brand and significant version for each brand associated with the browser in a comma-separated list. A brand is a commercial name for the user agent like: Chromium, Opera, Google Chrome, Microsoft Edge, Firefox, and Safari. A user agent might have several associated brands. For example, Opera, Chrome, and Edge are all based on Chromium, and will provide both brands in the Sec-CH-UA header. The significant version is the \"marketing\" version identifier that is used to distinguish between major releases of the brand. For example a Chromium build with full version number \"96.0.4664.45\" has a significant version number of \"96\". The header therefore allows the server to customize its response based on both shared brands and on particular customizations in their respective versions. Sec-CH-UA is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default, without the server opting in by sending Accept-CH. The header may include \"fake\" brands in any position and with any name. This is a feature designed to prevent servers from rejecting unknown user agents outright, forcing user agents to lie about their brand identity.",
 		"note": "Note: Sec-CH-UA-Full-Version-List is the same as Sec-CH-UA, but includes the full version number rather than the significant version number for each brand.",
 		"syntax": "Sec-CH-UA: \"<brand>\";v=\"<significant version>\", ...",
@@ -14076,6 +14247,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA-Arch user agent client hint request header provides the user-agent's underlying CPU architecture, such as ARM or x86. This might be used by a server, for example, to select and offer the correct binary format of an executable for a user to download.",
 		"syntax": "Sec-CH-UA-Arch: <arch>",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
@@ -14166,6 +14338,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA-Bitness user agent client hint request header provides the \"bitness\" of the user-agent's underlying CPU architecture. This is the size in bits of an integer or memory address—typically 64 or 32 bits. This might be used by a server, for example, to select and offer the correct binary format of an executable for a user to download.",
 		"syntax": "Sec-CH-UA-Bitness: <bitness>",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
@@ -14256,6 +14429,7 @@
 		"type": [
 			"request"
 		],
+		"status": "deprecated",
 		"description": "The Sec-CH-UA-Full-Version user agent client hint request header provides the user-agent's full version string.",
 		"note": "Note: This is being replaced by the Sec-CH-UA-Full-Version-List.",
 		"syntax": "Sec-CH-UA-Full-Version: <version>",
@@ -14347,6 +14521,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA-Full-Version-List user agent client hint request header provides the user-agent's branding and full version information. The Sec-CH-UA-Full-Version-List header provides the brand and full version information for each brand associated with the browser, in a comma-separated list. A brand is a commercial name for the user agent like: Chromium, Opera, Google Chrome, Microsoft Edge, Firefox, and Safari. A user agent might have several associated brands. For example, Opera, Chrome, and Edge are all based on Chromium, and will provide both brands in the Sec-CH-UA-Full-Version-List header. The header therefore allows the server to customize its response based on both shared brands and on particular customizations in their specific respective builds. The header may include \"fake\" brands in any position and with any name. This is a feature designed to prevent servers from rejecting unknown user agents outright, forcing user agents to lie about their brand identity.",
 		"note": "Note: This is similar to Sec-CH-UA, but includes the full version number instead of the significant version number for each brand.",
 		"syntax": "Sec-CH-UA-Full-Version-List: \"<brand>\";v=\"<full version>\", ...",
@@ -14442,6 +14617,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA-Mobile user agent client hint request header indicates whether the browser is on a mobile device. It can also be used by a desktop browser to indicate a preference for a \"mobile\" user experience. Sec-CH-UA-Mobile is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default, without the server opting in by sending Accept-CH.",
 		"syntax": "Sec-CH-UA-Mobile: <boolean>",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
@@ -14532,6 +14708,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA-Model user agent client hint request header indicates the device model on which the browser is running.",
 		"syntax": "Sec-CH-UA-Model: <device-version>",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
@@ -14622,6 +14799,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA-Platform user agent client hint request header provides the platform or operating system on which the user agent is running. For example: \"Windows\" or \"Android\". Sec-CH-UA-Platform is a low entropy hint. Unless blocked by a user agent permission policy, it is sent by default (without the server opting in by sending Accept-CH).",
 		"syntax": "Sec-CH-UA-Platform: <platform>",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
@@ -14711,6 +14889,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-CH-UA-Platform-Version user agent client hint request header provides the version of the operating system on which the user agent is running.",
 		"syntax": "Sec-CH-UA-Platform-Version: <version>",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
@@ -15258,6 +15437,7 @@
 		"type": [
 			"request"
 		],
+		"status": "experimental",
 		"description": "The Sec-GPC (Global Privacy Control) request header indicates whether the user consents to a website or service selling or sharing their personal information with third parties.",
 		"experimental": "Experimental: This is an experimental technologyCheck the Browser compatibility table carefully before using this in production.",
 		"nonstandard": "Non-standard: This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future.",
@@ -15265,7 +15445,12 @@
 		"forbiddenHeaderName": true,
 		"examples": [],
 		"directives": [],
-		"specifications": [],
+		"specifications": [
+			{
+				"name": "Global Privacy Control (GPC)",
+				"link": "https://globalprivacycontrol.github.io/gpc-spec/"
+			}
+		],
 		"browserCompatibility": [
 			{
 				"feature": "Sec-GPC",
@@ -15347,8 +15532,14 @@
 				"description": "The server takes the value of the Sec-WebSocket-Key sent in the handshake request, appends 258EAFA5-E914-47DA-95CA-C5AB0DC85B11, takes SHA-1 of the new value, and is then base64 encoded."
 			}
 		],
-		"specifications": [],
-		"browserCompatibility": []
+		"specifications": [
+			{
+				"name": "RFC 6455: The WebSocket Protocol",
+				"link": "https://www.iana.org/go/rfc6455"
+			}
+		],
+		"browserCompatibility": [],
+		"status": "permanent"
 	},
 	"server": {
 		"name": "Server",
@@ -15373,6 +15564,10 @@
 			{
 				"name": "HTTP Semantics # field.server",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.server"
+			},
+			{
+				"name": "RFC9110, Section 10.2.4: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2068",
@@ -15448,7 +15643,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"server-timing": {
 		"name": "Server-Timing",
@@ -15465,6 +15661,10 @@
 			{
 				"name": "Server Timing # the-server-timing-header-field",
 				"link": "https://w3c.github.io/server-timing/#the-server-timing-header-field"
+			},
+			{
+				"name": "Server Timing",
+				"link": "https://www.w3.org/TR/server-timing/"
 			}
 		],
 		"browserCompatibility": [
@@ -15526,7 +15726,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"service-worker-navigation-preload": {
 		"name": "Service-Worker-Navigation-Preload",
@@ -15633,6 +15834,10 @@
 			{
 				"name": "HTTP State Management Mechanism # sane-set-cookie",
 				"link": "https://httpwg.org/specs/rfc6265.html#sane-set-cookie"
+			},
+			{
+				"name": "RFC 6265: HTTP State Management Mechanism",
+				"link": "https://www.iana.org/go/rfc6265"
 			},
 			{
 				"name": "6265",
@@ -16300,7 +16505,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"sourcemap": {
 		"name": "SourceMap",
@@ -16430,6 +16636,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.te"
 			},
 			{
+				"name": "RFC9110, Section 10.1.4: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -16499,7 +16709,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"timing-allow-origin": {
 		"name": "Timing-Allow-Origin",
@@ -16529,6 +16740,10 @@
 			{
 				"name": "Resource Timing Level 2 # sec-timing-allow-origin",
 				"link": "https://w3c.github.io/resource-timing/#sec-timing-allow-origin"
+			},
+			{
+				"name": "Resource Timing Level 1",
+				"link": "https://www.w3.org/TR/resource-timing-1/#timing-allow-origin"
 			}
 		],
 		"browserCompatibility": [
@@ -16592,13 +16807,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "provisional"
 	},
 	"tk": {
 		"name": "Tk",
 		"type": [
 			"response"
 		],
+		"status": "deprecated",
 		"description": "The Tk response header indicates the tracking status that applied to the corresponding request.",
 		"syntax": "Tk: !  (under construction)\nTk: ?  (dynamic)\nTk: G  (gateway or multiple parties)\nTk: N  (not tracking)\nTk: T  (tracking)\nTk: C  (tracking with consent)\nTk: P  (potential consent)\nTk: D  (disregarding DNT)\nTk: U  (updated)",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
@@ -16734,6 +16951,10 @@
 				"link": "https://httpwg.org/specs/rfc9112.html#chunked.trailer.section"
 			},
 			{
+				"name": "RFC9110, Section 6.6.2: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -16803,7 +17024,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"transfer-encoding": {
 		"name": "Transfer-Encoding",
@@ -16841,6 +17063,10 @@
 			{
 				"name": "HTTP/1.1 # field.transfer-encoding",
 				"link": "https://httpwg.org/specs/rfc9112.html#field.transfer-encoding"
+			},
+			{
+				"name": "RFC9112, Section 6.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9112"
 			},
 			{
 				"name": "2616",
@@ -16912,7 +17138,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"upgrade": {
 		"name": "Upgrade",
@@ -16948,6 +17175,10 @@
 			{
 				"name": "HTTP/2 # informational-responses",
 				"link": "https://httpwg.org/specs/rfc9113.html#informational-responses"
+			},
+			{
+				"name": "RFC9110, Section 7.8: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -17017,7 +17248,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"upgrade-insecure-requests": {
 		"name": "Upgrade-Insecure-Requests",
@@ -17136,6 +17368,10 @@
 				"link": "https://httpwg.org/specs/rfc9110.html#field.user-agent"
 			},
 			{
+				"name": "RFC9110, Section 10.1.5: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			},
+			{
 				"name": "2616",
 				"link": "https://datatracker.ietf.org/doc/html/rfc2616"
 			},
@@ -17209,7 +17445,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"vary": {
 		"name": "Vary",
@@ -17238,6 +17475,10 @@
 			{
 				"name": "HTTP Semantics # field.vary",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.vary"
+			},
+			{
+				"name": "RFC9110, Section 12.5.5: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2068",
@@ -17313,7 +17554,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"via": {
 		"name": "Via",
@@ -17351,6 +17593,10 @@
 			{
 				"name": "HTTP Semantics # field.via",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.via"
+			},
+			{
+				"name": "RFC9110, Section 7.6.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2616",
@@ -17422,13 +17668,15 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"viewport-width": {
 		"name": "Viewport-Width",
 		"type": [
 			"request"
 		],
+		"status": "deprecated",
 		"description": "The Viewport-Width device client hint request header provides the client's layout viewport width in CSS pixels. The value is rounded up to the smallest following integer (i.e. ceiling value). The hint can be used with other screen-specific hints to deliver images optimized for a specific screen size, or to omit resources that are not needed for a particular screen width. If the Viewport-Width header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the Viewport-Width header from the client, by sending the Accept-CH response header. Servers that opt in to the Viewport-Width client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request. Viewport-Width was removed from the original client hints specification in draft-ietf-httpbis-client-hints-07. The proposed replacement is Sec-CH-Viewport-Width (Responsive Image Client Hints).",
 		"syntax": "Viewport-Width: <number>",
@@ -17538,6 +17786,10 @@
 			{
 				"name": "Digest Headers # section-4",
 				"link": "https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-digest-headers-05#section-4"
+			},
+			{
+				"name": "RFC 3230: Instance Digests in HTTP",
+				"link": "https://www.iana.org/go/rfc3230"
 			}
 		],
 		"browserCompatibility": [
@@ -17590,7 +17842,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"warning": {
 		"name": "Warning",
@@ -17598,6 +17851,7 @@
 			"request",
 			"response"
 		],
+		"status": "deprecated",
 		"description": "The Warning HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response. Warning header fields can, in general, be applied to any message. However, some warn-codes are specific to caches and can only be applied to response messages.",
 		"syntax": "Warning: <warn-code> <warn-agent> <warn-text> [<warn-date>]",
 		"deprecated": "Deprecated: This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the compatibility table at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.",
@@ -17629,6 +17883,10 @@
 			{
 				"name": "HTTP Caching # field.warning",
 				"link": "https://httpwg.org/specs/rfc9111.html#field.warning"
+			},
+			{
+				"name": "RFC9111, Section 5.5: HTTP Caching",
+				"link": "https://www.iana.org/go/rfc9111"
 			},
 			{
 				"name": "2616",
@@ -17707,6 +17965,7 @@
 		"type": [
 			"request"
 		],
+		"status": "deprecated",
 		"description": "The Width device client hint request header field indicates the desired resource width in physical pixels — the intrinsic size of an image. The provided pixel value is a number rounded to the smallest following integer (i.e. ceiling value). The hint is particularly useful because it allows the client to request a resource that is optimal for both the screen and the layout: taking into account both the density-corrected width of the screen and the image's extrinsic size within the layout. If the desired resource width is not known at the time of the request or the resource does not have a display width, the Width header field can be omitted. If the Width header appears more than once in a message the last occurrence is used.",
 		"note": "Note: Client Hints are accessible only on secure origins (via TLS). A server has to opt in to receive the Width header from the client, by sending the Accept-CH response header. Servers that opt in to the Width client hint will typically also specify it in the Vary header. This informs caches that the server may send different responses based on the header value in a request. Width was removed from the client hints specification in draft-ietf-httpbis-client-hints-07. The proposed replacement is Sec-CH-Width (Responsive Image Client Hints).",
 		"syntax": "Width: <number>",
@@ -17820,6 +18079,10 @@
 			{
 				"name": "HTTP Semantics # field.www-authenticate",
 				"link": "https://httpwg.org/specs/rfc9110.html#field.www-authenticate"
+			},
+			{
+				"name": "RFC9110, Section 11.6.1: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
 			},
 			{
 				"name": "2068",
@@ -18303,7 +18566,8 @@
 					}
 				]
 			}
-		]
+		],
+		"status": "permanent"
 	},
 	"x-dns-prefetch-control": {
 		"name": "X-DNS-Prefetch-Control",
@@ -18463,58 +18727,475 @@
 	},
 	"a-im": {
 		"name": "A-IM",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"A-IM: feed"
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 3229: Delta encoding in HTTP",
+				"link": "https://www.iana.org/go/rfc3229"
+			},
+			{
+				"name": "3229",
+				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
+			}
+		],
+		"browserCompatibility": [],
 		"type": [
 			"request"
 		],
 		"description": "Acceptable instance-manipulations for the request.",
-		"syntax": "A-IM: feed",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"syntax": "A-IM: feed"
+	},
+	"accept-additions": {
+		"name": "Accept-Additions",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
 		"directives": [],
-		"examples": [
-			"A-IM: feed"
-		],
 		"specifications": [
 			{
-				"name": "3229",
-				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
+				"name": "RFC 2324: Hyper Text Coffee Pot Control Protocol (HTCPCP/1.0)",
+				"link": "https://www.iana.org/go/rfc2324"
 			}
 		],
 		"browserCompatibility": []
 	},
 	"accept-datetime": {
 		"name": "Accept-Datetime",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT"
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7089: HTTP Framework for Time-Based Access to Resource States -- Memento",
+				"link": "https://www.iana.org/go/rfc7089"
+			},
+			{
+				"name": "7089",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7089"
+			}
+		],
+		"browserCompatibility": [],
 		"type": [
 			"request"
 		],
 		"description": "Acceptable version in time.",
-		"syntax": "Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Accept-Datetime",
+		"syntax": "Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT"
+	},
+	"accept-features": {
+		"name": "Accept-Features",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
 		"directives": [],
-		"examples": [
-			"Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT"
-		],
 		"specifications": [
 			{
-				"name": "7089",
-				"link": "https://datatracker.ietf.org/doc/html/rfc7089"
+				"name": "RFC 2295: Transparent Content Negotiation in HTTP",
+				"link": "https://www.iana.org/go/rfc2295"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"access-control": {
+		"name": "Access-Control",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Access Control for Cross-site Requests",
+				"link": "https://www.w3.org/TR/2007/WD-access-control-20071126/#access-control0"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"alpn": {
+		"name": "ALPN",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7639, Section 2: The ALPN HTTP Header Field",
+				"link": "https://www.iana.org/go/rfc7639"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"alt-used": {
+		"name": "Alt-Used",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7838: HTTP Alternative Services",
+				"link": "https://www.iana.org/go/rfc7838"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"alternates": {
+		"name": "Alternates",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2295: Transparent Content Negotiation in HTTP",
+				"link": "https://www.iana.org/go/rfc2295"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"amp-cache-transform": {
+		"name": "AMP-Cache-Transform",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "AMP-Cache-Transform HTTP request header",
+				"link": "https://github.com/ampproject/amphtml/blob/main/docs/spec/amp-cache-transform.md"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"apply-to-redirect-ref": {
+		"name": "Apply-To-Redirect-Ref",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4437: Web Distributed Authoring and Versioning (WebDAV) Redirect Reference Resources",
+				"link": "https://www.iana.org/go/rfc4437"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"authentication-control": {
+		"name": "Authentication-Control",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8053, Section 4: HTTP Authentication Extensions for Interactive Clients",
+				"link": "https://www.iana.org/go/rfc8053"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"authentication-info": {
+		"name": "Authentication-Info",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9110, Section 11.6.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"c-ext": {
+		"name": "C-Ext",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2774: An HTTP Extension Framework",
+				"link": "https://www.iana.org/go/rfc2774"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"c-man": {
+		"name": "C-Man",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2774: An HTTP Extension Framework",
+				"link": "https://www.iana.org/go/rfc2774"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"c-opt": {
+		"name": "C-Opt",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2774: An HTTP Extension Framework",
+				"link": "https://www.iana.org/go/rfc2774"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"c-pep": {
+		"name": "C-PEP",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "PEP - an Extension Mechanism for HTTP",
+				"link": "https://www.w3.org/TR/WD-http-pep"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"c-pep-info": {
+		"name": "C-PEP-Info",
+		"status": "deprecated",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "PEP - an Extension Mechanism for HTTP",
+				"link": "https://www.w3.org/TR/WD-http-pep"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cache-status": {
+		"name": "Cache-Status",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9211: The Cache-Status HTTP Response Header Field",
+				"link": "https://www.iana.org/go/rfc9211"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cal-managed-id": {
+		"name": "Cal-Managed-ID",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8607, Section 5.1: Calendaring Extensions to WebDAV (CalDAV): Managed Attachments",
+				"link": "https://www.iana.org/go/rfc8607"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"caldav-timezones": {
+		"name": "CalDAV-Timezones",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7809, Section 7.1: Calendaring Extensions to WebDAV (CalDAV): Time Zones by Reference",
+				"link": "https://www.iana.org/go/rfc7809"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"capsule-protocol": {
+		"name": "Capsule-Protocol",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9297",
+				"link": "https://www.iana.org/go/rfc9297"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cdn-cache-control": {
+		"name": "CDN-Cache-Control",
+		"status": "permanent",
+		"note": "Cache directives targeted at content delivery networks",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9213: Targeted HTTP Cache Control",
+				"link": "https://www.iana.org/go/rfc9213"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cdn-loop": {
+		"name": "CDN-Loop",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8586: Loop Detection in Content Delivery Networks (CDNs)",
+				"link": "https://www.iana.org/go/rfc8586"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cert-not-after": {
+		"name": "Cert-Not-After",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8739, Section 3.3: Support for Short-Term, Automatically Renewed (STAR) Certificates in the Automated Certificate Management Environment (ACME)",
+				"link": "https://www.iana.org/go/rfc8739"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cert-not-before": {
+		"name": "Cert-Not-Before",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8739, Section 3.3: Support for Short-Term, Automatically Renewed (STAR) Certificates in the Automated Certificate Management Environment (ACME)",
+				"link": "https://www.iana.org/go/rfc8739"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"close": {
+		"name": "Close",
+		"status": "permanent",
+		"note": "(reserved)",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9112, Section 9.6: HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc9112"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"configuration-context": {
+		"name": "Configuration-Context",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "OSLC Configuration Management Version 1.0. Part 3: Configuration Specification",
+				"link": "https://docs.oasis-open-projects.org/oslc-op/config/v1.0/psd01/config-resources.html#configcontext"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"content-base": {
+		"name": "Content-Base",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2068: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2068"
+			},
+			{
+				"name": "RFC 2616: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2616"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"content-id": {
+		"name": "Content-ID",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "The HTTP Distribution and Replication Protocol",
+				"link": "https://www.w3.org/TR/NOTE-drp"
 			}
 		],
 		"browserCompatibility": []
 	},
 	"content-md5": {
 		"name": "Content-MD5",
-		"type": [
-			"request",
-			"response"
-		],
-		"description": "A Base64-encoded binary MD5 sum of the content of the request body.",
-		"syntax": "Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-		"directives": [],
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
 		"examples": [
 			"Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ=="
 		],
+		"directives": [],
 		"specifications": [
+			{
+				"name": "RFC 2616, Section 14.15: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2616"
+			},
+			{
+				"name": "RFC 7231, Appendix B: Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content",
+				"link": "https://www.iana.org/go/rfc7231"
+			},
 			{
 				"name": "1544",
 				"link": "https://datatracker.ietf.org/doc/html/rfc1544"
@@ -18528,36 +19209,1618 @@
 				"link": "https://datatracker.ietf.org/doc/html/rfc4021"
 			}
 		],
+		"browserCompatibility": [],
+		"type": [
+			"request",
+			"response"
+		],
+		"description": "A Base64-encoded binary MD5 sum of the content of the request body.",
+		"syntax": "Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ=="
+	},
+	"content-script-type": {
+		"name": "Content-Script-Type",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML 4.01 Specification",
+				"link": "https://www.w3.org/TR/html401"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"content-style-type": {
+		"name": "Content-Style-Type",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML 4.01 Specification",
+				"link": "https://www.w3.org/TR/html401"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"content-version": {
+		"name": "Content-Version",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2068: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2068"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cookie2": {
+		"name": "Cookie2",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2965: HTTP State Management Mechanism",
+				"link": "https://www.iana.org/go/rfc2965"
+			},
+			{
+				"name": "RFC 6265: HTTP State Management Mechanism",
+				"link": "https://www.iana.org/go/rfc6265"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cross-origin-embedder-policy-report-only": {
+		"name": "Cross-Origin-Embedder-Policy-Report-Only",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/origin.html#cross-origin-embedder-policy-report-only"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"cross-origin-opener-policy-report-only": {
+		"name": "Cross-Origin-Opener-Policy-Report-Only",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/origin.html#cross-origin-opener-policy-report-only"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"dasl": {
+		"name": "DASL",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 5323: Web Distributed Authoring and Versioning (WebDAV) SEARCH",
+				"link": "https://www.iana.org/go/rfc5323"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"dav": {
+		"name": "DAV",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4918: HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)",
+				"link": "https://www.iana.org/go/rfc4918"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"default-style": {
+		"name": "Default-Style",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML 4.01 Specification",
+				"link": "https://www.w3.org/TR/html401"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"delta-base": {
+		"name": "Delta-Base",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"Delta-Base: \"abc\""
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 3229: Delta encoding in HTTP",
+				"link": "https://www.iana.org/go/rfc3229"
+			},
+			{
+				"name": "3229",
+				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
+			}
+		],
+		"browserCompatibility": [],
+		"type": [
+			"response"
+		],
+		"description": "Specifies the delta-encoding entity tag of the response.",
+		"syntax": "Delta-Base: \"abc\""
+	},
+	"depth": {
+		"name": "Depth",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4918: HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)",
+				"link": "https://www.iana.org/go/rfc4918"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"derived-from": {
+		"name": "Derived-From",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2068: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2068"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"destination": {
+		"name": "Destination",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4918: HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)",
+				"link": "https://www.iana.org/go/rfc4918"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"differential-id": {
+		"name": "Differential-ID",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "The HTTP Distribution and Replication Protocol",
+				"link": "https://www.w3.org/TR/NOTE-drp"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"ediint-features": {
+		"name": "EDIINT-Features",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6017: Electronic Data Interchange - Internet Integration (EDIINT) Features Header Field",
+				"link": "https://www.iana.org/go/rfc6017"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"ext": {
+		"name": "Ext",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2774: An HTTP Extension Framework",
+				"link": "https://www.iana.org/go/rfc2774"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"getprofile": {
+		"name": "GetProfile",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Implementation of OPS Over HTTP",
+				"link": "https://www.w3.org/TR/NOTE-OPS-OverHTTP"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"hobareg": {
+		"name": "Hobareg",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7486, Section 6.1.1: HTTP Origin-Bound Authentication (HOBA)",
+				"link": "https://www.iana.org/go/rfc7486"
+			}
+		],
 		"browserCompatibility": []
 	},
 	"http2-settings": {
 		"name": "HTTP2-Settings",
+		"status": "obsoleted",
+		"note": "Obsolete; see Section 11.1 of [RFC9113]",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"HTTP2-Settings: token64"
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7540, Section 3.2.1: Hypertext Transfer Protocol Version 2 (HTTP/2)",
+				"link": "https://www.iana.org/go/rfc7540"
+			}
+		],
+		"browserCompatibility": [],
 		"type": [
 			"request"
 		],
 		"description": "A request that upgrades from HTTP/1.1 to HTTP/2 MUST include exactly one HTTP2-Setting header field. The HTTP2-Settings header field is a connection-specific header field that includes parameters that govern the HTTP/2 connection, provided in anticipation of the server accepting the request to upgrade.",
-		"syntax": "HTTP2-Settings: token64",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
+		"syntax": "HTTP2-Settings: token64"
+	},
+	"if": {
+		"name": "If",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
 		"directives": [],
-		"examples": [
-			"HTTP2-Settings: token64"
+		"specifications": [
+			{
+				"name": "RFC 4918: HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)",
+				"link": "https://www.iana.org/go/rfc4918"
+			}
 		],
-		"specifications": [],
+		"browserCompatibility": []
+	},
+	"if-schedule-tag-match": {
+		"name": "If-Schedule-Tag-Match",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6338: Scheduling Extensions to CalDAV",
+				"link": "https://www.iana.org/go/rfc6638"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"im": {
+		"name": "IM",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"IM: feed"
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 3229: Delta encoding in HTTP",
+				"link": "https://www.iana.org/go/rfc3229"
+			},
+			{
+				"name": "3229",
+				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
+			}
+		],
+		"browserCompatibility": [],
+		"type": [
+			"response"
+		],
+		"description": "Instance-manipulations applied to the response.",
+		"syntax": "IM: feed"
+	},
+	"include-referred-token-binding-id": {
+		"name": "Include-Referred-Token-Binding-ID",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8473: Token Binding over HTTP",
+				"link": "https://www.iana.org/go/rfc8473"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"isolation": {
+		"name": "Isolation",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "OData Version 4.01 Part 1: Protocol",
+				"link": "http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_HeaderIsolationODataIsolation"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"label": {
+		"name": "Label",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 3253: Versioning Extensions to WebDAV: (Web Distributed Authoring and Versioning)",
+				"link": "https://www.iana.org/go/rfc3253"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"last-event-id": {
+		"name": "Last-Event-ID",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/server-sent-events.html#last-event-id"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"lock-token": {
+		"name": "Lock-Token",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4918: HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)",
+				"link": "https://www.iana.org/go/rfc4918"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"man": {
+		"name": "Man",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2774: An HTTP Extension Framework",
+				"link": "https://www.iana.org/go/rfc2774"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"memento-datetime": {
+		"name": "Memento-Datetime",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7089: HTTP Framework for Time-Based Access to Resource States -- Memento",
+				"link": "https://www.iana.org/go/rfc7089"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"meter": {
+		"name": "Meter",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2227: Simple Hit-Metering and Usage-Limiting for HTTP",
+				"link": "https://www.iana.org/go/rfc2227"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"method-check": {
+		"name": "Method-Check",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Access Control for Cross-site Requests",
+				"link": "https://www.w3.org/TR/2007/WD-access-control-20071126/#method-check"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"method-check-expires": {
+		"name": "Method-Check-Expires",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Access Control for Cross-site Requests",
+				"link": "https://www.w3.org/TR/2007/WD-access-control-20071126/#method-check-expires"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"mime-version": {
+		"name": "MIME-Version",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9112, Appendix B.1: HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc9112"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"negotiate": {
+		"name": "Negotiate",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2295: Transparent Content Negotiation in HTTP",
+				"link": "https://www.iana.org/go/rfc2295"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"odata-entityid": {
+		"name": "OData-EntityId",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "OData Version 4.01 Part 1: Protocol",
+				"link": "http://docs.oasis-open.org/odata/odata/v4.01/csprd05/part1-protocol/odata-v4.01-csprd05-part1-protocol.html#_Toc14172735"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"odata-isolation": {
+		"name": "OData-Isolation",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "OData Version 4.01 Part 1: Protocol",
+				"link": "http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_HeaderIsolationODataIsolation"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"odata-maxversion": {
+		"name": "OData-MaxVersion",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "OData Version 4.01 Part 1: Protocol",
+				"link": "http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_HeaderODataMaxVersion"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"odata-version": {
+		"name": "OData-Version",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "OData Version 4.01 Part 1: Protocol",
+				"link": "http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_HeaderODataVersion"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"opt": {
+		"name": "Opt",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2774: An HTTP Extension Framework",
+				"link": "https://www.iana.org/go/rfc2774"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"optional-www-authenticate": {
+		"name": "Optional-WWW-Authenticate",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8053, Section 3: HTTP Authentication Extensions for Interactive Clients",
+				"link": "https://www.iana.org/go/rfc8053"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"ordering-type": {
+		"name": "Ordering-Type",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 3648: Web Distributed Authoring and Versioning (WebDAV) Ordered Collections Protocol",
+				"link": "https://www.iana.org/go/rfc3648"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"origin-agent-cluster": {
+		"name": "Origin-Agent-Cluster",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/origin.html#origin-agent-cluster"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"oscore": {
+		"name": "OSCORE",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8613, Section 11.1: Object Security for Constrained RESTful Environments (OSCORE)",
+				"link": "https://www.iana.org/go/rfc8613"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"oslc-core-version": {
+		"name": "OSLC-Core-Version",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "OASIS Project Specification 01",
+				"link": "https://docs.oasis-open-projects.org/oslc-op/core/v3.0/oslc-core.html"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"overwrite": {
+		"name": "Overwrite",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4918: HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)",
+				"link": "https://www.iana.org/go/rfc4918"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"p3p": {
+		"name": "P3P",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"P3P: CP=\"This is not a P3P policy! See https://en.wikipedia.org/wiki/Special:CentralAutoLogin/P3P for more info.\""
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "The Platform for Privacy Preferences 1.0 (P3P1.0) Specification",
+				"link": "https://www.w3.org/TR/P3P"
+			}
+		],
+		"browserCompatibility": [],
+		"type": [
+			"response"
+		],
+		"description": "This field is supposed to set P3P policy, in the form of P3P:CP=\"your_compact_policy\". However, P3P did not take off, most browsers have never fully implemented it, a lot of websites set this field with fake policy text, that was enough to fool browsers the existence of P3P policy and grant permissions for third party cookies.",
+		"syntax": "P3P: CP=\"This is not a P3P policy! See https://en.wikipedia.org/wiki/Special:CentralAutoLogin/P3P for more info.\""
+	},
+	"pep": {
+		"name": "PEP",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "PEP - an Extension Mechanism for HTTP",
+				"link": "http://www.w3.org/TR/WD-http-pep"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"pep-info": {
+		"name": "Pep-Info",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "PEP - an Extension Mechanism for HTTP",
+				"link": "http://www.w3.org/TR/WD-http-pep"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"pics-label": {
+		"name": "PICS-Label",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "PICS Label Distribution Label Syntax and Communication Protocols",
+				"link": "https://www.w3.org/TR/REC-PICS-labels-961031"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"ping-from": {
+		"name": "Ping-From",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/links.html#ping-from"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"ping-to": {
+		"name": "Ping-To",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/links.html#ping-to"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"position": {
+		"name": "Position",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 3648: Web Distributed Authoring and Versioning (WebDAV) Ordered Collections Protocol",
+				"link": "https://www.iana.org/go/rfc3648"
+			}
+		],
 		"browserCompatibility": []
 	},
 	"prefer": {
 		"name": "Prefer",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"Prefer: return=representation"
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7240: Prefer Header for HTTP",
+				"link": "https://www.iana.org/go/rfc7240"
+			}
+		],
+		"browserCompatibility": [],
 		"type": [
 			"request"
 		],
 		"description": "Allows client to request that certain behaviors be employed by a server while processing a request.",
-		"syntax": "Prefer: return=representation",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-		"directives": [],
+		"syntax": "Prefer: return=representation"
+	},
+	"preference-applied": {
+		"name": "Preference-Applied",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
 		"examples": [
-			"Prefer: return=representation"
+			"Preference-Applied: return=representation"
 		],
-		"specifications": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7240: Prefer Header for HTTP",
+				"link": "https://www.iana.org/go/rfc7240"
+			}
+		],
+		"browserCompatibility": [],
+		"type": [
+			"response"
+		],
+		"description": "Indicates which Prefer tokens were honored by the server and applied to the processing of the request.",
+		"syntax": "Preference-Applied: return=representation"
+	},
+	"priority": {
+		"name": "Priority",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9218: Extensible Prioritization Scheme for HTTP",
+				"link": "https://www.iana.org/go/rfc9218"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"profileobject": {
+		"name": "ProfileObject",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Implementation of OPS Over HTTP",
+				"link": "https://www.w3.org/TR/NOTE-OPS-OverHTTP"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"protocol": {
+		"name": "Protocol",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "PICS Label Distribution Label Syntax and Communication Protocols",
+				"link": "https://www.w3.org/TR/REC-PICS-labels-961031"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"protocol-info": {
+		"name": "Protocol-Info",
+		"status": "deprecated",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "White Paper: Joint Electronic Payment Initiative",
+				"link": "https://www.w3.org/TR/NOTE-jepi"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"protocol-query": {
+		"name": "Protocol-Query",
+		"status": "deprecated",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "White Paper: Joint Electronic Payment Initiative",
+				"link": "https://www.w3.org/TR/NOTE-jepi"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"protocol-request": {
+		"name": "Protocol-Request",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "PICS Label Distribution Label Syntax and Communication Protocols",
+				"link": "https://www.w3.org/TR/REC-PICS-labels-961031"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"proxy-authentication-info": {
+		"name": "Proxy-Authentication-Info",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9110, Section 11.7.3: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"proxy-features": {
+		"name": "Proxy-Features",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Notification for Proxy Caches",
+				"link": "https://www.w3.org/TR/WD-proxy.html"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"proxy-instruction": {
+		"name": "Proxy-Instruction",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Notification for Proxy Caches",
+				"link": "https://www.w3.org/TR/WD-proxy.html"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"proxy-status": {
+		"name": "Proxy-Status",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9209: The Proxy-Status HTTP Response Header Field",
+				"link": "https://www.iana.org/go/rfc9209"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"public": {
+		"name": "Public",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2068: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2068"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"public-key-pins": {
+		"name": "Public-Key-Pins",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"Public-Key-Pins: max-age=2592000; pin-sha256=\"E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=\";"
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7469: Public Key Pinning Extension for HTTP",
+				"link": "https://www.iana.org/go/rfc7469"
+			},
+			{
+				"name": "7469",
+				"link": "https://datatracker.ietf.org/doc/html/rfc7469"
+			}
+		],
+		"browserCompatibility": [],
+		"type": [
+			"response"
+		],
+		"description": "HTTP Public Key Pinning, announces hash of website's authentic TLS certificate",
+		"syntax": "Public-Key-Pins: max-age=2592000; pin-sha256=\"E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=\";"
+	},
+	"public-key-pins-report-only": {
+		"name": "Public-Key-Pins-Report-Only",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 7469: Public Key Pinning Extension for HTTP",
+				"link": "https://www.iana.org/go/rfc7469"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"redirect-ref": {
+		"name": "Redirect-Ref",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4437: Web Distributed Authoring and Versioning (WebDAV) Redirect Reference Resources",
+				"link": "https://www.iana.org/go/rfc4437"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"referer-root": {
+		"name": "Referer-Root",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Access Control for Cross-site Requests",
+				"link": "https://www.w3.org/TR/2007/WD-access-control-20071126/#referer-root"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"refresh": {
+		"name": "Refresh",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [
+			"Refresh: 5; url=http://www.w3.org/pub/WWW/People.html"
+		],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "HTML",
+				"link": "https://html.spec.whatwg.org/multipage/browsing-the-web.html#refresh"
+			}
+		],
+		"browserCompatibility": [],
+		"type": [
+			"response"
+		],
+		"description": "Used in redirection, or when a new resource has been created. This refresh redirects after 5 seconds. Header extension introduced by Netscape and supported by most web browsers. Defined by HTML Standard",
+		"syntax": "Refresh: 5; url=http://www.w3.org/pub/WWW/People.html"
+	},
+	"repeatability-client-id": {
+		"name": "Repeatability-Client-ID",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Repeatable Requests Version 1.0",
+				"link": "https://docs.oasis-open.org/odata/repeatable-requests/v1.0/cs01/repeatable-requests-v1.0-cs01.html"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"repeatability-first-sent": {
+		"name": "Repeatability-First-Sent",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Repeatable Requests Version 1.0",
+				"link": "https://docs.oasis-open.org/odata/repeatable-requests/v1.0/cs01/repeatable-requests-v1.0-cs01.html"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"repeatability-request-id": {
+		"name": "Repeatability-Request-ID",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Repeatable Requests Version 1.0",
+				"link": "https://docs.oasis-open.org/odata/repeatable-requests/v1.0/cs01/repeatable-requests-v1.0-cs01.html"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"repeatability-result": {
+		"name": "Repeatability-Result",
+		"status": "provisional",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Repeatable Requests Version 1.0",
+				"link": "https://docs.oasis-open.org/odata/repeatable-requests/v1.0/cs01/repeatable-requests-v1.0-cs01.html"
+			},
+			{
+				"name": "OASIS",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#OASIS"
+			},
+			{
+				"name": "Chet_Ensign",
+				"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml#Chet_Ensign"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"replay-nonce": {
+		"name": "Replay-Nonce",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8555, Section 6.5.1: Automatic Certificate Management Environment (ACME)",
+				"link": "https://www.iana.org/go/rfc8555"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"safe": {
+		"name": "Safe",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2310: The Safe Response Header Field",
+				"link": "https://www.iana.org/go/rfc2310"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"schedule-reply": {
+		"name": "Schedule-Reply",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6638: Scheduling Extensions to CalDAV",
+				"link": "https://www.iana.org/go/rfc6638"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"schedule-tag": {
+		"name": "Schedule-Tag",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6338: Scheduling Extensions to CalDAV",
+				"link": "https://www.iana.org/go/rfc6638"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"sec-token-binding": {
+		"name": "Sec-Token-Binding",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8473: Token Binding over HTTP",
+				"link": "https://www.iana.org/go/rfc8473"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"sec-websocket-extensions": {
+		"name": "Sec-WebSocket-Extensions",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6455: The WebSocket Protocol",
+				"link": "https://www.iana.org/go/rfc6455"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"sec-websocket-key": {
+		"name": "Sec-WebSocket-Key",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6455: The WebSocket Protocol",
+				"link": "https://www.iana.org/go/rfc6455"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"sec-websocket-protocol": {
+		"name": "Sec-WebSocket-Protocol",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6455: The WebSocket Protocol",
+				"link": "https://www.iana.org/go/rfc6455"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"sec-websocket-version": {
+		"name": "Sec-WebSocket-Version",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 6455: The WebSocket Protocol",
+				"link": "https://www.iana.org/go/rfc6455"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"security-scheme": {
+		"name": "Security-Scheme",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2660: The Secure HyperText Transfer Protocol",
+				"link": "https://www.iana.org/go/rfc2660"
+			},
+			{
+				"name": "status-change-http-experiments-to-historic",
+				"link": "https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"set-cookie2": {
+		"name": "Set-Cookie2",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2965: HTTP State Management Mechanism",
+				"link": "https://www.iana.org/go/rfc2965"
+			},
+			{
+				"name": "RFC 6265: HTTP State Management Mechanism",
+				"link": "https://www.iana.org/go/rfc6265"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"setprofile": {
+		"name": "SetProfile",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Implementation of OPS Over HTTP",
+				"link": "https://www.w3.org/TR/NOTE-OPS-OverHTTP"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"slug": {
+		"name": "SLUG",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 5023: The Atom Publishing Protocol",
+				"link": "https://www.iana.org/go/rfc5023"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"soapaction": {
+		"name": "SoapAction",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Simple Object Access Protocol (SOAP) 1.1",
+				"link": "https://www.w3.org/TR/2000/NOTE-SOAP-20000508"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"status-uri": {
+		"name": "Status-URI",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2518: HTTP Extensions for Distributed Authoring -- WEBDAV",
+				"link": "https://www.iana.org/go/rfc2518"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"sunset": {
+		"name": "Sunset",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8594: The Sunset HTTP Header Field",
+				"link": "https://www.iana.org/go/rfc8594"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"surrogate-capability": {
+		"name": "Surrogate-Capability",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Edge Architecture Specification",
+				"link": "https://www.w3.org/TR/edge-arch"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"surrogate-control": {
+		"name": "Surrogate-Control",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Edge Architecture Specification",
+				"link": "https://www.w3.org/TR/edge-arch"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"tcn": {
+		"name": "TCN",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2295: Transparent Content Negotiation in HTTP",
+				"link": "https://www.iana.org/go/rfc2295"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"timeout": {
+		"name": "Timeout",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 4918: HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)",
+				"link": "https://www.iana.org/go/rfc4918"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"topic": {
+		"name": "Topic",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8030, Section 5.4: Generic Event Delivery Using HTTP Push",
+				"link": "https://www.iana.org/go/rfc8030"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"traceparent": {
+		"name": "Traceparent",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Trace Context",
+				"link": "https://www.w3.org/TR/trace-context/#traceparent-header"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"tracestate": {
+		"name": "Tracestate",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "Trace Context",
+				"link": "https://www.w3.org/TR/trace-context/#tracestate-header"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"ttl": {
+		"name": "TTL",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8030, Section 5.2: Generic Event Delivery Using HTTP Push",
+				"link": "https://www.iana.org/go/rfc8030"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"urgency": {
+		"name": "Urgency",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 8030, Section 5.3: Generic Event Delivery Using HTTP Push",
+				"link": "https://www.iana.org/go/rfc8030"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"uri": {
+		"name": "URI",
+		"status": "obsoleted",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2068: Hypertext Transfer Protocol -- HTTP/1.1",
+				"link": "https://www.iana.org/go/rfc2068"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"variant-vary": {
+		"name": "Variant-Vary",
+		"status": "permanent",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC 2295: Transparent Content Negotiation in HTTP",
+				"link": "https://www.iana.org/go/rfc2295"
+			}
+		],
+		"browserCompatibility": []
+	},
+	"*": {
+		"name": "*",
+		"status": "permanent",
+		"note": "(reserved)",
+		"link": "https://www.iana.org/assignments/http-fields/http-fields.xhtml",
+		"examples": [],
+		"directives": [],
+		"specifications": [
+			{
+				"name": "RFC9110, Section 12.5.5: HTTP Semantics",
+				"link": "https://www.iana.org/go/rfc9110"
+			}
+		],
 		"browserCompatibility": []
 	},
 	"referer [sic]": {
@@ -18565,6 +20828,7 @@
 		"type": [
 			"request"
 		],
+		"status": "permanent",
 		"description": "This is the address of the previous web page from which a link to the currently requested page was followed. (The word \"referrer\" has been misspelled in the RFC as well as in most implementations to the point that it has become standard usage and is considered correct terminology)",
 		"syntax": "Referer [sic]",
 		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
@@ -18732,96 +20996,6 @@
 		"specifications": [],
 		"browserCompatibility": []
 	},
-	"delta-base": {
-		"name": "Delta-Base",
-		"type": [
-			"response"
-		],
-		"description": "Specifies the delta-encoding entity tag of the response.",
-		"syntax": "Delta-Base: \"abc\"",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-		"directives": [],
-		"examples": [
-			"Delta-Base: \"abc\""
-		],
-		"specifications": [
-			{
-				"name": "3229",
-				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
-			}
-		],
-		"browserCompatibility": []
-	},
-	"im": {
-		"name": "IM",
-		"type": [
-			"response"
-		],
-		"description": "Instance-manipulations applied to the response.",
-		"syntax": "IM: feed",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-		"directives": [],
-		"examples": [
-			"IM: feed"
-		],
-		"specifications": [
-			{
-				"name": "3229",
-				"link": "https://datatracker.ietf.org/doc/html/rfc3229"
-			}
-		],
-		"browserCompatibility": []
-	},
-	"p3p": {
-		"name": "P3P",
-		"type": [
-			"response"
-		],
-		"description": "This field is supposed to set P3P policy, in the form of P3P:CP=\"your_compact_policy\". However, P3P did not take off, most browsers have never fully implemented it, a lot of websites set this field with fake policy text, that was enough to fool browsers the existence of P3P policy and grant permissions for third party cookies.",
-		"syntax": "P3P: CP=\"This is not a P3P policy! See https://en.wikipedia.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-		"directives": [],
-		"examples": [
-			"P3P: CP=\"This is not a P3P policy! See https://en.wikipedia.org/wiki/Special:CentralAutoLogin/P3P for more info.\""
-		],
-		"specifications": [],
-		"browserCompatibility": []
-	},
-	"preference-applied": {
-		"name": "Preference-Applied",
-		"type": [
-			"response"
-		],
-		"description": "Indicates which Prefer tokens were honored by the server and applied to the processing of the request.",
-		"syntax": "Preference-Applied: return=representation",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields",
-		"directives": [],
-		"examples": [
-			"Preference-Applied: return=representation"
-		],
-		"specifications": [],
-		"browserCompatibility": []
-	},
-	"public-key-pins": {
-		"name": "Public-Key-Pins",
-		"type": [
-			"response"
-		],
-		"description": "HTTP Public Key Pinning, announces hash of website's authentic TLS certificate",
-		"syntax": "Public-Key-Pins: max-age=2592000; pin-sha256=\"E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=\";",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#PKP",
-		"directives": [],
-		"examples": [
-			"Public-Key-Pins: max-age=2592000; pin-sha256=\"E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=\";"
-		],
-		"specifications": [
-			{
-				"name": "7469",
-				"link": "https://datatracker.ietf.org/doc/html/rfc7469"
-			}
-		],
-		"browserCompatibility": []
-	},
 	"x-content-security-policy": {
 		"name": "X-Content-Security-Policy",
 		"type": [
@@ -18861,21 +21035,6 @@
 		"directives": [],
 		"examples": [
 			"Permissions-Policy: fullscreen=(), camera=(), microphone=(), geolocation=(), interest-cohort=()"
-		],
-		"specifications": [],
-		"browserCompatibility": []
-	},
-	"refresh": {
-		"name": "Refresh",
-		"type": [
-			"response"
-		],
-		"description": "Used in redirection, or when a new resource has been created. This refresh redirects after 5 seconds. Header extension introduced by Netscape and supported by most web browsers. Defined by HTML Standard",
-		"syntax": "Refresh: 5; url=http://www.w3.org/pub/WWW/People.html",
-		"link": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Refresh",
-		"directives": [],
-		"examples": [
-			"Refresh: 5; url=http://www.w3.org/pub/WWW/People.html"
 		],
 		"specifications": [],
 		"browserCompatibility": []

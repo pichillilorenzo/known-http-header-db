@@ -1,3 +1,9 @@
+## 1.0.6
+
+- Added iana source
+- Added status field
+- Fixed databases merge logic
+
 ## 1.0.5
 
 - Updated package.json metadata
