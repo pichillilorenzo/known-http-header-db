@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Updated README.md usage example
+
 ## 1.0.3
 
 - Updated README

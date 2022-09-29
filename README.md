@@ -38,7 +38,7 @@ https://cdn.jsdelivr.net/gh/pichillilorenzo/known-http-header-db@main/dist/db.js
 ```js
 import db from 'known-http-header-db';
 // .. or
-const db = require('known-http-header-db');
+const db = require('known-http-header-db').default;
 
 const contentTypeInfo = db['content-type']; // An instance of HTTPHeader
 console.log(contentTypeInfo.name); // Content-Type
